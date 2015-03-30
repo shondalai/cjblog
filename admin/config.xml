@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="articles" label="JGLOBAL_ARTICLES">
+
+		<field name="show_title" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_TITLE_LABEL" description="JGLOBAL_SHOW_TITLE_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="link_titles" type="radio" class="btn-group" default="1" label="JGLOBAL_LINKED_TITLES_LABEL" description="JGLOBAL_LINKED_TITLES_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="show_thumbnails" type="radio" class="btn-group" label="COM_CJBLOG_SHOW_THUMBNAILS_LABEL" description="COM_CJBLOG_SHOW_THUMBNAILS_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field name="show_intro" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_INTRO_LABEL" description="JGLOBAL_SHOW_INTRO_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_category" type="radio" class="btn-group" label="JGLOBAL_SHOW_CATEGORY_LABEL" description="JGLOBAL_SHOW_CATEGORY_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="link_category" type="radio" class="btn-group" label="JGLOBAL_LINK_CATEGORY_LABEL" description="JGLOBAL_LINK_CATEGORY_DESC" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="spacer1" type="spacer" hr="true" />
+
+		<field name="show_author" type="radio" class="btn-group" label="JGLOBAL_SHOW_AUTHOR_LABEL" description="JGLOBAL_SHOW_AUTHOR_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="link_author" type="radio" class="btn-group" label="JGLOBAL_LINK_AUTHOR_LABEL" description="JGLOBAL_LINK_AUTHOR_DESC" default="0">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="show_create_date" type="radio" class="btn-group" label="JGLOBAL_SHOW_CREATE_DATE_LABEL" description="JGLOBAL_SHOW_CREATE_DATE_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field name="date_format" type="text" size="15" label="JGLOBAL_DATE_FORMAT_LABEL" description="JGLOBAL_DATE_FORMAT_DESC" />
+		
+		<field name="show_readmore" type="radio" class="btn-group" label="JGLOBAL_SHOW_READMORE_LABEL" description="JGLOBAL_SHOW_READMORE_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_hits" type="radio" class="btn-group" label="JGLOBAL_SHOW_HITS_LABEL" description="JGLOBAL_SHOW_HITS_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field name="hot_article_num_hits" type="text" label="COM_CJBLOG_HOT_ARTICLE_NUM_HITS_LABEL" description="COM_CJBLOG_HOT_ARTICLE_NUM_HITS_DESC" default="250"/>
+		
+		<field name="character_limit" type="text" label="COM_CJBLOG_INTRO_LIMIT_LABEL" description="COM_CJBLOG_INTRO_LIMIT_DESC" default="160"/>
+
+		<field name="thumbnail_size" type="list" class="btn-group" label="COM_CJBLOG_THUMBNAIL_SIZE_LABEL" description="COM_CJBLOG_THUMBNAIL_SIZE_DESC" default="0">
+			<option value="0">COM_CJBLOG_SMALL</option>
+			<option value="1">COM_CJBLOG_BIG</option>
+		</field>
+
+		<field name="max_category_levels" type="list" class="inputbox" description="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_DESC" label="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_LABEL" default="-1">
+			<option value="0">JNONE</option>
+			<option value="-1">JALL</option>
+			<option value="1">J1</option>
+			<option value="2">J2</option>
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+			<option value="5">J5</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="categories" label="JCATEGORIES">
+		
+		<field name="exclude_categories" type="category" extension="com_content" multiple="multiple" size="10" label="COM_CJBLOG_EXCLUDE_CATEGORIES_LABEL" description="COM_CJBLOG_EXCLUDE_CATEGORIES_DESC"/>
+		
+		<field name="show_base_description" type="radio" class="btn-group" default="1" label="JGLOBAL_FIELD_SHOW_BASE_DESCRIPTION_LABEL" description="JGLOBAL_FIELD_SHOW_BASE_DESCRIPTION_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field name="show_base_image" type="radio" class="btn-group" default="1" label="COM_CJBLOG_FIELD_SHOW_BASE_IMAGE_LABEL" description="COM_CJBLOG_FIELD_SHOW_BASE_IMAGE_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="show_cat_num_articles" type="radio" class="btn-group" label="COM_CJBLOG_NUMBER_CATEGORY_ITEMS_LABEL" description="COM_CJBLOG_NUMBER_CATEGORY_ITEMS_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field name="max_category_columns" type="list" default="3" label="COM_CJBLOG_MAX_CATEGORY_COLUMNS_LABEL" description="COM_CJBLOG_MAX_CATEGORY_COLUMNS_DESC">
+			<option value="1">J1</option>
+			<option value="2">J2</option>
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+		</field>
+
+		<field name="max_category_subitems" type="list" class="inputbox" description="COM_CJBLOG_MAXIMUM_CATEGORY_SUBITEMS_DESC" label="COM_CJBLOG_MAXIMUM_CATEGORY_SUBITEMS_LABEL" default="-1">
+			<option value="0">JNONE</option>
+			<option value="-1">JALL</option>
+			<option value="1">J1</option>
+			<option value="2">J2</option>
+			<option value="3">J3</option>
+			<option value="4">J4</option>
+			<option value="5">J5</option>
+			<option value="6">J6</option>
+			<option value="7">J7</option>
+			<option value="8">J8</option>
+			<option value="9">J9</option>
+			<option value="10">J10</option>
+		</field>
+	</fieldset>
+	
+	<fieldset name="profile" label="COM_CJBLOG_PROFILE_SETTINGS_LABEL" description="COM_CJBLOG_PROFILE_SETTINGS_DESC">
+		<field name="profile_date_format" type="text" size="15" label="JGLOBAL_DATE_FORMAT_LABEL" description="JGLOBAL_DATE_FORMAT_DESC" />
+	</fieldset>
+
+	<fieldset name="integration" label="JGLOBAL_INTEGRATION_LABEL">
+
+		<field name="disable_jquery" type="radio" class="btn-group" label="COM_CJBLOG_DISABLE_JQUERY_LABEL" description="COM_CJBLOG_DISABLE_JQUERY_DESC" default="0">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="disable_bootstrap" type="radio" class="btn-group" label="COM_CJBLOG_DISABLE_BOOTSTRAP_LABEL" description="COM_CJBLOG_DISABLE_BOOTSTRAP_DESC" default="0">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		
+		<field name="spacer1" type="spacer" hr="true" />
+
+		<field name="show_header_bar" type="radio" class="btn-group" default="1" label="COM_CJBLOG_SHOW_HEADER_BAR_LABEL" description="COM_CJBLOG_SHOW_HEADER_BAR_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="user_display_name" type="radio" class="btn-group" default="name" label="COM_CJBLOG_USER_DISPLAY_NAME" description="COM_CJBLOG_USER_DISPLAY_NAME_DESC">
+			<option value="name">COM_CJBLOG_NAME</option>
+			<option value="username">COM_CJBLOG_USERNAME</option>
+		</field>
+		
+		<field name="form_handler" type="list" default="1" label="COM_CJBLOG_FORM_HANDLER_LABEL" description="COM_CJBLOG_FORM_HANDLER_DESC">
+			<option value="cjblog">CjBlog</option>
+			<option value="joomla">Joomla</option>
+		</field>
+
+		<field name="profile_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_PROFILE_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_PROFILE_COMPONENT_DESC">
+			<option value="none">None</option>
+			<option value="cjforum">CjForum</option>
+			<option value="cjblog">CjBlog</option>
+			<option value="jomsocial">JomSocial</option>
+			<option value="easysocial">EasySocial</option>
+			<option value="easyprofile">EasyProfile</option>
+			<option value="cb">Community Builder</option>
+			<option value="kunena">Kunena</option>
+			<option value="gravatar">Gravatar</option>
+		</field>
+		<field name="avatar_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_AVATAR_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_AVATAR_COMPONENT_DESC">
+			<option value="none">None</option>
+			<option value="cjforum">CjForum</option>
+			<option value="cjblog">CjBlog</option>
+			<option value="jomsocial">JomSocial</option>
+			<option value="easysocial">EasySocial</option>
+			<option value="easyprofile">EasyProfile</option>
+			<option value="cb">Community Builder</option>
+			<option value="kunena">Kunena</option>
+			<option value="gravatar">Gravatar</option>
+		</field>
+		
+		<field name="easyprofile_about" type="text" class="" default="author_info" label="COM_CJBLOG_EASYPROFILE_ABOUT" description="COM_CJBLOG_EASYPROFILE_ABOUT_DESC"/>
+		
+		<field name="enable_points" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_POINTS_LABEL" description="COM_CJBLOG_ENABLE_POINTS_DESC" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="show_feed_link" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_FEED_LINK_LABEL" description="JGLOBAL_SHOW_FEED_LINK_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="feed_summary" type="radio" class="btn-group" label="JGLOBAL_FEED_SUMMARY_LABEL" description="JGLOBAL_FEED_SUMMARY_DESC" default="0">
+			<option value="0">JGLOBAL_INTRO_TEXT</option>
+			<option value="1">JGLOBAL_FULL_TEXT</option>
+		</field>
+
+		<field name="feed_show_readmore" type="radio" class="btn-group" label="JGLOBAL_FEED_SHOW_READMORE_LABEL" description="JGLOBAL_FEED_SHOW_READMORE_DESC" default="0">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+
+		<field name="display_messages" type="radio" class="btn-group" label="COM_CJBLOG_DISPLAY_MESSAGES" description="COM_CJBLOG_DISPLAY_MESSAGES_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		
+		<field name="spacer2" type="spacer" hr="true" />
+
+		<field name="display_social_buttons" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_SOCIAL_SHARING_LABEL" description="COM_CJBLOG_ENABLE_SOCIAL_SHARING_DESC" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="sharing_buttons_position" type="radio" class="btn-group" label="COM_CJBLOG_SHARING_POSITION_LABEL" description="COM_CJBLOG_SHARING_POSITION_DESC" default="bottom">
+			<option value="top">COM_CJBLOG_TOP</option>
+			<option value="bottom">COM_CJBLOG_BOTTOM</option>
+		</field>
+
+	</fieldset>
+	
+	<fieldset name="features" label="COM_CJBLOG_FEATURES">
+		<field name="exclude_user_groups" type="usergroup" multiple="multiple" size="10" label="COM_CJBLOG_EXCLUDE_USER_GROUPS" description="COM_CJBLOG_EXCLUDE_USER_GROUPS_DESC"/>
+		
+		<field name="enable_logging" type="radio" class="btn-group" default="1" label="COM_CJBLOG_FIELD_ENABLE_LOGGING_LABEL" description="COM_CJBLOG_FIELD_ENABLE_LOGGING_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="default_editor" type="list" class="btn-group" default="wysiwygbb" label="COM_CJBLOG_DEFAULT_EDITOR_LABEL" description="COM_CJBLOG_DEFAULT_EDITOR_DESC">
+			<option value="none">COM_CJBLOG_NONE</option>
+			<option value="wysiwygbb">COM_CJBLOG_BBCODE_EDITOR</option>
+			<option value="wysiwyg">COM_CJBLOG_WYSIWYG_EDITOR</option>
+		</field>
+	</fieldset>
+	
+	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" validate="rules" filter="rules" component="com_cjblog" section="component" />
+	</fieldset>
+</config>

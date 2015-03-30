@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="CjBlog Categories Layout">
+		<message>
+			<![CDATA[COM_CJBLOG_CATEGORIES_LAYOUT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<state>
+		<name>CjBlog Categories Layout</name>
+		<description>CjBlog Categories Page</description>
+	</state>
+</metadata>

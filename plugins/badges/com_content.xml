@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_content" type="cjblog_badges" method="upgrade" title="COM_CJBLOG_ARTICLES">
+	<extension_rule>
+		<rule_name>com_content.num_articles</rule_name>
+		<rule_description>Assign a badge when user submits N number of articles.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_ARTICLES" name="num_articles" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_content.num_hits</rule_name>
+		<rule_description>Assign a badge when an article submitted by the user got N number of hits.</rule_description>
+		<rules join="and" method="assign" ref_id="cid" multiple="1">
+			<rule label="COM_CJBLOG_NUM_HITS" name="num_hits" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+	</extension_rule>
+</extension>

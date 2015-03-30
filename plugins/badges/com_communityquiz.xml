@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_communityquiz" type="cjblog_badges" method="upgrade" title="COM_CJBLOG_QUIZZES">
+	<extension_rule>
+		<rule_name>com_communityquiz.num_quizzes</rule_name>
+		<rule_description>Assign a badge when user submits N number of quizzes.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_QUIZZES" name="num_quizzes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communityquiz.num_responses</rule_name>
+		<rule_description>Assign a badge when user responded to N number of quizzes.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_RESPONSES" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communityquiz.test_passed</rule_name>
+		<rule_description>Assign a badge when user passed a quiz.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_RESPONSES" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communityquiz.custom</rule_name>
+		<rule_description>Assign custom badge for passing a quiz, badge should be selected from quiz form.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="Dummy" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+</extension>

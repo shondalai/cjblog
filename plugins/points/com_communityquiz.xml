@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_communityquiz" type="cjblog_points" method="upgrade">
+	<extension_rule>
+		<rule_name>com_communityquiz.new_quiz</rule_name>
+		<rule_title>New Quiz</rule_title>
+		<rule_description>Points awarded for submitting a quiz.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communityquiz</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communityquiz.quiz_response</rule_name>
+		<rule_title>Respond to a Quiz</rule_title>
+		<rule_description>Points awarded for responding to a quiz.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communityquiz</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communityquiz.test_passed</rule_name>
+		<rule_title>Passed a quiz</rule_title>
+		<rule_description>Points awarded for passin the quiz.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communityquiz</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+</extension>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_kunena" type="cjblog_points" method="upgrade">
+	<extension_rule>
+		<rule_name>com_kunena.newtopic</rule_name>
+		<rule_title>New Forum Topic</rule_title>
+		<rule_description>Points awarded for posting a topic.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_kunena</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_kunena.newreply</rule_name>
+		<rule_title>New Topic Reply</rule_title>
+		<rule_description>Points awarded for submitting a reply.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_kunena</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_kunena.deletepost</rule_name>
+		<rule_title>Delete Forum Post</rule_title>
+		<rule_description>Points deducted when a post is deleted.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_kunena</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_kunena.saidthankyou</rule_name>
+		<rule_title>Thank You Said</rule_title>
+		<rule_description>Points awarded for giving thank you to another user.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_kunena</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_kunena.gotthankyou</rule_name>
+		<rule_title>Thank You Received</rule_title>
+		<rule_description>Points awarded for receiving a thank you from another user.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_kunena</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+</extension>

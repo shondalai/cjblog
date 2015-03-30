@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_communitypolls" type="cjblog_badges" method="upgrade" title="COM_CJBLOG_POLLS">
+	<extension_rule>
+		<rule_name>com_communitypolls.num_polls</rule_name>
+		<rule_description>Assign a badge when user submits N number of polls.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_POLLS" name="num_polls" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communitypolls.num_votes</rule_name>
+		<rule_description>Assign a badge when user voted on N number of polls.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_NUM_VOTES" name="num_votes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communitypolls.num_poll_votes</rule_name>
+		<rule_description>Assign a badge when a poll created by the user gets N number of votes.</rule_description>
+		<rules join="and" method="assign" multiple="1">
+			<rule label="COM_CJBLOG_NUM_VOTES" name="num_votes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access_level>1</access_level>
+	</extension_rule>
+</extension>

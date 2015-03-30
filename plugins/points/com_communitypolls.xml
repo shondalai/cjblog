@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension name="com_communitypolls" type="cjblog_points" method="upgrade">
+	<extension_rule>
+		<rule_name>com_communitypolls.newpoll</rule_name>
+		<rule_title>New Poll</rule_title>
+		<rule_description>Points awarded for submitting a poll.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communitypolls</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communitypolls.votes</rule_name>
+		<rule_title>Cast Vote</rule_title>
+		<rule_description>Points awarded for voting on poll.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communitypolls</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+	
+	<extension_rule>
+		<rule_name>com_communitypolls.author</rule_name>
+		<rule_title>Points to Author</rule_title>
+		<rule_description>Points awarded to author when someone votes on his poll.</rule_description>
+		<auto_approve>1</auto_approve>
+		<asset_name>com_communitypolls</asset_name>
+		<access_level>1</access_level>
+	</extension_rule>
+</extension>

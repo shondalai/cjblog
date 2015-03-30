@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="CjBlog Badges Layout">
+		<message>
+			<![CDATA[COM_CJBLOG_BADGES_LAYOUT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<state>
+		<name>CjBlog Badges Layout</name>
+		<description>CjBlog Badges Page</description>
+	</state>
+</metadata>

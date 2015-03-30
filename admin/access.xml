@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_cjblog">
+	<section name="component">
+		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+		<action name="core.view" title="JACTION_VIEW" description="JACTION_VIEW_COMPONENT_DESC" />
+		<action name="articles.rate" title="COM_CJBLOG_RATE_ARTICLES" description="COM_CJBLOG_RATE_ARTICLES_DESC" />
+	</section>
+</access>

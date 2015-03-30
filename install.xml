@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<extension method="upgrade" type="component" version="2.5.0">
+	<name>CjBlog</name>
+	<creationDate>2015-Feb-12</creationDate>
+	<author>Maverick</author>
+	<authorEmail>support@corejoomla.com</authorEmail>
+	<authorUrl>http://www.corejoomla.org</authorUrl>
+	<copyright>Copyright corejoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>1.4.1</version>
+	<description>CjBlog - Simple yet powerful blogging platform for Joomla!</description>
+
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>cjblog.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<filename>api.php</filename>
+		<folder>controllers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<folder>helpers</folder>
+		<folder>layouts</folder>
+	</files>
+	
+	<media destination="com_cjblog" folder="site/media">
+		<filename>index.html</filename>
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+	
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
+	</languages>
+	
+	<administration>
+	    <menu img="../components/com_cjblog/assets/images/icon-16-package.png">COM_CJBLOG</menu>
+		<submenu>
+			<menu link="option=com_cjblog&amp;view=cpanel" view="cpanel">COM_CJBLOG_CONTROL_PANEL</menu>
+			<menu link="option=com_cjblog&amp;view=badges" view="badges">COM_CJBLOG_BADGES</menu>
+			<menu link="option=com_cjblog&amp;view=badgerules" view="badgerules">COM_CJBLOG_BADGE_RULES</menu>
+			<menu link="option=com_cjblog&amp;view=badgeactivity" view="badgerules">COM_CJBLOG_BADGE_ACTIVITY</menu>
+			<menu link="option=com_cjblog&amp;view=points" view="points">COM_CJBLOG_POINTS</menu>
+			<menu link="option=com_cjblog&amp;view=pointrules" view="pointrules">COM_CJBLOG_POINT_RULES</menu>
+			<menu link="option=com_cjblog&amp;view=users" view="users">COM_CJBLOG_USERS</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>cjblog.php</filename>
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>views</folder>
+		</files>
+		
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_cjblog.sys.ini</language>
+		</languages>
+	</administration>
+	
+	<scriptfile>script.php</scriptfile>
+	
+	<updateservers>
+		<server name="CjBlog" priority="1" type="extension">http://www.corejoomla.com/media/autoupdates/com_cjblog.xml</server>
+	</updateservers>
+</extension>

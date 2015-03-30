@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="CjBlog Blog Layout">
+		<message>
+			<![CDATA[COM_CJBLOG_BLOG_LAYOUT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<state>
+		<name>CjBlog Blog Layout</name>
+		<description>CjBlog Blog Page</description>
+	</state>
+	<fields name="params">
+		<fieldset name="basic" label="Blog Settings">
+			<field name="blogUserId" type="text" label="User ID" description="Enter user id to link this blog. Leave empty to show logged in user blog."/>
+		</fieldset>
+	</fields>
+</metadata>
