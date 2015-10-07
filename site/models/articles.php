@@ -147,8 +147,8 @@ class CjBlogModelArticles extends JModelLegacy {
 		$query = '
 			select
 				a.id, a.title, a.alias, a.catid, a.created_by, a.created, a.checked_out, a.checked_out_time, a.hits, a.introtext, a.fulltext, a.images,
-				c.title as category_title, c.alias as category_alias, 
-				u.'.$this->_db->quoteName($params->get('user_display_name', 'name')).' as display_name, u.username, u.name as author
+				c.title as category_title, c.alias as category_alias, a.language, a.featured, a.modified, a.publish_up,
+				u.'.$this->_db->quoteName($params->get('user_display_name', 'name')).' as display_name, u.username, u.name as author, u.email as author_email
 			from 
 				#__content a 
 			left join
@@ -171,6 +171,22 @@ class CjBlogModelArticles extends JModelLegacy {
 		
 				$ids[] = $article->id;
 				$article->tags = array();
+
+				// Get display date
+				switch ($params->get('list_show_date', 1) == 1)
+				{
+					case 'modified':
+						$article->displayDate = $article->modified;
+						break;
+				
+					case 'published':
+						$article->displayDate = ($article->publish_up == 0) ? $article->created : $article->publish_up;
+						break;
+				
+					case 'created':
+						$article->displayDate = $article->created;
+						break;
+				}
 			}
 				
 			$tags = $this->get_tags_by_itemids($ids);

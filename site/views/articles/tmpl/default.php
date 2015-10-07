@@ -17,9 +17,11 @@ $child_categories 	= !empty($this->category) ? $this->category->getChildren() : 
 $page_heading 		= $this->params->get('page_heading');
 $task 				= $app->input->getCmd('task', '');
 $cat_alias 			= !empty($this->category) ? '&catid='.$this->category->id : '';
-$profileApp			= $this->params->get('profile_component', 'cjblog');
 $layout			 	= $this->params->get('layout', 'default');
 $return				= base64_encode(JRoute::_('index.php'));
+$profileApp			= $this->params->get('profile_component', 'cjblog');
+$avatarApp			= $this->params->get('avatar_component', 'cjblog');
+$avatarSize			= $this->params->get('list_avatar_size', 48);
 ?>
 
 <div id="cj-wrapper">
@@ -96,99 +98,18 @@ $return				= base64_encode(JRoute::_('index.php'));
 		    	</div>
 		    	<?php endif;?>
 		    	
-		    	<?php if(!empty($this->articles)):?>
-		    	<?php foreach($this->articles as $article):?>
-		    	<div class="article-block padbottom-20 clearfix">
-		    		<?php if($this->params->get('show_thumbnails')):?>
-		    		<div class="<?php echo $this->params->get('thumbnail_size') == 0 ? 'span2 col-md-2' : 'span3 col-md-3';?> nospace-left">
-		    			<a class="thumbnail" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->id.':'.$article->alias, $article->catid.':'.$article->category_alias));?>">
-		    				<img alt="<?php echo $this->escape($article->title);?>" style="width: auto;" 
-		    					src="<?php echo CjBlogHelper::get_article_thumbnail($article, ($this->params->get('thumbnail_size') == 0 ? 96 : 160));?>">
-		    			</a>
-		    		</div>
-		    		<?php endif;?>
-		    		<div class="<?php echo $this->params->get('show_thumbnails') ? ($this->params->get('thumbnail_size') == 0 ? 'span10' : 'span9') : 'span12';?>">
-		    			
-		    			<h3 class="nopad-top nopad-bottom">
-							<?php if($article->hits > $this->params->get('hot_article_num_hits', 250)):?>
-							<i class="icon-fire tooltip-hover" title="<?php echo JText::_('LBL_HOT');?>"></i>
-							<?php endif;?>
-		    				<?php if($this->params->get('link_titles')):?>
-		    				<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->id.':'.$article->alias, $article->catid.':'.$article->category_alias));?>">
-		    					<?php echo $this->escape($article->title);?>
-		    				</a>
-		    				<?php else:?>
-		    				<?php echo $this->escape($article->title);?>
-		    				<?php endif;?>
-		    			</h3>
-		    			<div class="muted text-muted padbottom-5">
-							<small class="align-middle">
-								<?php 
-								if($this->params->get('show_author')){
-									
-									if($this->params->get('link_author')){
-										
-										echo JText::sprintf('TXT_WRITTEN_BY', $api->getUserProfileUrl($profileApp, $article->created_by, false, $this->escape($article->display_name) )).' ';
-									} else {
-										
-										echo JText::sprintf('TXT_WRITTEN_BY', $this->escape($article->display_name)).' ';
-									}
-								}
-								
-								$cat_name = $this->params->get('link_category')
-									? JHtml::link(JRoute::_('index.php?option='.CJBLOG.'&view=articles&task=latest&id='.$article->catid.':'.$article->category_alias.$articles_itemid), $this->escape($article->category_title))
-									: $this->escape($article->category_title);
-									
-								if($this->params->get('show_category') && $this->params->get('show_create_date')){
-									
-									
-									echo JText::sprintf('TXT_POSTED_IN_CATEGORY_ON', $cat_name, CJFunctions::get_localized_date($article->created, 'd F Y'));
-								} else {
-									
-									if($this->params->get('show_category')){
-										
-										echo JText::sprintf('TXT_POSTED_IN_CATEGORY', $cat_name);
-									}
-									
-									if($this->params->get('show_create_date')){
-										
-										echo JText::sprintf('TXT_POSTED_ON', CJFunctions::get_localized_date($article->created, 'd F Y'));
-									}
-								}
-								?>
-								
-								<?php if($this->params->get('show_hits')):?>
-								<i class="icon-eye-open"></i> <?php echo JText::sprintf('TXT_NUM_HITS', $article->hits)?>.
-								<?php endif;?>
-								
-							</small>
-						</div>
-		    			<?php 
-		    			if($this->params->get('show_intro')){
-		    				echo CjBlogHelper::get_intro_text($article->introtext, $this->params->get('character_limit'));
-		    			}
-		    			?>
-						<div class="tags margin-top-10 margin-bottom-10">
-							<?php foreach($article->tags as $tag):?>
-							<a title="<?php echo JText::sprintf('TXT_TAGGED_ARTICLES', $this->escape($tag->tag_text));?>" class="tooltip-hover label" 
-								href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=articles&task=tag&id='.$tag->tag_id.':'.$tag->alias.$itemid);?>">
-								<?php echo $this->escape($tag->tag_text);?>
-							</a>
-							<?php endforeach;?>
-						</div>
-		    			<?php if($this->params->get('show_readmore')):?>
-		    			<div>
-		    				<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($article->id.':'.$article->alias, $article->catid.':'.$article->category_alias));?>">
-		    					<?php echo JText::_('LBL_READ_MORE');?>..
-		    				</a>
-		    			</div>
-		    			<?php endif;?>
-		    		</div>
-		    	</div>
-		    	<?php endforeach;?>
-		    	<?php else:?>
-		    	<p><?php echo JText::_('LBL_NO_RESULTS_FOUND');?></p>
-		    	<?php endif;?>
+		    	<?php 
+		    	if(!empty($this->articles))
+		    	{
+		    		echo JLayoutHelper::render('default.articles_list', array('items'=>$this->articles, 'pagination'=>$this->pagination, 'params'=>$this->params, 'category'=>$this->category));
+		    	}
+		    	else
+		    	{
+		    		?>
+			    	<p><?php echo JText::_('LBL_NO_RESULTS_FOUND');?></p>
+		    		<?php 
+		    	}
+		    	?>
 			</div>
 		</div>
 		

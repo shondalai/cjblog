@@ -312,7 +312,7 @@ class CjBlogApi
 		{
 			$db = JFactory::getDbo();
 			$params = JComponentHelper::getParams('com_cjblog');
-			$profileApp = $params->get('profile_component', 'cjblog');
+			$aboutTextApp = $params->get('about_text_app', 'cjblog');
 			
 			$query = $db->getQuery(true)
 				->select('ju.id, u.avatar, u.points, u.num_articles, u.num_badges, u.country, u.profile_views')
@@ -321,7 +321,7 @@ class CjBlogApi
 				->join('left', '#__cjblog_users u on u.id = ju.id')
 				->where('ju.id in ('.implode(',', $notfound).')');
 			
-			if($profileApp == 'easyprofile')
+			if($aboutTextApp == 'easyprofile')
 			{
 				$query
 					->select($db->qn($db->escape('e.' . $params->get('easyprofile_about', 'author_info'))).' AS about')
@@ -490,6 +490,12 @@ class CjBlogApi
 		
 		$db->setQuery($query);
 		$rule = $db->loadObject();
+		
+		if(empty($rule))
+		{
+			return false;
+		}
+		
 		$rule->conditional_rules = json_decode($rule->conditional_rules);
 		
 		if(!$rule || !$rule->id || ($rule->published != '1') || ($points == 0 && $rule->points == 0 && empty($rule->conditional_rules))) return false;

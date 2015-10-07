@@ -22,6 +22,7 @@ $api 			= new CjLibApi();
 $avatarApp 		= $this->params->get('avatar_component', 'cjblog');
 $profileApp		= $this->params->get('profile_component', 'cjblog');
 $layout			= $this->params->get('layout', 'default');
+$aboutTextApp 	= $this->params->get('about_text_app', 'cjblog');
 ?>
 
 <div id="cj-wrapper">
@@ -96,7 +97,7 @@ $layout			= $this->params->get('layout', 'default');
 					
 					<h2 class="page-header nopad-top margin-bottom-10">
 						<?php echo JText::_('LBL_ABOUT_ME');?>
-						<?php if(!($profileApp == 'easyprofile') && !$user->guest && ($user->id == $this->profile['id'] || $user->authorise('core.manage'))):?>
+						<?php if($aboutTextApp != 'easyprofile' && !$user->guest && ($user->id == $this->profile['id'] || $user->authorise('core.manage'))):?>
 						<small><a href="#" onclick="return false;" class="btn-edit-about tooltip-hover" title="<?php echo JText::_('JGLOBAL_EDIT');?>"><i class="icon-edit"></i></a></small>
 						<?php endif;?>
 					</h2>
@@ -105,7 +106,7 @@ $layout			= $this->params->get('layout', 'default');
 						<?php echo CJFunctions::preprocessHtml($this->profile['about'], false, $bbcode);?>
 					</div>
 					
-					<?php if($user->id == $this->profile['id'] || $user->authorise('core.manage')):?>
+					<?php if($aboutTextApp != 'easyprofile' && !$user->guest && ($user->id == $this->profile['id'] || $user->authorise('core.manage'))):?>
 					<form id="edit-about-form" action="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=profile&task=save_about&id='.$this->profile['id'].$profile_itemid);?>" style="display: none;">
 						<?php echo CJFunctions::load_editor($editor, 'user-about', 'user-about', $this->profile['about'], '10', '40', '100%', '250px', 'form-control', 'width: 100%;', true); ?>
 						<div class="margin-top-10">

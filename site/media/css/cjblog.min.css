@@ -16,8 +16,8 @@
 #cj-wrapper .nopad-left {padding-left: 0; margin-left: 0;}
 #cj-wrapper .nopad-right {padding-right: 0; margin-right: 0;}
 #cj-wrapper .nomargin-top {margin-top: 0;}
-#cj-wrapper .nomargin-bottom {margin-bottom: 0;}
-#cj-wrapper .nomargin-left {margin-left: 0;}
+#cj-wrapper .no-margin-bottom, #cj-wrapper .nomargin-bottom {margin-bottom: 0;}
+#cj-wrapper .no-margin-left, #cj-wrapper .nomargin-left {margin-left: 0;}
 #cj-wrapper .nomargin-right {margin-right: 0;}
 #cj-wrapper .nospace-left {margin-left: 0; padding-left: 0}
 #cj-wrapper .nospace-right {margin-right: 0; padding-right: 0}

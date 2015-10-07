@@ -5,11 +5,11 @@
 		<description>CjBlog Package</description>
 		<element>com_cjblog</element>
 		<type>component</type>
-		<version>1.4.1</version>
+		<version>1.4.2</version>
 
 		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">http://www.corejoomla.com/media/autoupdates/files/pkg_cjblog_v1.4.1.zip</downloadurl>
+			<downloadurl format="zip" type="full">http://www.corejoomla.com/media/autoupdates/files/pkg_cjblog_v1.4.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -26,11 +26,11 @@
 		<description>CjBlog Package</description>
 		<element>com_cjblog</element>
 		<type>component</type>
-		<version>1.4.1</version>
+		<version>1.4.2</version>
 
 		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">http://www.corejoomla.com/media/autoupdates/files/pkg_cjblog_v1.4.1.zip</downloadurl>
+			<downloadurl format="zip" type="full">http://www.corejoomla.com/media/autoupdates/files/pkg_cjblog_v1.4.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>

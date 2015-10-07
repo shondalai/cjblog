@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <extension method="upgrade" type="component" version="2.5.0">
 	<name>CjBlog</name>
-	<creationDate>2015-Feb-12</creationDate>
+	<creationDate>2015-May-30</creationDate>
 	<author>Maverick</author>
 	<authorEmail>support@corejoomla.com</authorEmail>
 	<authorUrl>http://www.corejoomla.org</authorUrl>
 	<copyright>Copyright corejoomla.com. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<version>1.4.1</version>
+	<version>1.4.2</version>
 	<description>CjBlog - Simple yet powerful blogging platform for Joomla!</description>
 
 	<install>

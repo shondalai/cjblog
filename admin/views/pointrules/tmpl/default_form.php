@@ -49,42 +49,51 @@ Joomla.submitbutton = function(task)
 			if(!empty($this->rule->conditional_rules))
 			{
 				$conditions = json_decode($this->rule->conditional_rules);
-				?>
-				<table class="table table-striped table-hover table-condensed conditional_rules">
-					<?php
-					foreach ($conditions as $condition)
-					{
-					?>
-					<tr>
-						<th>
-							<?php echo $this->escape($condition->criteria);?>
-							<input type="hidden" name="criteria" value="<?php echo $this->escape($condition->criteria);?>">
-						</th> 
-						<td>
-							<input type="text" class="input-mini" value="<?php echo $condition->comparator;?>" name="comparator" 
-								data-toggle="tooltip" title="<?php echo JText::_('COM_CJBLOG_POINT_RULE_COMPARATOR');?>">
-						</td>
-						<td>
-							<input type="text" class="input-mini" value="<?php echo $condition->value;?>" name="value" 
-								data-toggle="tooltip" title="<?php echo JText::_('COM_CJBLOG_POINT_RULE_COMPARE_VALUE');?>">
-						</td>
-						<td>
-							<?php echo JText::_('COM_CJBLOG_POINTS');?>: 
-							<input type="text" class="input-mini" value="<?php echo $condition->points;?>" name="points">
-						</td>
-						<td>
-							<button class="btn btn-mini btn-primary btn-delete-condition" type="button"><?php echo JText::_('JACTION_DELETE')?></button>
-						</td>
-					</tr>
-					<?php
-					}
-					?>
-				</table>
-				<button class="btn btn-mini btn-primary btn-add-condition" type="button">
-					<?php echo JText::_('COM_CJBLOG_ADD_ANOTHER_CONDITION');?>
-				</button>
-				<input type="hidden" name="conditional_rules" value="">
-				<?php
+				if(!empty($conditions))
+				{
+    				?>
+    				<table class="table table-striped table-hover table-condensed conditional_rules">
+    					<?php
+    					foreach ($conditions as $condition)
+    					{
+    					?>
+    					<tr>
+    						<th>
+    							<?php echo $this->escape($condition->criteria);?>
+    							<input type="hidden" name="criteria" value="<?php echo $this->escape($condition->criteria);?>">
+    						</th> 
+    						<td>
+    							<input type="text" class="input-mini" value="<?php echo $condition->comparator;?>" name="comparator" 
+    								data-toggle="tooltip" title="<?php echo JText::_('COM_CJBLOG_POINT_RULE_COMPARATOR');?>">
+    						</td>
+    						<td>
+    							<input type="text" class="input-mini" value="<?php echo $condition->value;?>" name="value" 
+    								data-toggle="tooltip" title="<?php echo JText::_('COM_CJBLOG_POINT_RULE_COMPARE_VALUE');?>">
+    						</td>
+    						<td>
+    							<?php echo JText::_('COM_CJBLOG_POINTS');?>: 
+    							<input type="text" class="input-mini" value="<?php echo $condition->points;?>" name="points">
+    						</td>
+    						<td>
+    							<button class="btn btn-mini btn-primary btn-delete-condition" type="button"><?php echo JText::_('JACTION_DELETE')?></button>
+    						</td>
+    					</tr>
+    					<?php
+    					}
+    					?>
+    				</table>
+    				<button class="btn btn-mini btn-primary btn-add-condition" type="button">
+    					<?php echo JText::_('COM_CJBLOG_ADD_ANOTHER_CONDITION');?>
+    				</button>
+    				<input type="hidden" name="conditional_rules" value="">
+    				<?php
+				}
+				else
+				{
+				    ?>
+				    <input type="text" class="required" name="rule_points" value="<?php echo $this->escape($this->rule->points);?>"/>
+				    <?php 
+				}
 			}
 			else 
 			{

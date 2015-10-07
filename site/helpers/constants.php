@@ -10,7 +10,7 @@
  */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
 
-defined('CJBLOG_VERSION') or define('CJBLOG_VERSION', '1.4.1');
+defined('CJBLOG_VERSION') or define('CJBLOG_VERSION', '1.4.2');
 
 defined('CJBLOG_MEDIA_DIR') or define('CJBLOG_MEDIA_DIR',					JPATH_ROOT.'/media/com_cjblog/');
 defined('CJBLOG_MEDIA_URI') or define('CJBLOG_MEDIA_URI',					JURI::root(true).'/media/com_cjblog/');

@@ -34,7 +34,7 @@ $layout	= $this->params->get('layout', 'default');
 			<tbody>
 				<?php foreach($this->articles as $i=>$article):?>
 				<tr>
-					<td><?php echo $this->pagination->get('limitstart') + $i + 1;?></td>
+					<td><?php echo $article->id;?></td>
 					<td>
 						<?php 
 						echo JHtml::link(

@@ -99,7 +99,7 @@ $layout			= $this->params->get('layout', 'default');
 								<i class="icon-eye-open"></i> <?php echo JText::sprintf('TXT_NUM_HITS', $article->hits)?>.
 								<?php echo JText::sprintf(
 										'TXT_POSTED_IN_CATEGORY_ON',
-										JHtml::link(JRoute::_('index.php?option='.CJBLOG.'&view=category&id='.$article->catid.':'.$article->category_alias.$articles_itemid), $this->escape($article->category_title)),
+										JHtml::link(JRoute::_('index.php?option='.CJBLOG.'&task=latest&view=articles&id='.$article->catid.':'.$article->category_alias.$articles_itemid), $this->escape($article->category_title)),
 										CJFunctions::get_localized_date($article->created, 'd F Y')
 									);?>
 							</small>

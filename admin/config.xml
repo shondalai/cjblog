@@ -11,11 +11,6 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
-
-		<field name="show_thumbnails" type="radio" class="btn-group" label="COM_CJBLOG_SHOW_THUMBNAILS_LABEL" description="COM_CJBLOG_SHOW_THUMBNAILS_DESC" default="1">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
 		
 		<field name="show_intro" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_INTRO_LABEL" description="JGLOBAL_SHOW_INTRO_DESC">
 			<option value="0">JHIDE</option>
@@ -33,6 +28,18 @@
 		</field>
 
 		<field name="spacer1" type="spacer" hr="true" />
+
+		<field name="list_show_avatar" default="0" type="radio" class="btn-group" label="COM_CJBLOG_FIELD_SHOW_AVATAR_LABEL" description="COM_CJBLOG_FIELD_SHOW_AVATAR_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field name="list_avatar_size" default="64" type="text" label="COM_CJBLOG_FIELD_AVATAR_SIZE_LABEL" description="COM_CJBLOG_FIELD_AVATAR_SIZE_DESC"/>
+
+		<field name="show_thumbnails" type="radio" class="btn-group" label="COM_CJBLOG_SHOW_THUMBNAILS_LABEL" description="COM_CJBLOG_SHOW_THUMBNAILS_DESC" default="1">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field name="thumbnail_size" default="64" type="text" label="COM_CJBLOG_THUMBNAIL_SIZE_LABEL" description="COM_CJBLOG_THUMBNAIL_SIZE_DESC"/>
 
 		<field name="show_author" type="radio" class="btn-group" label="JGLOBAL_SHOW_AUTHOR_LABEL" description="JGLOBAL_SHOW_AUTHOR_DESC" default="1">
 			<option value="0">JHIDE</option>
@@ -61,13 +68,7 @@
 		</field>
 		
 		<field name="hot_article_num_hits" type="text" label="COM_CJBLOG_HOT_ARTICLE_NUM_HITS_LABEL" description="COM_CJBLOG_HOT_ARTICLE_NUM_HITS_DESC" default="250"/>
-		
 		<field name="character_limit" type="text" label="COM_CJBLOG_INTRO_LIMIT_LABEL" description="COM_CJBLOG_INTRO_LIMIT_DESC" default="160"/>
-
-		<field name="thumbnail_size" type="list" class="btn-group" label="COM_CJBLOG_THUMBNAIL_SIZE_LABEL" description="COM_CJBLOG_THUMBNAIL_SIZE_DESC" default="0">
-			<option value="0">COM_CJBLOG_SMALL</option>
-			<option value="1">COM_CJBLOG_BIG</option>
-		</field>
 
 		<field name="max_category_levels" type="list" class="inputbox" description="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_DESC" label="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_LABEL" default="-1">
 			<option value="0">JNONE</option>
@@ -176,6 +177,11 @@
 			<option value="cb">Community Builder</option>
 			<option value="kunena">Kunena</option>
 			<option value="gravatar">Gravatar</option>
+		</field>
+		
+		<field name="about_text_app" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_ABOUT_TEXT_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_ABOUT_TEXT_COMPONENT_DESC">
+			<option value="cjblog">CjBlog</option>
+			<option value="easyprofile">EasyProfile</option>
 		</field>
 		
 		<field name="easyprofile_about" type="text" class="" default="author_info" label="COM_CJBLOG_EASYPROFILE_ABOUT" description="COM_CJBLOG_EASYPROFILE_ABOUT_DESC"/>

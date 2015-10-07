@@ -23,23 +23,23 @@ class CjBlogModelUsers extends JModelLegacy {
 	
 	function get_users($action = 1, $options = array())
 	{
-		$app 		= JFactory::getApplication();
-		$db 		= JFactory::getDbo();
-		$params 	= JComponentHelper::getParams('com_cjblog');
-		$profileApp = $params->get('profile_component', 'cjblog');
-		$result 	= new stdClass();
-		$wheres 	= array();
+		$app 			= JFactory::getApplication();
+		$db 			= JFactory::getDbo();
+		$params 		= JComponentHelper::getParams('com_cjblog');
+		$aboutTextApp 	= $params->get('about_text_app', 'cjblog');
+		$result 		= new stdClass();
+		$wheres 		= array();
 		
-		$limit 		= $app->getCfg('list_limit', 20);
-		$limitstart = $app->input->getInt('limitstart', 0);
-		$limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
+		$limit 			= $app->getCfg('list_limit', 20);
+		$limitstart 	= $app->input->getInt('limitstart', 0);
+		$limitstart 	= ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
 
 		$query = $db->getQuery(true)
 			->select('u.id, u.avatar, u.points, u.num_articles, u.num_badges, ju.name, ju.username, ju.registerDate, ju.lastvisitDate, ju.email')
 			->from('#__cjblog_users u')
 			->join('left', '#__users ju on ju.id = u.id');
 		
-		if($profileApp == 'easyprofile')
+		if($aboutTextApp == 'easyprofile')
 		{
 			$query
 				->select($db->qn($db->escape('e.' . $params->get('easyprofile_about', 'author_info'))).' AS about')

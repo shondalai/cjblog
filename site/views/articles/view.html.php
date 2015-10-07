@@ -35,7 +35,7 @@ class CjBlogViewArticles extends JViewLegacy {
 		
 		$this->print = $app->input->getBool('print');
 		$catid = $app->input->getInt('id', 0);
-		$category = null;
+		$this->category = $category = null;
 		$max_cat_levels = 0;
 		$page_heading = '';
 		$page_url = 'index.php?option='.CJBLOG.'&view=articles';
