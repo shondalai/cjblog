@@ -19,7 +19,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 						<a class="thumbnail" href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=badges');?>">
 							<img src="<?php echo JUri::base(true).'/components/'.CJBLOG.'/assets/images/badges-96px.png'?>" alt="">
 						</a>
-						<span><a href="#"><?php echo JText::_('COM_CJBLOG_BADGES');?></a></span>
+						<span><a href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=badges');?>"><?php echo JText::_('COM_CJBLOG_BADGES');?></a></span>
 					</div>
 				</li>
 				<li class="span2">
@@ -27,7 +27,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 						<a class="thumbnail" href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=badgerules');?>">
 							<img src="<?php echo JUri::base(true).'/components/'.CJBLOG.'/assets/images/badge-rules-96px.png'?>" alt="">
 						</a>
-						<span><a href="#"><?php echo JText::_('COM_CJBLOG_BADGE_RULES');?></a></span>
+						<span><a href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=badgerules');?>"><?php echo JText::_('COM_CJBLOG_BADGE_RULES');?></a></span>
 					</div>
 				</li>
 				<li class="span2">
@@ -35,7 +35,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 						<a class="thumbnail" href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=points');?>">
 							<img src="<?php echo JUri::base(true).'/components/'.CJBLOG.'/assets/images/points-96px.png'?>" alt="">
 						</a>
-						<span><a href="#"><?php echo JText::_('COM_CJBLOG_POINTS');?></a></span>
+						<span><a href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=points');?>"><?php echo JText::_('COM_CJBLOG_POINTS');?></a></span>
 					</div>
 				</li>
 				<li class="span2">
@@ -43,7 +43,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 						<a class="thumbnail" href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=users');?>">
 							<img src="<?php echo JUri::base(true).'/components/'.CJBLOG.'/assets/images/users-96px.png'?>" alt="">
 						</a>
-						<span><a href="#"><?php echo JText::_('COM_CJBLOG_USERS');?></a></span>
+						<span><a href="<?php echo JRoute::_('index.php?option='.CJBLOG.'&view=users');?>"><?php echo JText::_('COM_CJBLOG_USERS');?></a></span>
 					</div>
 				</li>
 			</ul>

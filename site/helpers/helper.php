@@ -80,6 +80,13 @@ class CjBlogHelper {
 			: CJBLOG_MEDIA_URI.'images/'.($size >= 160 ? 'thumbnail-big.png' : 'thumbnail-small.png');
 	}
 
+	public static function delete_article_thumbnail($article){
+		if(file_exists(CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg')) {
+
+			JFile::delete(CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg');
+		}
+	}
+
 	public static function get_article_thumbnail($article, $size=256){
 	
 		if(!file_exists(CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg')) {
