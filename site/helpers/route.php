@@ -68,7 +68,7 @@ abstract class CjBlogHelperRoute
 		}
 		else
 		{
-			$link = 'index.php?option=com_cjblog&task=article.edit&a_id=0';
+			$link = 'index.php?option=com_cjblog&task=article.add&a_id=0';
 		}
 
 		return $link;
