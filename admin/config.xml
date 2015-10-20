@@ -230,6 +230,14 @@
 			<option value="jssocials-theme-minima.css">Minima</option>
 			<option value="jssocials-theme-plain.css">Plain</option>
 		</field>
+		<field name="jssocial_button_label" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_SHOWLABEL_LABEL" description="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_SHOWLABEL_DESC" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="jssocial_button_count" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_SHOWCOUNT_LABEL" description="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_SHOWCOUNT_DESC" default="1">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
 		<field name="jssocial_button_twitter" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_TWITTER_LABEL" description="COM_CJBLOG_ENABLE_JSSOCIAL_BUTTON_TWITTER_DESC" default="1">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
