@@ -216,14 +216,21 @@
 
 		<field name="display_social_buttons" type="radio" class="btn-group" label="COM_CJBLOG_ENABLE_SOCIAL_SHARING_LABEL" description="COM_CJBLOG_ENABLE_SOCIAL_SHARING_DESC" default="1">
 			<option value="0">JNO</option>
-			<option value="1">JYES</option>
+			<option value="1">COM_CJBLOG_ENABLE_BUILT_SHARING_BUTTONS</option>
+			<option value="2">COM_CJBLOG_TAG</option>
 		</field>
+
+		<field name="sharing_buttons_customtag" type="text" class="" label="COM_CJBLOG_SHARING_BUTTONS_CUSTOMTAG_LABEL" description="COM_CJBLOG_SHARING_BUTTONS_CUSTOMTAG_DESC" default=""/>
+
+		<field name="sharing_buttons_customtext" type="textarea" class="" label="COM_CJBLOG_SHARING_BUTTONS_CUSTOMTEXT_LABEL" description="COM_CJBLOG_SHARING_BUTTONS_CUSTOMTEXT_DESC" default=""  filter="raw"/>
 
 		<field name="sharing_buttons_position" type="radio" class="btn-group" label="COM_CJBLOG_SHARING_POSITION_LABEL" description="COM_CJBLOG_SHARING_POSITION_DESC" default="bottom">
 			<option value="top">COM_CJBLOG_TOP</option>
 			<option value="bottom">COM_CJBLOG_BOTTOM</option>
 			<option value="both">COM_CJBLOG_BOTH</option>
 		</field>
+		<field type="spacer" name="spacer" hr="true"/>
+		<field type="spacer" name="spacer" class="text" label="COM_CJBLOG_SHARING_BUILTIN_SETTINGS" />
 		<field name="social_buttons_theme" type="list" class="btn-group" default="jssocials-theme-classic.css" label="COM_CJBLOG_SOCIAL_BUTTONS_THEME" description="COM_CJBLOG_SOCIAL_BUTTONS_THEME_DESC">
 			<option value="jssocials-theme-classic.css">Classic</option>
 			<option value="jssocials-theme-flat.css">Flat</option>
