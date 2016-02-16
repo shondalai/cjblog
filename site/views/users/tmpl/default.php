@@ -23,11 +23,11 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
 <div id="cj-wrapper">
 	<?php include_once JPATH_COMPONENT.'/helpers/header.php';?>
 	<?php echo JLayoutHelper::render($layout.'.toolbar', array('params'=>$this->params));?>
-	
+
 	<?php if(!empty($page_heading)):?>
     <h1 class="nopad-top padbottom-5 page-header"><?php echo $this->escape($page_heading);?></h1>
     <?php endif;?>
-	
+
     <?php if(!empty($this->users)):?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -38,19 +38,32 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
 		    	</div>
 		    </form>
 		</div>
-	
+
 		<ul class="list-group nomargin-left topics-list nopad-left">
-    		<?php foreach ($this->users as $i=>$user): ?>
+    		<?php
+    		foreach ($this->users as $i=>$user)
+    		{
+    			$pro_capabilities = JFactory::getUser($user['id'])->authorise('pro.capabilities', 'com_cjblog');
+    			if ($pro_capabilities)
+    			{
+    				$profileUrl 	= $api->getUserProfileUrl($profileApp, $user['id']);
+    			}
+    			else
+    			{
+    				$profileUrl = "#";
+    			}
+
+    		?>
     		<li class="list-group-item">
 				<div class="media">
 					<?php if($avatarApp != 'none'):?>
 					<div class="media-left">
-						<a href="<?php echo $api->getUserProfileUrl($profileApp, $user['id'], true);?>" class="thumbnail nomargin-bottom">
+						<a href="<?php echo $profileUrl;?>" class="thumbnail nomargin-bottom">
 							<img class="img-avatar" src="<?php echo $api->getUserAvatarImage($avatarApp, $user['id'], $user['email'], 48, true);?>" style="max-width: 45px;">
 						</a>
 					</div>
 					<?php endif;?>
-				
+
 					<div class="media-left hidden-xs hidden-phone">
 						<div class="panel panel-default item-count-box">
 							<div class="panel-body center item-count-num"><?php echo $user['num_articles'];?></div>
@@ -58,7 +71,7 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
 						</div>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading"><?php echo $api->getUserProfileUrl($profileApp, $user['id'], false, $this->escape($user['name']));?></h4>
+						<h4 class="media-heading"><?php echo '<a href="' . $profileUrl . '" >' . $this->escape($user['name']) . '</a>';?></h4>
 						<div class="text-muted">
 							<span class="margin-right-10"><?php echo JText::_('LBL_POINTS').': '.$user['points'];?></span>
 							<span class="margin-right-10"><?php echo JText::_('LBL_BADGES').': '.$user['num_badges'];?></span>
@@ -69,17 +82,17 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
 					</div>
 				</div>
 			</li>
-			<?php endforeach;?>
+			<?php }?>
 		</ul>
 	</div>
-		
+
 		<div class="row-fluid">
 			<div class="span12">
-				<?php 
+				<?php
 				echo CJFunctions::get_pagination(
-						$this->page_url, 
-						$this->pagination->get('pages.start'), 
-						$this->pagination->get('pages.current'), 
+						$this->page_url,
+						$this->pagination->get('pages.start'),
+						$this->pagination->get('pages.current'),
 						$this->pagination->get('pages.total'),
 						JFactory::getApplication()->getCfg('list_limit', 20),
 						true
