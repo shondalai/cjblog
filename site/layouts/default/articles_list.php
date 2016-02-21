@@ -19,6 +19,7 @@ $theme 			= $params->get('theme', 'default');
 $avatarApp		= $params->get('avatar_component', 'cjforum');
 $profileApp		= $params->get('profile_component', 'cjforum');
 $avatarSize 	= $params->get('list_avatar_size', 48);
+
 $heading 		= isset($displayData['heading']) ? $displayData['heading'] : JText::_('COM_CJBLOG_ARTICLES');
 $subHeading 	= '';
 $thumbSize		= $params->get('thumbnail_size', 96);
@@ -47,7 +48,15 @@ if(!empty($items))
 				$slug 			= $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
 				$catslug 		= $item->category_alias ? ($item->catid . ':' . $item->category_alias) : $item->catid;
 				$authorName 	= $this->escape($item->author);
-				$profileUrl 	= $api->getUserProfileUrl($profileApp, $item->created_by);
+				$pro_capabilities = JFactory::getUser($item->created_by)->authorise('pro.capabilities', 'com_cjblog');
+				if ($pro_capabilities)
+				{
+					$profileUrl 	= $api->getUserProfileUrl($profileApp, $item->created_by);
+				}
+				else
+				{
+					$profileUrl = "#";
+				}
 				$avatarUrl		= $api->getUserAvatarImage($avatarApp, $item->created_by, $item->author_email, $avatarSize, true);
 				$articleUrl 	= JRoute::_(ContentHelperRoute::getArticleRoute($slug, $catslug));
 				$categoryLink 	= JHtml::link(JRoute::_(ContentHelperRoute::getCategoryRoute($item->catid, $item->language)), $this->escape($item->category_title));
@@ -55,7 +64,7 @@ if(!empty($items))
 				?>
 				<li class="list-group-item<?php echo $item->featured ? ' list-group-item-warning' : '';?> pad-bottom-5">
 					<div class="article-block media">
-					
+
 						<?php if($params->get('show_thumbnails')):?>
 						<div class="pull-left hidden-phone hidden-xs">
 							<a href="<?php echo $articleUrl?>" class="thumbnail no-margin-bottom">
@@ -63,7 +72,7 @@ if(!empty($items))
 							</a>
 						</div>
 						<?php endif;?>
-						
+
 						<?php if($params->get('list_show_avatar')):?>
 				    		<?php if($avatarApp != 'none'):?>
 							<div class="pull-left hidden-phone hidden-xs">
@@ -79,41 +88,41 @@ if(!empty($items))
 							</div>
 							<?php endif;?>
 			    		<?php endif;?>
-						
+
 						<div class="media-body">
 							<h4 class="media-heading no-margin-top"><a href="<?php echo $articleUrl; ?>"><?php echo $this->escape($item->title); ?></a></h4>
 							<small class="align-middle">
-								<?php 
+								<?php
 								if($params->get('show_author'))
 								{
 									if($params->get('link_author'))
 									{
 										echo JText::sprintf('TXT_WRITTEN_BY', JHtml::link($profileUrl, $authorName)).' ';
-									} 
-									else 
+									}
+									else
 									{
 										echo JText::sprintf('TXT_WRITTEN_BY', $authorName).' ';
 									}
 								}
-								
+
 								if($params->get('show_category') && $params->get('show_create_date'))
 								{
 									echo JText::sprintf('TXT_POSTED_IN_CATEGORY_ON', $categoryLink, CjLibDateUtils::getHumanReadableDate($item->displayDate));
-								} 
-								else 
+								}
+								else
 								{
 									if($params->get('show_category'))
 									{
 										echo JText::sprintf('TXT_POSTED_IN_CATEGORY', $categoryLink);
 									}
-									
+
 									if($params->get('show_create_date'))
 									{
 										echo JText::sprintf('TXT_POSTED_ON', CjLibDateUtils::getHumanReadableDate($item->displayDate));
 									}
 								}
 								?>
-								
+
 								<?php if($params->get('show_hits')):?>
 								<i class="icon-eye-open"></i> <?php echo JText::sprintf('TXT_NUM_HITS', $item->hits)?>.
 								<?php endif;?>
@@ -127,8 +136,8 @@ if(!empty($items))
 			?>
 		</ul>
 	</div>
-	
-	<?php 
+
+	<?php
 	if (($params->def('show_pagination', 2) == 1  || ($params->get('show_pagination') == 2)) && ($pagination->pagesTotal > 1))
 	{
 		?>
@@ -139,7 +148,7 @@ if(!empty($items))
 						<?php echo $pagination->getPagesCounter(); ?>
 					</p>
 				<?php endif; ?>
-		
+
 				<?php echo $pagination->getPagesLinks(); ?>
 			</div>
 		</form>
@@ -150,5 +159,5 @@ else if($params->get('show_no_topics', 1) == 1)
 {
 	?>
 	<div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo JText::_('COM_CJBLOG_NO_ARTICLES_FOUND')?></div>
-	<?php 
+	<?php
 }

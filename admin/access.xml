@@ -5,5 +5,6 @@
 		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
 		<action name="core.view" title="JACTION_VIEW" description="JACTION_VIEW_COMPONENT_DESC" />
 		<action name="articles.rate" title="COM_CJBLOG_RATE_ARTICLES" description="COM_CJBLOG_RATE_ARTICLES_DESC" />
+		<action name="pro.capabilities" title="COM_CJBLOG_PRO_CAPABILITIES" description="COM_CJBLOG_PRO_CAPABILITIES_DESC" />
 	</section>
 </access>
