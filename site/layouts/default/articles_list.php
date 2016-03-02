@@ -48,8 +48,8 @@ if(!empty($items))
 				$slug 			= $item->alias ? ($item->id . ':' . $item->alias) : $item->id;
 				$catslug 		= $item->category_alias ? ($item->catid . ':' . $item->category_alias) : $item->catid;
 				$authorName 	= $this->escape($item->author);
-				$pro_capabilities = JFactory::getUser($item->created_by)->authorise('pro.capabilities', 'com_cjblog');
-				if ($pro_capabilities)
+				$showProfile = JFactory::getUser($item->created_by)->authorise('core.showprofile', 'com_cjblog');
+				if ($showProfile)
 				{
 					$profileUrl 	= $api->getUserProfileUrl($profileApp, $item->created_by);
 				}
