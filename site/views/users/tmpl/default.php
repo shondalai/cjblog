@@ -43,8 +43,8 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
     		<?php
     		foreach ($this->users as $i=>$user)
     		{
-    			$pro_capabilities = JFactory::getUser($user['id'])->authorise('pro.capabilities', 'com_cjblog');
-    			if ($pro_capabilities)
+    			$showProfile = JFactory::getUser($user['id'])->authorise('core.showprofile', 'com_cjblog');
+    			if ($showProfile)
     			{
     				$profileUrl 	= $api->getUserProfileUrl($profileApp, $user['id']);
     			}
