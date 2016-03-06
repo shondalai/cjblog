@@ -123,6 +123,18 @@ class CjBlogModelArticles extends JModelLegacy {
 			$wheres[] = 'a.language in (' . $this->_db->Quote( $lang->getTag() ) . ',' . $this->_db->Quote('*') . ')';
 		}
 		
+		$year = $app->input->getInt('year');
+		$month = $app->input->getInt('month');
+		if($year)
+		{
+			$wheres[] = 'year(a.created) = '.$year;
+			if($month)
+			{
+				$wheres[]  = 'month(a.created) = '.$month;
+			}
+		}
+		
+		
 		$where = '('.implode(') and (', $wheres).')';
 		
 		if($pagination){
