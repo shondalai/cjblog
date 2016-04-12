@@ -9,15 +9,15 @@
  * @license		License GNU General Public License version 2 or later
  */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
-$itemid 		= CJFunctions::get_active_menu_id();
-$page_heading 	= $this->params->get('page_heading');
-$active_id 		= 2;
-$api 			= new CjLibApi();
-$avatarApp 		= $this->params->get('avatar_component', 'cjblog');
-$profileApp 	= $this->params->get('profile_component', 'cjblog');
-$layout 		= $this->params->get('layout', 'default');
-$editor 		= $this->params->get('default_editor', 'wysiwygbb');
-$bbcode 		= $editor == 'wysiwygbb' ? true : false;
+$itemid		= CJFunctions::get_active_menu_id();
+$page_heading	= $this->params->get('page_heading');
+$active_id	= 2;
+$api		= new CjLibApi();
+$avatarApp	= $this->params->get('avatar_component', 'cjblog');
+$profileApp	= $this->params->get('profile_component', 'cjblog');
+$layout		= $this->params->get('layout', 'default');
+$editor		= $this->params->get('default_editor', 'wysiwygbb');
+$bbcode		= $editor == 'wysiwygbb' ? true : false;
 ?>
 
 <div id="cj-wrapper">
@@ -46,11 +46,13 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
     			$showProfile = JFactory::getUser($user['id'])->authorise('core.showprofile', 'com_cjblog');
     			if ($showProfile)
     			{
-    				$profileUrl 	= $api->getUserProfileUrl($profileApp, $user['id']);
+    				$profileUrl = $api->getUserProfileUrl($profileApp, $user['id']);
+				$aboutText = strip_tags(JHtml::_('string.truncate', CJFunctions::parse_html($user['about'], false, $bbcode), 250));
     			}
     			else
     			{
     				$profileUrl = "#";
+				$aboutText = "";
     			}
 
     		?>
@@ -77,7 +79,7 @@ $bbcode 		= $editor == 'wysiwygbb' ? true : false;
 							<span class="margin-right-10"><?php echo JText::_('LBL_BADGES').': '.$user['num_badges'];?></span>
 						</div>
 						<div class="muted padbottom-5">
-							<?php echo strip_tags(JHtml::_('string.truncate', CJFunctions::parse_html($user['about'], false, $bbcode), 250));?>
+							<?php echo $aboutText;?>
 						</div>
 					</div>
 				</div>
