@@ -63,7 +63,7 @@
 	    <xmltask source="${package_dir}/auto_updates/details.xml" dest="${package_dir}/auto_updates/details.xml" report="false">
 	        <replace path="/updates/update/version/text()" withText="${version}"/>
 	    	<replace path="/updates/update/downloads/downloadurl/text()" 
-	    		withText="https://github.com/corejoomla/cjblog/releases/download/${version}/pkg_cjblog_${version}.zip"/>
+	    		withText="https://github.com/corejoomla/cjblog/releases/download/${version}/pkg_cjblog_v${version}.zip"/>
 	    </xmltask>
 		
 		<echo>UPLOAD: com_cjlib.xml</echo>
