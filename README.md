@@ -1,4 +1,4 @@
-# cjblog
+# CjBlog - Joomla! Blogging Platform
 CjBlog is a free Joomla! component for creating awesome community blogs
 
 * CjBlog is a community blogging software for Joomla®. That means it can be useful on websites where you need community participation in creating content. For a personal blogging website for your own needs, CjBlog is not a recommended software. For personal blogs, Wordpress does more than you need.
