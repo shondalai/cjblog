@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="user" method="upgrade">
+	<name>User - CjBlog</name>
+	<author>CjBlog User Plugin</author>
+	<creationDate>2016-05-28</creationDate>
+	<copyright>(C) 2009 - 2016 corejoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@corejoomla.com</authorEmail>
+	<authorUrl>www.corejoomla.com</authorUrl>
+	<version>1.0.0</version>
+	<description>User plugin for CjBlog</description>
+	<files>
+		<filename plugin="cjblog">cjblog.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

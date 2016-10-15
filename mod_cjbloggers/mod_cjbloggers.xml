@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.0" method="upgrade" client="site">
+    <name>CjBlog Bloggers Module</name>
+    <author>Maverick</author>
+    <creationDate>2013-Oct-02</creationDate>
+    <version>2.0.0</version>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>Displays articles category tree.</description>
+    <files>
+        <filename>mod_cjbloggers.xml</filename>
+        <filename module="mod_cjbloggers">mod_cjbloggers.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+    </files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="list_type" type="list" default="2" label="List Type" description="Select which listing to be displayed, i.e. by join date, number of articles or number of profile views.">
+					<option value="1">Latest Bloggers</option>
+					<option value="2">Top Bloggers</option>
+					<option value="3">Popular Bloggers</option>
+				</field>
+				<field name="count" type="text" default="10" label="Count" description="Enter how many users to be displayed."/>
+				<field name="avatar_size" type="text" default="48" label="Avatar Size" description="Enter the size of the avatar."/>
+				<field name="exclude_user_groups" type="usergroup" multiple="multiple" size="10" label="Exclude User Groups" description="Exclude user groups from displaying in module"/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC"> 
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

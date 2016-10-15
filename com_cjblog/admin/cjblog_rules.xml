@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cjblog>
+	<points_rule>
+		<name>com_cjblog.archive</name>
+		<appname>com_cjblog</appname>
+		<title>Archived points</title>
+		<description>Archived points.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjblog.custom</name>
+		<appname>com_cjblog</appname>
+		<title>Custom points</title>
+		<description>Custom points awarded to the user on need basis.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_content.read</name>
+		<appname>com_content</appname>
+		<title>Read article</title>
+		<description>Points awarded for reading articles.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_content.create</name>
+		<appname>com_content</appname>
+		<title>Submit article</title>
+		<description>Points awarded for submitting articles.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_content.delete</name>
+		<appname>com_content</appname>
+		<title>Delete article</title>
+		<description>Points awarded/deducted for deleting/unpublishing article.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_users.login</name>
+		<appname>com_users</appname>
+		<title>Daily login</title>
+		<description>Points awarded for logging into the site daily.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_users.signup</name>
+		<appname>com_users</appname>
+		<title>Sign up</title>
+		<description>Points awarded for registering on site.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.new_topic</name>
+		<appname>com_cjforum</appname>
+		<title>New topic</title>
+		<description>Points awarded for posting a forum topic.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.topic_reply</name>
+		<appname>com_cjforum</appname>
+		<title>Reply to a topic</title>
+		<description>Points awarded for replying to a forum topic.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.liked_topic</name>
+		<appname>com_cjforum</appname>
+		<title>Like a topic</title>
+		<description>Points awarded when you like a forum topic.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.disliked_topic</name>
+		<appname>com_cjforum</appname>
+		<title>Dislike a topic</title>
+		<description>Points awarded when you dislike a forum topic.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.liked_reply</name>
+		<appname>com_cjforum</appname>
+		<title>Like a reply</title>
+		<description>Points awarded when you like a forum topic reply.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.disliked_reply</name>
+		<appname>com_cjforum</appname>
+		<title>Dislike a reply</title>
+		<description>Points awarded when you dislike a forum topic reply.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.thankyou_reply_author</name>
+		<appname>com_cjforum</appname>
+		<title>Got thank you for a reply</title>
+		<description>Points awarded to the author when someone said thank you to his forum topic reply.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.thankyou_reply</name>
+		<appname>com_cjforum</appname>
+		<title>Said thank you to a reply</title>
+		<description>Points awarded to the user when he said thank you to a forum topic reply.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.favored_topic</name>
+		<appname>com_cjforum</appname>
+		<title>Added a forum topic to favorites</title>
+		<description>Points awarded for adding a forum topic to favorites.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.deleted_topic</name>
+		<appname>com_cjforum</appname>
+		<title>A forum topic is deleted</title>
+		<description>Points awarded/deducted for a forum topic deleted.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjforum.deleted_reply</name>
+		<appname>com_cjforum</appname>
+		<title>A forum topic reply is deleted</title>
+		<description>Points awarded/deducted for a forum topic reply deleted.</description>
+		<points>1</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_cjblog.birthday</name>
+		<appname>com_cjblog</appname>
+		<title>Birthday bonus</title>
+		<description>Points awarded on birthday.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communitypolls.poll</name>
+		<appname>com_communitypolls</appname>
+		<title>Submit poll.</title>
+		<description>Points awarded for submitting a poll.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communitypolls.vote</name>
+		<appname>com_communitypolls</appname>
+		<title>Vote on a poll.</title>
+		<description>Points awarded for vote on a poll.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communitypolls.author</name>
+		<appname>com_communitypolls</appname>
+		<title>Vote on a poll.</title>
+		<description>Points awarded/deducted from poll author points, when someone voted on the poll.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communityquotes.create</name>
+		<appname>com_communityquotes</appname>
+		<title>Submit quote.</title>
+		<description>Points awarded for submitting a quote.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communityquotes.like</name>
+		<appname>com_communityquotes</appname>
+		<title>Like quote.</title>
+		<description>Points awarded when you like a quote.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_crosswords.create</name>
+		<appname>com_crosswords</appname>
+		<title>Submitting crossword.</title>
+		<description>Points awarded for submitting a crossword.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_crosswords.solve</name>
+		<appname>com_crosswords</appname>
+		<title>Solve crossword.</title>
+		<description>Points awarded for solving a crossword.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communityquiz.create</name>
+		<appname>com_communityquiz</appname>
+		<title>Submit quiz.</title>
+		<description>Points awarded for submitting a quiz.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communityquiz.respond</name>
+		<appname>com_communityquiz</appname>
+		<title>Respond to a quiz.</title>
+		<description>Points awarded for responding to a quiz.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communityquiz.pass</name>
+		<appname>com_communityquiz</appname>
+		<title>Pass quiz.</title>
+		<description>Points awarded for passing a quiz.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	
+	<badge_rule>
+		<rule_name>com_content.num_articles</rule_name>
+		<appname>com_content</appname>
+		<apptitle>Joomla Articles</apptitle>
+		<rule_description>Assign a badge when user submits N number of articles.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_ARTICLES" name="num_articles" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_content.num_hits</rule_name>
+		<appname>com_content</appname>
+		<apptitle>Joomla Articles</apptitle>
+		<rule_description>Assign a badge when an article submitted by the user got N number of hits.</rule_description>
+		<rules join="and" method="assign" ref_id="cid" multiple="1">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_HITS" name="num_hits" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_cjforum.num_topics</rule_name>
+		<appname>com_cjforum</appname>
+		<apptitle>CjForum</apptitle>
+		<rule_description>Assign a badge when user submits N number of topics.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_TOPICS" name="num_topics" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+
+	<badge_rule>
+		<rule_name>com_cjforum.num_replies</rule_name>
+		<appname>com_cjforum</appname>
+		<apptitle>CjForum</apptitle>
+		<rule_description>Assign a badge when user submits N number of replies.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_REPLIES" name="num_replies" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_cjforum.num_thankyou</rule_name>
+		<appname>com_cjforum</appname>
+		<apptitle>CjForum</apptitle>
+		<rule_description>Assign a badge when user recieves N number of thank you.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_THANKYOU" name="num_thankyou" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityanswers.num_questions</rule_name>
+		<appname>com_communityanswers</appname>
+		<apptitle>Community Answers</apptitle>
+		<rule_description>Assign a badge when user submits N number of questions.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_QUESTIONS" name="num_questions" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityanswers.num_answers</rule_name>
+		<appname>com_communityanswers</appname>
+		<apptitle>Community Answers</apptitle>
+		<rule_description>Assign a badge when user answered N number of answers.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_ANSWERS" name="num_answers" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityanswers.num_best_answers</rule_name>
+		<appname>com_communityanswers</appname>
+		<apptitle>Community Answers</apptitle>
+		<rule_description>Assign a badge when user submits N number of best answers.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_BEST_ANSWERS" name="num_answers" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_crosswords.num_questions</rule_name>
+		<appname>com_crosswords</appname>
+		<apptitle>Community Crosswords</apptitle>
+		<rule_description>Assign a badge when user submits N number of crossword questions.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_QUESTIONS" name="num_questions" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_crosswords.solve_crossword</rule_name>
+		<appname>com_crosswords</appname>
+		<apptitle>Community Crosswords</apptitle>
+		<rule_description>Assign a badge when user solve N number of crosswords.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_CROSSWORDS" name="num_crosswords" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communitypolls.num_polls</rule_name>
+		<appname>com_communitypolls</appname>
+		<apptitle>Community Polls</apptitle>
+		<rule_description>Assign a badge when user submits N number of polls.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_POLLS" name="num_polls" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communitypolls.num_votes</rule_name>
+		<appname>com_communitypolls</appname>
+		<apptitle>Community Polls</apptitle>
+		<rule_description>Assign a badge when user voted on N number of polls.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_VOTES" name="num_votes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communitypolls.num_poll_votes</rule_name>
+		<appname>com_communitypolls</appname>
+		<apptitle>Community Polls</apptitle>
+		<rule_description>Assign a badge when a poll created by the user gets N number of votes.</rule_description>
+		<rules join="and" method="assign" multiple="1">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_VOTES" name="num_votes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquiz.num_quizzes</rule_name>
+		<appname>com_communityquiz</appname>
+		<apptitle>Community Quiz</apptitle>
+		<rule_description>Assign a badge when user submits N number of quizzes.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_QUIZZES" name="num_quizzes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquiz.num_responses</rule_name>
+		<appname>com_communityquiz</appname>
+		<apptitle>Community Quiz</apptitle>
+		<rule_description>Assign a badge when user responded to N number of quizzes.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_RESPONSES" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquiz.test_passed</rule_name>
+		<appname>com_communityquiz</appname>
+		<apptitle>Community Quiz</apptitle>
+		<rule_description>Assign a badge when user passed a quiz.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_RESPONSES" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquiz.custom</rule_name>
+		<appname>com_communityquiz</appname>
+		<apptitle>Community Quiz</apptitle>
+		<rule_description>Assign custom badge for passing a quiz, badge should be selected from quiz form.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="Dummy" name="num_responses" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquotes.num_quotes</rule_name>
+		<appname>com_communityquotes</appname>
+		<apptitle>Community Quotes</apptitle>
+		<rule_description>Assign a badge when user submits N number of quotes.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_QUOTES" name="num_quotes" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_communityquotes.num_profiles</rule_name>
+		<appname>com_communityquotes</appname>
+		<apptitle>Community Quotes</apptitle>
+		<rule_description>Assign a badge when user submitted N number of author profiles.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_PROFILES" name="num_profiles" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_kunena.num_posts</rule_name>
+		<appname>com_kunena</appname>
+		<apptitle>Kunena</apptitle>
+		<rule_description>Assign a badge when user submits N number of posts.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_POSTS" name="num_posts" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+	
+	<badge_rule>
+		<rule_name>com_kunena.num_thankyou</rule_name>
+		<appname>com_kunena</appname>
+		<apptitle>Kunena</apptitle>
+		<rule_description>Assign a badge when user recieves N number of thank you.</rule_description>
+		<rules join="and" method="assign" multiple="0">
+			<rule label="COM_CJBLOG_BADGE_RULE_NUM_THANKYOU" name="num_thankyou" type="text" dataType="int" compare="ge"></rule>
+		</rules>
+		<access>1</access>
+	</badge_rule>
+</cjblog>

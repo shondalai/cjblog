@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<extension group="content" method="upgrade" type="plugin" version="3.0">
+    <name>Content - CjBlog</name>
+	<creationDate>2015-Oct-11</creationDate>
+    <author>Maverick</author>
+    <authorEmail>support@corejoomla.com</authorEmail>
+    <authorUrl>http://www.corejoomla.com</authorUrl>
+	<copyright>All rights reserved by www.corejoomla.com 2009-12.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>1.0.0</version>
+    <description>CjBlog content plugin - adds support for adding cjblog styling to articles.</description>
+    <files>
+        <filename>cjblog.xml</filename>
+        <filename plugin="cjblog">cjblog.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_cjblog.ini</language>
+	</languages>
+</extension>

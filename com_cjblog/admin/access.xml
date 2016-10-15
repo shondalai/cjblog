@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_cjblog">
+	<section name="component">
+		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+		<action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC" />
+		<action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC" />
+		<action name="core.delete" title="JACTION_DELETE" description="JACTION_DELETE_COMPONENT_DESC" />
+		<action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC" />
+		<action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_EDITSTATE_COMPONENT_DESC" />
+		<action name="core.autoapprove" title="COM_CJBLOG_JACTION_AUTO_APPROVE_LABEL" description="COM_CJBLOG_JACTION_AUTO_APPROVE_DESC" />
+		<action name="core.pro" title="COM_CJBLOG_JACTION_PRO_CAPABILITIES_LABEL" description="COM_CJBLOG_JACTION_PRO_CAPABILITIES_DESC" />
+		<action name="core.rate" title="COM_CJBLOG_RATE_ARTICLES" description="COM_CJBLOG_RATE_ARTICLES_DESC" />
+	</section>
+</access>

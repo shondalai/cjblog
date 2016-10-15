@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CJBLOG_ARTICLES_VIEW_DEFAULT_TITLE" option="COM_CJBLOG_ARTICLES_VIEW_DEFAULT_OPTION">
+		<help key="JHELP_MENUS_MENU_ITEM_ARTICLES" />
+	    <message><![CDATA[COM_CJBLOG_ARTICLES_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+</metadata>
