@@ -2,11 +2,11 @@
 <form>
 	<fields name="filter" addfieldpath="/administrator/components/com_cjblog/models/fields">
 		<field name="search" type="text" label="COM_CJBLOG_FILTER_SEARCH_DESC" hint="JSEARCH_FILTER" />
-	</fields>
-	<fields name="list">
 		<field name="published" type="status" label="COM_CJBLOG_FILTER_PUBLISHED" description="COM_CJBLOG_FILTER_PUBLISHED_DESC" onchange="this.form.submit();">
 			<option value="">JOPTION_SELECT_PUBLISHED</option>
 		</field>
+	</fields>
+	<fields name="list">
 		<field name="fullordering" type="list" label="COM_CJBLOG_LIST_FULL_ORDERING" description="COM_CJBLOG_LIST_FULL_ORDERING_DESC" onchange="this.form.submit();" default="a.title ASC">
 			<option value="">JGLOBAL_SORT_BY</option>
 			<option value="a.state ASC">JSTATUS_ASC</option>

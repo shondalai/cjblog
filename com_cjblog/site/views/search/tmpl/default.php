@@ -97,7 +97,7 @@ $api = new CjLibApi();
 							<div class="panel-body">
 								<?php 
 								$categories = JHtml::_('category.categories', 'com_cjblog');
-								$excluded = $params->get('exclude_categories', array());
+								$excluded = $this->params->get('exclude_categories', array());
 								foreach ($categories as $id=>$category)
 								{
 									if($category->value == '1' || in_array($id, $excluded)) 

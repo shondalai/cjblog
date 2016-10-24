@@ -62,7 +62,7 @@ $sortFields = $this->getSortFields();
 <?php endif;?>
 		<?php
 		// Search tools bar
-		echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options'=>array('filterButton'=>false)));
+		echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options'=>array('filterButton'=>true)));
 		?>
 		<?php if (empty($this->items)) : ?>
 			<div class="alert alert-no-items">

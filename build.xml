@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="CjBlog" default="copyall" basedir=".">
-	<property name="site3" value="d:/xampp/htdocs/j3/components/com_cjblog" />
-	<property name="admin3" value="d:/xampp/htdocs/j3/administrator/components/com_cjblog" />
-	<property name="sitelang3" value="d:/xampp/htdocs/j3/language/" />
-	<property name="adminlang3" value="d:/xampp/htdocs/j3/administrator/language/" />
-	<property name="media3" value="d:/xampp/htdocs/j3/media/com_cjblog" />
-	<property name="plugin_content" value="d:/xampp/htdocs/j3/plugins/content/cjblog" />
-	<property name="plugin_user" value="d:/xampp/htdocs/j3/plugins/user/cjblog" />
-	<property name="plugin_cjblogapps_cjblog" value="d:/xampp/htdocs/j3/plugins/cjblogapps/cjblog" />
-	<property name="mod_cjblogarchive" value="d:/xampp/htdocs/j3/modules/mod_cjblogarchive" />
-	<property name="mod_cjblogcategories" value="d:/xampp/htdocs/j3/modules/mod_cjblogcategories" />
-	<property name="mod_cjbloggers" value="d:/xampp/htdocs/j3/modules/mod_cjbloggers" />
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<property name="xamppdir" value="d:/xampp/htdocs/" />
+	<property name="site3" value="/components/com_cjblog" />
+	<property name="admin3" value="/administrator/components/com_cjblog" />
+	<property name="sitelang3" value="/language/" />
+	<property name="adminlang3" value="/administrator/language/" />
+	<property name="media3" value="/media/com_cjblog" />
+	<property name="plugin_content" value="/plugins/content/cjblog" />
+	<property name="plugin_user" value="/plugins/user/cjblog" />
+	<property name="plugin_cjblogapps_cjblog" value="/plugins/cjblogapps/cjblog" />
+	<property name="mod_cjblogarchive" value="/modules/mod_cjblogarchive" />
+	<property name="mod_cjblogcategories" value="/modules/mod_cjblogcategories" />
+	<property name="mod_cjbloggers" value="/modules/mod_cjbloggers" />
 	
 	<target name="copyall">
-		<copy todir="${site3}"><fileset dir="com_cjblog/site"><include name="**"/></fileset></copy>
-		<copy todir="${admin3}" ><fileset dir="com_cjblog/admin"><include name="**" /><exclude name="language/**"/></fileset></copy>
-		<copy todir="${sitelang3}"><fileset dir="com_cjblog/site/language/"><include name="**"/></fileset></copy>
-		<copy todir="${adminlang3}"><fileset dir="com_cjblog/admin/language/"><include name="**"/></fileset></copy>
-		<copy todir="${media3}"><fileset dir="com_cjblog/site/media"><include name="**"/></fileset></copy>
-		<copy todir="${plugin_content}" ><fileset dir="plg_content_cjblog"><include name="**" /></fileset></copy>
-		<copy todir="${plugin_user}" ><fileset dir="plg_user_cjblog"><include name="**" /></fileset></copy>
-		<copy todir="${plugin_cjblogapps_cjblog}" ><fileset dir="plg_cjblogapps_cjblog"><include name="**" /></fileset></copy>
-		<copy todir="${mod_cjblogcategories}" ><fileset dir="mod_cjblogcategories"><include name="**" /></fileset></copy>
-		<copy todir="${mod_cjblogarchive}" ><fileset dir="mod_cjblogarchive"><include name="**" /></fileset></copy>
-		<copy todir="${mod_cjbloggers}" ><fileset dir="mod_cjbloggers"><include name="**" /></fileset></copy>
+		<macrodef name="copyfiles">
+			<attribute name="instance"/>
+	  		<sequential>
+				<copy todir="${xamppdir}@{instance}${site3}"><fileset dir="com_cjblog/site"><include name="**"/></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${admin3}" ><fileset dir="com_cjblog/admin"><include name="**" /><exclude name="language/**"/></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${sitelang3}"><fileset dir="com_cjblog/site/language/"><include name="**"/></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${adminlang3}"><fileset dir="com_cjblog/admin/language/"><include name="**"/></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${media3}"><fileset dir="com_cjblog/site/media"><include name="**"/></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${plugin_content}" ><fileset dir="plg_content_cjblog"><include name="**" /></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${plugin_user}" ><fileset dir="plg_user_cjblog"><include name="**" /></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${plugin_cjblogapps_cjblog}" ><fileset dir="plg_cjblogapps_cjblog"><include name="**" /></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${mod_cjblogcategories}" ><fileset dir="mod_cjblogcategories"><include name="**" /></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${mod_cjblogarchive}" ><fileset dir="mod_cjblogarchive"><include name="**" /></fileset></copy>
+				<copy todir="${xamppdir}@{instance}${mod_cjbloggers}" ><fileset dir="mod_cjbloggers"><include name="**" /></fileset></copy>
+	  		</sequential>
+	  	</macrodef>
+		<copyfiles instance="j3"/>
+		<copyfiles instance="j3test"/>
 	</target>
 	
 	<target name="build_cjblog">

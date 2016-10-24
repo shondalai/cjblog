@@ -100,6 +100,14 @@ class CjBlogModelBadgeStreams extends JModelList
 		{
 			$query->where('m.published = ' . (int) $published);
 		}
+		elseif (is_array($published))
+		{
+			Joomla\Utilities\ArrayHelper::toInteger($published);
+			if(!empty($published))
+			{
+				$query->where('m.published IN (' . implode(',', $published) . ')');
+			}
+		}
 		elseif ($published === '')
 		{
 			$query->where('(m.published = 0 OR m.published = 1)');
