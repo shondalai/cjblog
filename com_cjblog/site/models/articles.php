@@ -20,8 +20,9 @@ class CjBlogModelArticles extends ContentModelArticles
 	
 	protected function populateState($ordering = 'ordering', $direction = 'ASC')
 	{
-		$app = JFactory::getApplication();
 		parent::populateState($ordering, $direction);
+		$app = JFactory::getApplication();
+		$params = JComponentHelper::getParams('com_cjforum');
 		
 		$orderCol = $app->input->get('filter_order', 'a.created');
 		if (!in_array($orderCol, $this->filter_fields))
@@ -45,6 +46,13 @@ class CjBlogModelArticles extends ContentModelArticles
 		{
 			$this->setState('filter.author_id', $authorId);
 			$this->setState('filter.author_id.include', true);
+		}
+		
+		$excludedCategories = $params->get('exclude_categories');
+		if(!empty($excludedCategories))
+		{
+			$this->setState('filter.category_id', $excludedCategories);
+			$this->setState('filter.category_id.include', false);
 		}
 		
 		$year = $app->input->getInt('year');
