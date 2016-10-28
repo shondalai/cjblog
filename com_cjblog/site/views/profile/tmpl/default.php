@@ -178,7 +178,7 @@ $microdata 			= new JMicrodata('Person');
 			<div class="panel-body">
 				<dl class="dl-horizontal">
 					<?php foreach ($this->item->fields as $label=>$value):?>
-					<dt><?php echo JText::_('PLG_CJFORUM_'.$label.'_LABEL', true);?></dt>
+					<dt><?php echo JText::_('PLG_CJBLOG_'.$label.'_LABEL', true);?></dt>
 					<dd><?php echo $this->escape($value);?></dd>
 					<?php endforeach;?>
 				</dl>

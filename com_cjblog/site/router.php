@@ -347,7 +347,7 @@ class CjBlogRouter extends JComponentRouterBase
 
 		if (!$category)
 		{
-// 			JError::raiseError(404, JText::_('COM_CJFORUM_ERROR_PARENT_CATEGORY_NOT_FOUND'));
+// 			JError::raiseError(404, JText::_('COM_CJBLOG_ERROR_PARENT_CATEGORY_NOT_FOUND'));
 			return $vars;
 		}
 

@@ -22,7 +22,7 @@ class CjBlogModelArticles extends ContentModelArticles
 	{
 		parent::populateState($ordering, $direction);
 		$app = JFactory::getApplication();
-		$params = JComponentHelper::getParams('com_cjforum');
+		$params = JComponentHelper::getParams('com_cjblog');
 		
 		$orderCol = $app->input->get('filter_order', 'a.created');
 		if (!in_array($orderCol, $this->filter_fields))
