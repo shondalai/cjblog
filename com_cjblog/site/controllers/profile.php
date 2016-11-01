@@ -53,7 +53,7 @@ class CjBlogControllerProfile extends JControllerForm
 	{
 		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
 		$user = JFactory::getUser();
-		$userId = $user->get('id');
+		$userId = $user->id;
 		$asset = 'com_cjblog';
 	
 		// Check general edit permission first.
@@ -62,34 +62,12 @@ class CjBlogControllerProfile extends JControllerForm
 			return true;
 		}
 	
-		// Fallback on edit.own.
-		// First test if the permission is available.
-		if ($user->authorise('core.edit.own', $asset))
+		if ($recordId && $recordId == $userId)
 		{
-			// Now test the owner is the user.
-			$ownerId = (int) isset($data['id']) ? $data['id'] : 0;
-			if (empty($ownerId) && $recordId)
-			{
-				// Need to do a lookup from the model.
-				$record = $this->getModel()->getItem($recordId);
-	
-				if (empty($record))
-				{
-					return false;
-				}
-	
-				$ownerId = $record->id;
-			}
-				
-			// If the owner matches 'me' then do the test.
-			if ($ownerId == $userId)
-			{
-				return true;
-			}
+			return true;
 		}
-	
-		// Since there is no asset tracking, revert to the component
-		// permissions.
+		
+		// Since there is no asset tracking, revert to the component permissions.
 		return parent::allowEdit($data, $key);
 	}
 
