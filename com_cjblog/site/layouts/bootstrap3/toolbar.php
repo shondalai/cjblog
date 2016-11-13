@@ -34,7 +34,7 @@ if($params->get('show_toolbar', 1) == 1)
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo JRoute::_('index.php?option=com_cjblog');?>">
+				<a class="navbar-brand" href="<?php echo JRoute::_(CjBlogHelperRoute::getCategoriesRoute());?>">
 					<?php echo JText::_('COM_CJBLOG_LABEL_HOME');?>
 				</a>
 			</div>

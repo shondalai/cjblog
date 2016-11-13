@@ -89,7 +89,7 @@ class CjBlogModelProfile extends JModelItem
 				
 				if (empty($data))
 				{
-					return JError::raiseError(404, JText::_('COM_CJBLOG_ERROR_USER_NOT_FOUND'));
+					throw new Exception(JText::_('COM_CJBLOG_ERROR_USER_NOT_FOUND'), 404);
 				}
 
 				// Convert parameter fields to objects.

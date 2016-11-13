@@ -211,10 +211,6 @@ class CjBlogSiteHelper
 // 					JFactory::getApplication()->enqueueMessage($handle->log);
 				}
 			}
-			else
-			{
-				JFile::copy(CJBLOG_MEDIA_DIR.'images/thumbnail-big.png', CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg');
-			}
 		}
 
 		return file_exists(CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg')
