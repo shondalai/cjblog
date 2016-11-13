@@ -79,6 +79,7 @@ class PlgContentCjBlog extends JPlugin
 		}
 		//************************ END SOCIAL SHARING ***************************// 
 		
+		//************************* AUTHOR INFO *********************************//
 		if($appParams->get('show_author_info'))
 		{
 			require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
@@ -100,8 +101,37 @@ class PlgContentCjBlog extends JPlugin
 			
 			$authorInfoHtml = CjBlogSiteHelper::renderLayout($layout.'.author_info', array('article'=>$article, 'profile'=>$profile,'params'=>$appParams));
 		}
+		//*********************** END AUTHOR INFO *********************************//
 		
-		$article->text 		= '<div id="cj-wrapper">' . $toolbarHtml . $titleHtml . $article->text . $socialSharingHtml . $authorInfoHtml . '</div>';
+		//************************ ARTICLE IMAGES *********************************//
+		$images  	= json_decode($article->images);
+		$imagesHtml = '';
+		if (isset($images->image_fulltext) && !empty($images->image_fulltext))
+		{
+			$imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext;
+			$imagesHtml = $imagesHtml . '<div class="pull-'.htmlspecialchars($imgfloat).' item-image"> <img ';
+			if ($images->image_fulltext_caption)
+			{
+				$imagesHtml = $imagesHtml . 'class="caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) . '"';
+			}
+			
+			$imagesHtml = $imagesHtml . 'src="'.htmlspecialchars($images->image_fulltext).'" alt="'.htmlspecialchars($images->image_fulltext_alt).'" itemprop="image"/> </div>';
+			$article->images = null;
+		}
+		//********************** END ARTICLE IMAGES *******************************//
+		
+		//************************* ARTICLE TAGS **********************************//
+		$info = $params->get('info_block_position', 0);
+		$tagsHtml = '';
+		if ($info == 0 && $params->get('show_tags', 1) && !empty($article->tags->itemTags)) 
+		{
+			$tagLayout = new JLayoutFile('joomla.content.tags'); 
+			$tagsHtml = $tagLayout->render($article->tags->itemTags);
+			$article->tags = null;
+		}
+		//*********************** END ARTICLE TAGS ********************************//
+		
+		$article->text 		= '<div id="cj-wrapper">' . $toolbarHtml . $titleHtml . $tagsHtml . $imagesHtml . $article->text . $socialSharingHtml . $authorInfoHtml . '</div>';
 	}
 	
 	public function onContentBeforeSave($context, $article, $isNew)
