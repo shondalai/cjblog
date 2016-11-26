@@ -73,7 +73,7 @@ class CjBlogModelProfile extends JModelItem
 				if($aboutTextApp == 'easyprofile')
 				{
 					$query
-						->select($db->qn($db->escape('e.' . $params->get('easyprofile_about', 'author_info'))).' AS about')
+						->select($db->qn($db->escape('e.' . $params->get('easyprofile_about_field', 'author_info'))).' AS about')
 						->join('left', '#__jsn_users AS e on u.id = e.id');
 				}
 				else
