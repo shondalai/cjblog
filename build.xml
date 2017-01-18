@@ -37,12 +37,12 @@
 	
 	<target name="build_cjblog">
 		
-	    <xmltask source="${package_dir}/pkg_cjblog.xml" dest="${root_dir}/pkg_cjblog.xml" report="false" encoding="utf-8">
+	    <xmltask source="${package_dir}/pkg_cjblog.xml" dest="${package_dir}/pkg_cjblog.xml" report="false" encoding="utf-8">
 	        <replace path="/extension/version/text()" withText="${version}"/>
 	    	<replace path="/extension/creationDate/text()" withText="${current.date}"/>
 	    </xmltask>
 	    
-		<xmltask source="${package_dir}/com_cjblog/cjblog.xml" dest="${root_dir}/com_cjblog/cjblog.xml" report="false" encoding="utf-8">
+		<xmltask source="${package_dir}/com_cjblog/cjblog.xml" dest="${package_dir}/com_cjblog/cjblog.xml" report="false" encoding="utf-8">
 	        <replace path="/extension/version/text()" withText="${version}"/>
 	    	<replace path="/extension/creationDate/text()" withText="${current.date}"/>
 	    </xmltask>
