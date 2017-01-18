@@ -54,6 +54,12 @@ class PlgContentCjBlog extends JPlugin
 		$titleHtml			= '';
 		$authorInfoHtml		= '';
 		$socialSharingHtml	= '';
+
+		$excludedCategories = $appParams->get('exclude_categories');
+		if( (is_numeric($excludedCategories) && $article->catid == $excludedCategories) || (is_array($excludedCategories) && in_array($article->catid, $excludedCategories)) )
+		{
+			return true;
+		}
 		
 		if($appParams->get('show_toolbar'))
 		{
