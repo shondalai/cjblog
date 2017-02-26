@@ -24,7 +24,7 @@ if (is_object($categories))
 	$root = intval($params->get('catid', 0));
 	$excluded = trim($params->get('excluded', ''));
 	$excluded = explode(',', $excluded);
-	Joomla\Utilities\ArrayHelper::toInteger($excluded);
+	$excluded = Joomla\Utilities\ArrayHelper::toInteger($excluded);
 	
 	$nodes = $categories->get($root);
 	$fields = array();

@@ -47,7 +47,7 @@ class CjBlogSiteHelper
 		}
 		
 		// first delete the existing attachments which are deleted from the request.
-		Joomla\Utilities\ArrayHelper::toInteger($existing);
+		$existing = Joomla\Utilities\ArrayHelper::toInteger($existing);
 		if(!empty($existing))
 		{
 			$query = $db->getQuery(true)

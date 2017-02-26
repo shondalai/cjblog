@@ -53,7 +53,7 @@ class CjBlogTableProfile extends JTable
 		$k = $this->_tbl_key;
 		
 		// Sanitize input.
-		Joomla\Utilities\ArrayHelper::toInteger($pks);
+		$pks = Joomla\Utilities\ArrayHelper::toInteger($pks);
 		$userId = (int) $userId;
 		$state = (int) $state;
 		

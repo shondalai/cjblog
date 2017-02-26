@@ -37,7 +37,7 @@ $query
 	->order('month');
 
 $excludedCategories = $options->get('exclude_categories', array());
-Joomla\Utilities\ArrayHelper::toInteger($excludedCategories);
+$excludedCategories = Joomla\Utilities\ArrayHelper::toInteger($excludedCategories);
 if(!empty($excludedCategories))
 {
 	$query->where('a.catid not in ('.implode(',', $excludedCategories).')');
