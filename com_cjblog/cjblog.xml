@@ -2,12 +2,12 @@
 <extension method="upgrade" type="component" version="3.2">
 	<name>CjBlog</name>
 	<author>Maverick</author>
-	<creationDate>2017-Jan-18</creationDate>
+	<creationDate>2017-Feb-26</creationDate>
 	<copyright>(C) 2009 - 2016 corejoomla.com. All rights reserved.	</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.corejoomla.com</authorUrl>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<description>COM_CJBLOG_XML_DESCRIPTION</description>
 
 	<files folder="site">

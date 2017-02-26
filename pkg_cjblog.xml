@@ -2,9 +2,9 @@
 <extension method="upgrade" type="package" version="2.5">
 	<name>CjBlog Package</name>
 	<author>Maverick</author>
-	<creationDate>2017-Jan-18</creationDate>
+	<creationDate>2017-Feb-26</creationDate>
 	<packagename>cjblog</packagename>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<url>http://www.corejoomla.com/</url>
 	<packager>Maverick</packager>
 	<packagerurl>http://www.corejoomla.com/</packagerurl>
