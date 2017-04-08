@@ -303,6 +303,7 @@
 			<option value="kunena">Kunena</option>
 			<option value="aup">Alpha User Points</option>
 			<option value="gravatar">Gravatar</option>
+                        <option value="easyprofile">EasyProfile</option>
 		</field>
 		<field name="avatar_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_AVATAR_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_AVATAR_COMPONENT_DESC">
 			<option value="none">None</option>
@@ -314,6 +315,7 @@
 			<option value="kunena">Kunena</option>
 			<option value="aup">Alpha User Points</option>
 			<option value="gravatar">Gravatar</option>
+                        <option value="easyprofile">EasyProfile</option>
 		</field>
 		<field name="points_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_POINTS_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_POINTS_COMPONENT_DESC">
 			<option value="none">None</option>
