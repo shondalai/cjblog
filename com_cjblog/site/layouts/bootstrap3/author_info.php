@@ -26,11 +26,11 @@ $avatarSize		= $params->get('article_avatar_size', 96);
 		<?php if($profileApp != 'none'):?>
 		<a href="<?php echo $api->getUserProfileUrl($profileApp, $article->created_by);?>" class="thumbnail">
 			<img class="media-object" src="<?php echo $api->getUserAvatarImage($avatarApp, $article->created_by, '', 64);?>" 
-				alt="<?php echo $this->escape($article->author);?>" style="min-width: <?php echo $avatarSize;?>px;">
+				alt="<?php echo $this->escape($article->author);?>" style="min-width: <?php echo $avatarSize;?>px; max-width: <?php echo $avatarSize;?>px;">
 		</a>
 		<?php else:?>
 		<img class="media-object" src="<?php echo $api->getUserAvatarImage($avatarApp, $article->created_by, '', $avatarSize);?>"
-			 alt="<?php echo $this->escape($article->author);?>" style="min-width: <?php echo $avatarSize;?>px;">
+			 alt="<?php echo $this->escape($article->author);?>" style="min-width: <?php echo $avatarSize;?>px; max-width: <?php echo $avatarSize;?>px;">
 		<?php endif;?>
 	</div>
 	<?php endif;?>
