@@ -18,13 +18,17 @@ $theme 			= $params->get('theme', 'default');
 $avatarApp		= $params->get('avatar_component', 'cjblog');
 $profileApp		= $params->get('profile_component', 'cjblog');
 $avatarSize		= $params->get('article_avatar_size', 96);
+
+// Check if author has pro-capabilities
+$proUser		= JFactory::getUser($article->created_by)->authorise('core.pro', 'com_cjblog');
+$userProfileUrl         = ($proUser ? $api->getUserProfileUrl($profileApp, $article->created_by) : '#');
 ?>
 <hr/>
 <div class="media">
 	<?php if($avatarApp != 'none'):?>
 	<div class="media-left">
 		<?php if($profileApp != 'none'):?>
-		<a href="<?php echo $api->getUserProfileUrl($profileApp, $article->created_by);?>" class="thumbnail">
+		<a href="<?php echo $userProfileUrl;?>" class="thumbnail">
 			<img class="media-object" src="<?php echo $api->getUserAvatarImage($avatarApp, $article->created_by, '', 64);?>" 
 				alt="<?php echo $this->escape($article->author);?>" style="min-width: <?php echo $avatarSize;?>px; max-width: <?php echo $avatarSize;?>px;">
 		</a>

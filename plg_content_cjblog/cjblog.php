@@ -92,8 +92,15 @@ class PlgContentCjBlog extends JPlugin
 			$profileApi 	= CjBlogApi::getProfileApi();
 			$profile 		= $profileApi->getUserProfile($article->created_by);
 			$aboutTextApp 	= $appParams->get('about_text_app', 'cjblog');
-			
-			if($aboutTextApp == 'easyprofile')
+
+			// Check if author has pro-capabilities
+			$proUser = JFactory::getUser($article->created_by)->authorise('core.pro', 'com_cjblog');
+
+			if (!$proUser)
+			{
+				$profile['about'] = '';
+			}
+			elseif($aboutTextApp == 'easyprofile')
 			{
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true)
@@ -246,3 +253,4 @@ class PlgContentCjBlog extends JPlugin
 		return true;
 	}
 }
+
