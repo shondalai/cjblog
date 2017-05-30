@@ -8,15 +8,15 @@
  */
 defined('_JEXEC') or die;
 
-require_once JPATH_COMPONENT . '/helpers/constants.php';
-require_once JPATH_COMPONENT . '/helpers/route.php';
-require_once JPATH_COMPONENT . '/helpers/query.php';
-require_once JPATH_COMPONENT . '/lib/api.php';
-require_once JPATH_COMPONENT . '/helpers/helper.php';
+require_once JPATH_ROOT . '/components/com_cjblog/helpers/constants.php';
+require_once JPATH_ROOT . '/components/com_cjblog/helpers/route.php';
+require_once JPATH_ROOT . '/components/com_cjblog/helpers/query.php';
+require_once JPATH_ROOT . '/components/com_cjblog/lib/api.php';
+require_once JPATH_ROOT . '/components/com_cjblog/helpers/helper.php';
 
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
-require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
-require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
+require_once JPATH_ROOT . '/components/com_cjlib/framework.php';
+require_once JPATH_ROOT . '/components/com_cjlib/framework/api.php';
 CJLib::import('corejoomla.framework.core');
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
 
