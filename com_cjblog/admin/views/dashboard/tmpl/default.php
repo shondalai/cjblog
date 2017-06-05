@@ -111,7 +111,7 @@ $span		= !empty( $this->sidebar) ? 'span10' : '';
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Credits: </strong></div>
 				<div class="panel-body">
-					<div>CjBlog is a free software released under Gnu/GPL license. Copyright© 2009-14 corejoomla.com</div>
+					<div>CjBlog is a free software released under Gnu/GPL license. Copyright© 2009-17 corejoomla.com</div>
 					<div>Core Components: Bootstrap, jQuery, FontAwesome and ofcourse Joomla<sup>&reg;</sup>.</div>
 				</div>
 			</div>
