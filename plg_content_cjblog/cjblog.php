@@ -125,7 +125,7 @@ class PlgContentCjBlog extends JPlugin
 		//************************ ARTICLE IMAGES *********************************//
 		$images  	= json_decode($article->images);
 		$imagesHtml = '';
-		if (isset($images->image_fulltext) && !empty($images->image_fulltext))
+		if (isset($images->image_fulltext) && !empty($images->image_fulltext) && $appParams->get('show_fulltext_image'))
 		{
 			$imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext;
 			$imagesHtml = $imagesHtml . '<div class="pull-'.htmlspecialchars($imgfloat).' item-image"> <img ';

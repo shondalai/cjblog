@@ -19,6 +19,10 @@
 		    <option value="96">COM_CJBLOG_SIZE_LARGE</option>
 		    <option value="128">COM_CJBLOG_SIZE_EXTRA_LARGE</option>
 		</field>
+		<field name="show_fulltext_image" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_SHOW_FULLTEXT_IMAGE_LABEL" description="COM_CJBLOG_FIELD_SHOW_FULLTEXT_IMAGE_DESC">
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
 		<field name="show_title" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_SHOW_TITLE_LABEL" description="COM_CJBLOG_FIELD_SHOW_TITLE_DESC">
 			<option value="1">JSHOW</option>
 			<option value="0">JHIDE</option>
