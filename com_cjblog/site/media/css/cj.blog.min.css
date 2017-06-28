@@ -69,6 +69,8 @@
 #cj-wrapper .leader-rank-box .leader-rank {margin: 10px 0 5px 0;}
 #cj-wrapper .author-name {font-size:16px; font-weight:bold; text-decoration:none; margin-bottom: 5px;}
 #cj-wrapper .cj-article-info {margin-right: 2px; display: inline-block;}
+#cj-wrapper .author-about {margin-top: 10px;}
+#cj-wrapper .article-info {margin-top: 20px; margin-bottom: 10px;}
 
 .no-space-left {margin-left: 0; padding-left: 0;}
 .no-space-right {margin-right: 0; padding-right: 0;}

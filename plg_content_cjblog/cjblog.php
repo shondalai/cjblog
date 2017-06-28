@@ -49,7 +49,9 @@ class PlgContentCjBlog extends JPlugin
 			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss, 'customtag'=>$custom_tag));
 		}
 		
+		$document = JFactory::getDocument();
 		CJLib::behavior('bscore', array('customtag'=>$custom_tag));
+		CJFunctions::add_css_to_document($document, JUri::root(true).'/media/com_cjblog/css/cj.blog.min.css', $custom_tag);
 		CJFunctions::add_script(JUri::root(true).'/media/com_cjblog/js/cj.blog.min.js', $custom_tag);
 		
 		// reset article params
@@ -64,7 +66,8 @@ class PlgContentCjBlog extends JPlugin
 		// initiate blocks
 		$toolbarHtml 		= '';
 		$titleHtml			= '';
-		$authorInfoHtml		= '';
+		$infoHtmlTop		= '';
+		$infoHtmlBottom		= '';
 		$socialSharingHtml	= '';
 		
 		if($appParams->get('show_toolbar'))
@@ -86,13 +89,14 @@ class PlgContentCjBlog extends JPlugin
 								
 			if(!empty($results))
 			{
-				$socialSharingHtml = '<p class="text-muted">'.JText::_('COM_CJBLOG_SOCIAL_SHARING_DESC').'</p>' . implode(' ', $results);
+				$socialSharingHtml = '<hr Class="no-space-top"/><p class="text-muted">'.JText::_('COM_CJBLOG_SOCIAL_SHARING_DESC').'</p>' . implode(' ', $results);
 			}
 		}
 		//************************ END SOCIAL SHARING ***************************// 
 		
 		//************************* AUTHOR INFO *********************************//
-		if($appParams->get('show_author_info'))
+		$showArticleInfo = $appParams->get('show_article_info');
+		if($showArticleInfo)
 		{
 			require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
 			$profileApi 	= CjBlogApi::getProfileApi();
@@ -118,7 +122,17 @@ class PlgContentCjBlog extends JPlugin
 				$profile['about'] = $db->loadResult();
 			}
 			
-			$authorInfoHtml = CjBlogSiteHelper::renderLayout($layout.'.author_info', array('article'=>$article, 'profile'=>$profile,'params'=>$appParams));
+			$html = CjBlogSiteHelper::renderLayout($layout.'.article_info', array('article'=>$article, 'profile'=>$profile,'params'=>$appParams));
+			
+			if($showArticleInfo == 1 || $showArticleInfo == 3)
+			{
+				$infoHtmlTop = $html;
+			}
+			
+			if($showArticleInfo == 2 || $showArticleInfo == 3)
+			{
+				$infoHtmlBottom = $html;
+			}
 		}
 		//*********************** END AUTHOR INFO *********************************//
 		
@@ -150,7 +164,17 @@ class PlgContentCjBlog extends JPlugin
 		}
 		//*********************** END ARTICLE TAGS ********************************//
 		
-		$article->text 		= '<div id="cj-wrapper">' . $toolbarHtml . $titleHtml . $tagsHtml . $imagesHtml . $article->text . $socialSharingHtml . $authorInfoHtml . '</div>';
+		$article->text = 
+			'<div id="cj-wrapper">' . 
+				$toolbarHtml . 
+				$titleHtml . 
+				$tagsHtml . 
+				$imagesHtml . 
+				$infoHtmlTop .
+				$article->text . 
+				$infoHtmlBottom . 
+				$socialSharingHtml . 
+			'</div>';
 	}
 	
 	public function onContentBeforeSave($context, $article, $isNew)
