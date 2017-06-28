@@ -25,7 +25,7 @@
 			<arguments>
 				<dictionary>
 					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/pkg_cjblog.launch</value>
+					<value>&lt;project&gt;/.externalToolBuilders/plg_cjblog.launch</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
