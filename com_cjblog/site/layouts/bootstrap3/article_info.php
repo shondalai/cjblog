@@ -42,11 +42,13 @@ $userProfileUrl	= ($proUser ? $api->getUserProfileUrl($profileApp, $article->cre
 		<div class="media-body">
 			<ul class="list-unstyled list-inline forum-info">
 				<?php if($params->get('show_author_name')):?>
-				<li><?php echo JText::sprintf('COM_CJBLOG_ARTICLE_WRITTEN_BY', $article->author);?></li>
+				<li><?php echo JText::sprintf('COM_CJBLOG_ARTICLE_WRITTEN_BY', 
+						(($profileApp != 'none' && $proUser) ? JHtml::link($userProfileUrl, $article->author) : $article->author))?></li>
 				<?php endif;?>
 				
 				<?php if($params->get('show_category')):?>
-				<li><?php echo JText::sprintf('COM_CJBLOG_ARTICLE_CATEGORY', $article->category_title);?></li>
+				<li><?php echo JText::sprintf('COM_CJBLOG_ARTICLE_CATEGORY', 
+						JHtml::link(CjBlogHelperRoute::getCategoryRoute($article->catid), $article->category_title));?></li>
 				<?php endif;?>
 				
 				<?php if($params->get('show_date')):?>
