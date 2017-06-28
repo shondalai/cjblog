@@ -90,7 +90,7 @@ class CjBlogController extends JControllerLegacy
 		
 		if($loadBsCss)
 		{
-			CjLib::behavior('bootstrap', array('loadcss' => $loadCss, 'customtag'=>$custom_tag));
+			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss, 'customtag'=>$custom_tag));
 		}
 		
 		CJLib::behavior('bscore', array('customtag'=>$custom_tag));

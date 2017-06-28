@@ -27,17 +27,30 @@ class PlgContentCjBlog extends JPlugin
 			return true;
 		}
 
+		$appParams			= JComponentHelper::getParams('com_cjblog');
+		$custom_tag			= $appParams->get('custom_header_tags', true);
+		$loadBsCss 			= $appParams->get('load_bootstrap_css', false);
+		
+		$excludedCategories = $appParams->get('exclude_categories');
+		if( (is_numeric($excludedCategories) && $article->catid == $excludedCategories) || (is_array($excludedCategories) && in_array($article->catid, $excludedCategories)) )
+		{
+			return true;
+		}
+
 		require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
 		require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
 		CJLib::import('corejoomla.framework.core');
-		
-		$custom_tag			= false;
-		CJLib::behavior('bscore', array('customtag'=>$custom_tag));
+		$this->loadLanguage('com_cjblog', JPATH_ROOT);
+
 		CJFunctions::load_jquery(array('libs'=>array('fontawesome'), 'custom_tag'=>$custom_tag));
 		
-		$this->loadLanguage('com_cjblog', JPATH_ROOT);
-		$document = JFactory::getDocument();
-		$document->addStyleSheet(CJBLOG_MEDIA_URI.'css/cj.blog.min.css');
+		if($loadBsCss)
+		{
+			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss, 'customtag'=>$custom_tag));
+		}
+		
+		CJLib::behavior('bscore', array('customtag'=>$custom_tag));
+		CJFunctions::add_script(JUri::root(true).'/media/com_cjblog/js/cj.blog.min.js', $custom_tag);
 		
 		// reset article params
 		$article->params->set('show_title', 		false);
@@ -45,21 +58,14 @@ class PlgContentCjBlog extends JPlugin
 		$article->params->set('show_print_icon', 	false);
 		$article->params->set('show_email_icon', 	false);
 		$article->params->set('access-edit', 		false);
-
-		$appParams			= JComponentHelper::getParams('com_cjblog');
-		$layout				= $appParams->get('ui_layout', 'default');
+		
+		$layout	= $appParams->get('ui_layout', 'default');
 		
 		// initiate blocks
 		$toolbarHtml 		= '';
 		$titleHtml			= '';
 		$authorInfoHtml		= '';
 		$socialSharingHtml	= '';
-
-		$excludedCategories = $appParams->get('exclude_categories');
-		if( (is_numeric($excludedCategories) && $article->catid == $excludedCategories) || (is_array($excludedCategories) && in_array($article->catid, $excludedCategories)) )
-		{
-			return true;
-		}
 		
 		if($appParams->get('show_toolbar'))
 		{
