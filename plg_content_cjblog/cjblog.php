@@ -210,6 +210,11 @@ class PlgContentCjBlog extends JPlugin
 	
 		try
 		{
+			require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
+			require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
+			CJLib::import('corejoomla.framework.core');
+			$this->loadLanguage('com_cjblog', JPATH_ROOT);
+			
 			$record 				= new stdClass();
 			$record->id 			= $article->id;
 			$record->published		= $user->authorise('core.autoapprove', 'com_cjblog') ? $article->state : 3;
