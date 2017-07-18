@@ -12,6 +12,7 @@ require_once JPATH_ROOT.'/components/com_content/helpers/route.php';
 require_once JPATH_ROOT.'/components/com_cjblog/helpers/constants.php';
 require_once JPATH_ROOT.'/components/com_cjblog/helpers/route.php';
 require_once JPATH_ROOT.'/components/com_cjblog/helpers/helper.php';
+require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
 
 class PlgContentCjBlog extends JPlugin
 {
@@ -98,7 +99,6 @@ class PlgContentCjBlog extends JPlugin
 		$showArticleInfo = $appParams->get('show_article_info');
 		if($showArticleInfo)
 		{
-			require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
 			$profileApi 	= CjBlogApi::getProfileApi();
 			$profile 		= $profileApi->getUserProfile($article->created_by);
 			$aboutTextApp 	= $appParams->get('about_text_app', 'cjblog');
@@ -188,6 +188,10 @@ class PlgContentCjBlog extends JPlugin
 		if( ! $user->authorise('core.autoapprove', 'com_cjblog') )
 		{
 			$article->state = 0;
+		}
+		else 
+		{
+			$article->state = 1;
 		}
 		
 		return true;
