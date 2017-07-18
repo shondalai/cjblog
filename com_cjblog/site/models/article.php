@@ -528,4 +528,28 @@ class CjBlogModelArticle extends JModelItem
 		
 		return false;
 	}
+	
+	public function approve($status = 0, $key)
+	{
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true)
+			->update('#__cjblog_reviews')
+			->set('published = ' . (int) $status)
+			->where('published = 3')
+			->where('secret_key = ' . $db->q($key));
+		$db->setQuery($query);
+		
+		try
+		{
+			$db->execute();
+			$count = $db->getAffectedRows();
+			
+			return $count;
+		}
+		catch (Exception $e)
+		{
+			JError::raiseWarning(500, $e->getMessage());
+			return false;
+		}
+	}
 }

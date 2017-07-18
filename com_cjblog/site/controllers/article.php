@@ -70,6 +70,23 @@ class CjBlogControllerArticle extends ContentControllerArticle
 	
 	private function approval($status)
 	{
+		JFactory::getApplication();
+		$secret = $app->input->getCmd('key');
+		if(empty($secret))
+		{
+			throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 403);
+		}
 		
+		$model = $this->getModel('article');
+		$result = $model->approve($status, $key);
+		
+		if(!$result)
+		{
+			$app->enqueueMessage(JText::_('COM_CJBLOG_APPROVAL_FAILED'));
+		}
+		else 
+		{
+			$app->enqueueMessage(JText::_('COM_CJBLOG_APPROVAL_SUCCESS'));
+		}
 	}
 }
