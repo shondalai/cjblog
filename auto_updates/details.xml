@@ -63,4 +63,25 @@
 		
 		<targetplatform name="joomla" version="3.6"/>
 	</update>
+	<update>
+		<name>CjBlog</name>
+		<description>CjBlog Package</description>
+		<element>pkg_cjblog</element>
+		<type>package</type>
+		<version>2.0.2</version>
+
+		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
+		<downloads>
+			<downloadurl format="zip" type="full">https://www.corejoomla.com/index.php?option=com_cjupdater&amp;task=update.download&amp;extension=cjblog&amp;version=2.0.2</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+
+		<maintainer>corejoomla.com</maintainer>
+		<maintainerurl>http://www.corejoomla.com</maintainerurl>
+		<section>components</section>
+		
+		<targetplatform name="joomla" version="3.7"/>
+	</update>
 </updates>
