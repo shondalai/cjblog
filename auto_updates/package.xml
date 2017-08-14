@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <extensionset description="CjBlog Extensions List" name="CjBlog">
-	<extension client="site" description="CjBlog Package" detailsurl="https://www.corejoomla.com/media/autoupdates/cjblog/details.xml" element="pkg_cjblog" name="CjBlog Package" type="package" version="2.0.1"/>
+	<extension client="site" description="CjBlog Package" detailsurl="https://www.corejoomla.com/media/autoupdates/cjblog/details.xml" element="pkg_cjblog" name="CjBlog Package" type="package" version="2.0.2"/>
 </extensionset>

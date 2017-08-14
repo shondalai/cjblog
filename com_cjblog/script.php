@@ -117,6 +117,7 @@ class com_cjblogInstallerScript
 		$update_queries[] = 'ALTER TABLE `#__cjblog_badges` CHANGE COLUMN `published` `published` TINYINT(3) NOT NULL';
 		$update_queries[] = 'ALTER TABLE `#__cjblog_points` ADD COLUMN `title` VARCHAR(255) NOT NULL';
 		$update_queries[] = 'ALTER TABLE `#__cjblog_points` CHANGE COLUMN `published` `published` TINYINT(3) NOT NULL';
+		$update_queries[] = 'ALTER TABLE `#__cjblog_users` MODIFY COLUMN `about` MEDIUMTEXT DEFAULT NULL';
 		
 		$update_queries[] = 'ALTER TABLE `#__cjblog_points`
 			ADD COLUMN `checked_out` INT(10) UNSIGNED NOT NULL DEFAULT \'0\',
