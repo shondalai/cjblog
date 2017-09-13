@@ -9,7 +9,7 @@
 
 		<infourl title="CjBlog">https://www.corejoomla.com/products/cjblog.html</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">https://www.corejoomla.com/index.php?option=com_cjupdater&amp;task=update.download&amp;extension=cjblog&amp;version=2.0.2</downloadurl>
+			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -30,7 +30,7 @@
 
 		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">https://www.corejoomla.com/index.php?option=com_cjupdater&amp;task=update.download&amp;extension=cjblog&amp;version=2.0.2</downloadurl>
+			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -51,7 +51,7 @@
 
 		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">https://www.corejoomla.com/index.php?option=com_cjupdater&amp;task=update.download&amp;extension=cjblog&amp;version=2.0.2</downloadurl>
+			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -72,7 +72,7 @@
 
 		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">https://www.corejoomla.com/index.php?option=com_cjupdater&amp;task=update.download&amp;extension=cjblog&amp;version=2.0.2</downloadurl>
+			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
