@@ -290,6 +290,36 @@
 		<auto_approve>1</auto_approve>
 		<access>1</access>
 	</points_rule>
+	<points_rule>
+		<name>com_communitysurveys.new_survey</name>
+		<appname>com_communitysurveys</appname>
+		<title>New Survey</title>
+		<description>Points awarded for creating a survey.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communitysurveys.new_response</name>
+		<appname>com_communitysurveys</appname>
+		<title>Respond to a survey.</title>
+		<description>Points awarded for responding to a survey.</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
+	<points_rule>
+		<name>com_communitysurveys.credits</name>
+		<appname>com_communitysurveys</appname>
+		<title>Credits</title>
+		<description>Credits used for inviting users to take survey</description>
+		<points>0</points>
+		<state>1</state>
+		<auto_approve>1</auto_approve>
+		<access>1</access>
+	</points_rule>
 	
 	<badge_rule>
 		<rule_name>com_content.num_articles</rule_name>
