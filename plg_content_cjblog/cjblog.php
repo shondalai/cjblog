@@ -226,6 +226,23 @@ class PlgContentCjBlog extends JPlugin
 			
 			$db->insertObject('#__cjblog_reviews', $record);
 			
+			// Award points
+			$params = JComponentHelper::getParams('com_cjblog');
+			$pointsApp = $params->get('points_component', 'none');
+			
+			if($pointsApp == 'cjblog')
+			{
+				$api = new CjLibApi();
+				$options = array(
+					'function'=>'com_content.create', 
+					'reference'=>$article->id, 
+					'info'=>CjLibUtils::substrws($article->text, 256), 
+					'component'=>'com_content', 
+					'title'=>JText::sprintf('COM_CJBLOG_POINTS_NEW_ARTICLE', $article->title));
+				$api->awardPoints($pointsApp, $article->created_by, $options);
+			}
+			
+			// Send emails
 			$template = null;
 			$tag = JFactory::getLanguage()->getTag();
 			
