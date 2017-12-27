@@ -19,69 +19,7 @@
 		<maintainerurl>http://www.corejoomla.com</maintainerurl>
 		<section>components</section>
 		
-		<targetplatform name="joomla" version="3.4"/>
-	</update>
-	<update>
-		<name>CjBlog</name>
-		<description>CjBlog Package</description>
-		<element>pkg_cjblog</element>
-		<type>package</type>
-		<version>2.0.2</version>
-
-		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
-		<downloads>
-			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
-		</downloads>
-		<tags>
-			<tag>stable</tag>
-		</tags>
-
-		<maintainer>corejoomla.com</maintainer>
-		<maintainerurl>http://www.corejoomla.com</maintainerurl>
-		<section>components</section>
-		
-		<targetplatform name="joomla" version="3.5"/>
-	</update>
-	<update>
-		<name>CjBlog</name>
-		<description>CjBlog Package</description>
-		<element>pkg_cjblog</element>
-		<type>package</type>
-		<version>2.0.2</version>
-
-		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
-		<downloads>
-			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
-		</downloads>
-		<tags>
-			<tag>stable</tag>
-		</tags>
-
-		<maintainer>corejoomla.com</maintainer>
-		<maintainerurl>http://www.corejoomla.com</maintainerurl>
-		<section>components</section>
-		
-		<targetplatform name="joomla" version="3.6"/>
-	</update>
-	<update>
-		<name>CjBlog</name>
-		<description>CjBlog Package</description>
-		<element>pkg_cjblog</element>
-		<type>package</type>
-		<version>2.0.2</version>
-
-		<infourl title="CoreJoomla Home">http://www.corejoomla.com</infourl>
-		<downloads>
-			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.2/pkg_cjblog_v2.0.2.zip</downloadurl>
-		</downloads>
-		<tags>
-			<tag>stable</tag>
-		</tags>
-
-		<maintainer>corejoomla.com</maintainer>
-		<maintainerurl>http://www.corejoomla.com</maintainerurl>
-		<section>components</section>
-		
-		<targetplatform name="joomla" version="3.7"/>
+		<targetplatform name="joomla" version="3.[5678]"/>
+		<php_minimum>5.5</php_minimum>
 	</update>
 </updates>
