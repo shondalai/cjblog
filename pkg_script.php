@@ -41,7 +41,7 @@ class pkg_cjblogInstallerScript
 			
 			$manifest = json_decode($db->loadResult(), true);
 			$installedCjLibVersion = $manifest['version'];
-			if(!$installedCjLibVersion || version_compare(CQ_CJLIB_VER, $installedCjLibVersion, '>'))
+			if(!$installedCjLibVersion || version_compare(CJBLOG_CJLIB_VER, $installedCjLibVersion, '>'))
 			{
 				$installCjLib = true;
 			}
