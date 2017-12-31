@@ -25,7 +25,8 @@ class CjBlogModelForm extends ContentModelForm
 	{
 		parent::populateState();
 		
-		$params = JComponentHelper::getParams('com_content');
+		$app = JFactory::getApplication();
+		$params = $app->getParams();
 		$appParams = JComponentHelper::getParams('com_cjblog');
 		$params->merge($appParams);
 		
