@@ -360,7 +360,9 @@
 			<option value="easysocial">EasySocial</option>
 		</field>
 		<field name="about_text_app" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_ABOUT_APP_LABEL" description="COM_CJBLOG_FIELD_ABOUT_APP_DESC">
+			<option value="none">None</option>
 		    <option value="cjblog">CjBlog</option>
+		    <option value="cjforum">CjForum</option>
 			<option value="easyprofile">EasyProfile</option>
 		</field>
 		<field name="easyprofile_about_field" type="text" filter="cmd" default="author_info" label="COM_CJBLOG_FIELD_EASYPROFILE_ABOUT_FIELD_LABEL" description="COM_CJBLOG_FIELD_EASYPROFILE_ABOUT_FIELD_DESC" />

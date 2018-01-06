@@ -105,21 +105,45 @@ class PlgContentCjBlog extends JPlugin
 
 			// Check if author has pro-capabilities
 			$proUser = JFactory::getUser($article->created_by)->authorise('core.pro', 'com_cjblog');
-
-			if (!$proUser)
-			{
-				$profile['about'] = '';
-			}
-			elseif($aboutTextApp == 'easyprofile')
+			
+			if($proUser)
 			{
 				$db = JFactory::getDbo();
-				$query = $db->getQuery(true)
-					->select($db->qn($db->escape($appParams->get('easyprofile_about_field', 'author_info'))).' AS about')
-					->from('#__jsn_users')
-					->where('id = '. $article->created_by);
 				
-				$db->setQuery($query);
-				$profile['about'] = $db->loadResult();
+				switch ($aboutTextApp)
+				{
+					case 'cjblog':
+						// keep it as is
+						break;
+						
+					case 'cjforum':
+						$query = $db->getQuery(true)
+							->select($db->qn('about'))
+							->from('#__cjforum_users')
+							->where('id = '. $article->created_by);
+						
+						$db->setQuery($query);
+						$profile['about'] = $db->loadResult();
+						break;
+						
+					case 'easyprofile':
+						$query = $db->getQuery(true)
+							->select($db->qn($db->escape($appParams->get('easyprofile_about_field', 'author_info'))).' AS about')
+							->from('#__jsn_users')
+							->where('id = '. $article->created_by);
+						
+						$db->setQuery($query);
+						$profile['about'] = $db->loadResult();
+						break;
+						
+					default:
+						$profile['about'] = '';
+						break;
+				}
+			}
+			else
+			{
+				$profile['about'] = '';
 			}
 			
 			$html = CjBlogSiteHelper::renderLayout($layout.'.article_info', array('article'=>$article, 'profile'=>$profile,'params'=>$appParams));
