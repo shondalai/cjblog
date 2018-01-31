@@ -1,4 +1,6 @@
 <?php
+use Joomla\CMS\Helper\ContentHelper;
+
 /**
  * @package     corejoomla.administrator
  * @subpackage  plg_content_cjblog
@@ -63,6 +65,9 @@ class PlgContentCjBlog extends JPlugin
 		$article->params->set('access-edit', 		false);
 		
 		$layout	= $appParams->get('ui_layout', 'default');
+		$user = JFactory::getUser();
+		$return = ContentHelperRoute::getArticleRoute($article->slug, $article->catslug, $article->language);
+		$return = base64_encode($return);
 		
 		// initiate blocks
 		$toolbarHtml 		= '';
@@ -78,8 +83,20 @@ class PlgContentCjBlog extends JPlugin
 		
 		if($appParams->get('show_title'))
 		{
-			$titleHtml 		= '<div class="page-header no-space-top"><h2 class="no-space-top" itemprop="name">'.CjLibUtils::escape($article->title).'</h2></div>';
+		    $titleHtml = '<div class="page-header no-space-top"><h2 class="no-space-top" itemprop="name">';
+			$titleHtml .= CjLibUtils::escape($article->title);
+			if($user->authorise('core.edit', 'com_content.article.'.$article->id))
+			{
+			    $titleHtml = $titleHtml . '<small><sup>&nbsp;<a href="'.
+			     JRoute::_(ContentHelperRoute::getFormRoute($article->id).'&return='.$return).'">'.JText::_('JGLOBAL_EDIT').'</a></sup></small>';
+			}
+			$titleHtml .= '</h2></div>';
 		}
+		else 
+		{
+		    $titleHtml .= '<div>&nbsp;<a href="'.JRoute::_(ContentHelperRoute::getFormRoute($article->id).'&return='.$return).'">'.JText::_('JGLOBAL_EDIT').'</a></div>';
+		}
+		
 		
 		//*************************** SOCIAL SHARING *****************************//
 		if($params->get('social_sharing', 1) == 1)
