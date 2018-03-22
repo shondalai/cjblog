@@ -1,5 +1,6 @@
 <?php
 use Joomla\CMS\Helper\ContentHelper;
+use Imagine\Exception\Exception;
 
 /**
  * @package     corejoomla.administrator
@@ -348,6 +349,79 @@ class PlgContentCjBlog extends JPlugin
 		}
 	
 		return true;
+	}
+	
+	public function onContentChangeState($context, $pks, $value)
+	{
+	    if($context != 'com_content.article')
+	    {
+	        return;
+	    }
+	    
+	    // sync users
+	    $db = JFactory::getDbo();
+	    $userIds = array();
+	    $pks = Joomla\Utilities\ArrayHelper::toInteger($pks);
+	    
+	    try 
+	    {
+	        $query = $db->getQuery(true)
+	           ->select('a.created_by')
+	           ->from('#__content AS a')
+	           ->where('a.id IN ('.implode(',', $pks).')');
+	        $db->setQuery($query);
+	        $userIds = $db->loadColumn();
+	    }
+	    catch (Exception $e)
+	    {
+	        return;
+	    }
+	    
+	    try
+	    {
+	        $query =
+	        'insert into
+					#__cjblog_users (id, handle, points)
+					(
+						select
+							u.id, replace(u.username, \'-\', \'_\'), sum(p.points) as points
+						from
+							#__users AS u
+						left join
+							#__cjblog_points AS p on p.user_id = u.id
+						where
+							u.id IN ('.implode(',', $userIds).')
+						group by u.id
+					)
+				 on duplicate key
+    				update id = values(id)';
+	        
+	        $db->setQuery($query);
+	        $db->execute();
+	    }
+	    catch (Exception $e)
+	    {
+	        // 			throw new Exception($e);
+	    }
+	    
+	    // now update
+	    try
+	    {
+	        $query = $db->getQuery(true)
+	        ->update('#__cjblog_users AS u')
+	        ->set('points = (select sum(p.points) from #__cjblog_points AS p where p.user_id = u.id group by p.user_id)')
+	        ->set('num_articles = (select count(*) from #__content AS t where t.created_by = u.id and t.state = 1 group by t.created_by)')
+	        ->where('u.id IN ('.implode(',', $userIds).')');
+	        
+	        $db->setQuery($query);
+	        $db->execute();
+	    }
+	    catch (Exception $e)
+	    {
+	        // 			throw new Exception($e);
+	    }
+	    
+	    return false;
 	}
 }
 

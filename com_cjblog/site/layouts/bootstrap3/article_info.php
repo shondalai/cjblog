@@ -67,10 +67,10 @@ $userProfileUrl	= ($proUser ? $api->getUserProfileUrl($profileApp, $article->cre
 				<?php echo JText::sprintf('JGLOBAL_HITS_COUNT', $article->hits);?>
 			</span>
 			<?php endif;?>
+			
+			<?php if($proUser && !empty($profile['about']) && ($params->get('show_article_info') == 2 || $params->get('show_article_info') == 3)):?>
+        	<div class="text-muted author-about"><?php echo $profile['about'];?></div>
+        	<?php endif;?>
 		</div>
 	</div>
-	
-	<?php if($proUser && !empty($profile['about']) && ($params->get('show_article_info') == 2 || $params->get('show_article_info') == 3)):?>
-	<div class="text-muted author-about"><?php echo $profile['about'];?></div>
-	<?php endif;?>
 </div>
