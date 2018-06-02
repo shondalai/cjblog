@@ -194,6 +194,17 @@ $api = CjBlogApi::getProfileApi();
 		
 		<div class="panel panel-<?php echo $this->params->get('theme', 'default');?> center">
 			<div class="panel-body">
+				<?php if($this->params->get('enable_gdpr')):?>
+				<div class="gdpr_compliance">
+					<div class="checkbox inline form-check">
+						<input class="form-check-input required" type="checkbox" name="gdpr-check" id="compliance-check" value="1">
+						<label class="form-check-label" for="compliance-check">
+							<?php echo JText::sprintf('COM_CJBLOG_GDPR_COMPLIANCE_ACCEPTANCE', $this->params->get('gdpr_consent_url'));?>
+						</label>
+                    </div>
+				</div>
+				<?php endif;?>
+				
 				<div class="btn-group">
 					<button type="button" class="btn" onclick="Joomla.submitbutton('profile.cancel')">
 						<span class="icon-cancel"></span>&#160;<?php echo JText::_('JCANCEL')?>

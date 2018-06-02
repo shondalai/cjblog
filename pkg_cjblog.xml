@@ -9,9 +9,20 @@
 	<packager>Maverick</packager>
 	<packagerurl>http://www.corejoomla.com/</packagerurl>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<description/>
-		
-	<scriptfile>pkg_script.php</scriptfile>
+	<description><![CDATA[
+		<p>CjBlog Package:</p> 
+		<table class="table table-hover table-striped"> 
+		<tr><td>CjBlog Component</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog CjBlog Bloggers Module</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog CjBlog Categories Module</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog CjBlog Archive Module</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog CjBlog Apps Plugin</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog Content Plugin</td><td>Successfully installed</td></tr>
+		<tr><td>CjBlog User Plugin</td><td>Successfully installed</td></tr>
+		</table>
+		<p><strong style="color: red;">Please install CjLib component if not yet installed. Please enable the plugins from plugin manager.</strong></p>
+		<p>Thank you for using corejoomla&reg; software. Please add a rating and review at Joomla&reg; Extension Directory.</p>
+		]]></description>
 	
 	<files folder="packages">
 		<file id="cjblog" type="component">com_cjblog.zip</file>
