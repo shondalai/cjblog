@@ -5,11 +5,11 @@
 		<description>CjBlog Package</description>
 		<element>pkg_cjblog</element>
 		<type>package</type>
-		<version>2.0.3</version>
+		<version>2.1.0</version>
 
 		<infourl title="CjBlog">https://www.corejoomla.com/products/cjblog.html</infourl>
 		<downloads>
-			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/v2.0.3/pkg_cjblog_v2.0.3.zip</downloadurl>
+			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
