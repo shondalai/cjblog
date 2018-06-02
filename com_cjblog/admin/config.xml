@@ -297,6 +297,26 @@
 			<option value="0">JHIDE</option>
 		</field>
 	</fieldset>
+	
+	<fieldset name="gdpr" label="COM_CJBLOG_GDPR_LABEL">
+		<field name="enable_gdpr" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_ENABLE_GDPR_LABEL" description="COM_CJBLOG_FIELD_ENABLE_GDPR_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="gdpr_consent_url" type="text" label="COM_CJBLOG_FIELD_GDPR_CONSENT_URL_LABEL" description="COM_CJBLOG_FIELD_GDPR_CONSENT_URL_DESC"/>
+		<field name="gdpr_download_activity" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_ENABLE_DOWNLAOD_ACTIVITY_LABEL" description="COM_CJBLOG_FIELD_ENABLE_DOWNLAOD_ACTIVITY_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="gdpr_delete_profile" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_ENABLE_DELETE_PROFILE_LABEL" description="COM_CJBLOG_FIELD_ENABLE_DELETE_PROFILE_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="gdpr_delete_posts" type="radio" class="btn-group btn-group-yesno" default="1" label="COM_CJBLOG_FIELD_ENABLE_DELETE_POSTS_LABEL" description="COM_CJBLOG_FIELD_ENABLE_DELETE_POSTS_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
 
 	<fieldset name="integration" label="JGLOBAL_INTEGRATION_LABEL" description="COM_CJBLOG_CONFIG_INTEGRATION_SETTINGS_DESC">
 		<field name="load_bootstrap_css" type="radio" class="btn-group btn-group-yesno" default="0" label="Load Bootstrap CSS" description="Enable it if your template does not load bootstrap.">

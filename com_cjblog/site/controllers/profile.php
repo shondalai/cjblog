@@ -141,4 +141,52 @@ class CjBlogControllerProfile extends JControllerForm
 	{
 		return parent::save($key, $urlVar);
 	}
+	
+	public function download()
+	{
+	    if(JFactory::getUser()->guest)
+	    {
+	        throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
+	    }
+	    
+	    $model = $this->getModel('Profile');
+	    $filename = $model->getGDPRProfileData();
+	    
+	    header("Pragma: public");
+	    $now = gmdate("D, d M Y H:i:s");
+	    header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+	    header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
+	    header("Last-Modified: {$now} GMT");
+	    header("Content-Description: File Transfer");
+	    header("Content-Type: application/force-download");
+	    header("Content-type: application/octet-stream");
+	    header("Content-Type: application/download");
+	    header("Content-Disposition: attachment; filename=data_export_" . date("Y-m-d") . ".zip");
+	    header("Content-Transfer-Encoding: binary");
+	    header("Content-Length: ".filesize($filename));
+	    
+	    readfile($filename);
+	    jexit();
+	}
+	
+	public function delete()
+	{
+	    $user = JFactory::getUser();
+	    if($user->guest)
+	    {
+	        throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'));
+	    }
+	    
+	    $model = $this->getModel('Profile');
+	    $deleteData = $this->input->getInt('delete_data');
+	    
+	    if(!$model->deleteProfileAndData($deleteData))
+	    {
+	        $this->setRedirect(JRoute::_(CjBlogHelperRoute::getProfileRoute($user->id)), JText::_('COM_CJBLOG_ERROR_PERFORMING_ACTION'));
+	    }
+	    else
+	    {
+	        $this->setRedirect(JUri::root(true));
+	    }
+	}
 }
