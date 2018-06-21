@@ -326,15 +326,6 @@
 				<option value="1">JYES</option>
 			</field>
 		</fieldset>
-
-		<fieldset name="flood_control" label="COM_CJBLOG_CONFIG_FLOOD_CONTROL_LABEL" description="COM_CJBLOG_CONFIG_FLOOD_CONTROL_DESC">
-			<field name="max_articles_per_day" default="0" type="text" label="COM_CJBLOG_FIELD_MAX_ARTICLES_PER_DAY_LABEL" description="COM_CJBLOG_FIELD_MAX_ARTICLES_PER_DAY_DESC" />
-			<field name="max_replies_per_day" default="0" type="text" label="COM_CJBLOG_FIELD_MAX_REPLIES_PER_DAY_LABEL" description="COM_CJBLOG_FIELD_MAX_REPLIES_PER_DAY_DESC" />
-			<field name="max_replies_per_article" default="0" type="text" label="COM_CJBLOG_FIELD_MAX_REPLIES_PER_ARTICLE_LABEL" description="COM_CJBLOG_FIELD_MAX_REPLIES_PER_ARTICLE_DESC" />
-			<field name="new_user_status_days" default="0" type="text" label="COM_CJBLOG_FIELD_NEW_USER_STATUS_DAYS_LABEL" description="COM_CJBLOG_FIELD_NEW_USER_STATUS_DAYS_DESC" />
-			<field name="max_articles_per_new_user" default="0" type="text" label="COM_CJBLOG_FIELD_MAX_ARTICLES_PER_NEW_USER_LABEL" description="COM_CJBLOG_FIELD_MAX_ARTICLES_PER_NEW_USER_DESC" />
-			<field name="max_replies_per_new_user" default="0" type="text" label="COM_CJBLOG_FIELD_MAX_REPLIES_PER_NEW_USER_LABEL" description="COM_CJBLOG_FIELD_MAX_REPLIES_PER_NEW_USER_DESC" />
-		</fieldset>
 		
 		<fieldset name="integration" label="COM_MENUS_INTEGRATION_FIELDSET_LABEL">
 		    
