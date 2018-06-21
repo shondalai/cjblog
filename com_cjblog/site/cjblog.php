@@ -14,6 +14,7 @@ require_once JPATH_COMPONENT . '/helpers/route.php';
 require_once JPATH_COMPONENT . '/helpers/query.php';
 require_once JPATH_COMPONENT . '/lib/api.php';
 require_once JPATH_COMPONENT . '/helpers/helper.php';
+require_once JPATH_ROOT . '/components/com_content/helpers/association.php';
 require_once JPATH_ROOT . '/components/com_content/helpers/route.php';
 
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
