@@ -183,7 +183,7 @@
 			<option value="author">JAUTHOR</option>
 			<option value="hits">JGLOBAL_HITS</option>
 		</field>
-		<field name="date_format" type="text" size="15" label="JGLOBAL_DATE_FORMAT_LABEL" description="JGLOBAL_DATE_FORMAT_DESC" />
+		<field name="date_format" type="text" default="modern" size="15" label="JGLOBAL_DATE_FORMAT_LABEL" description="JGLOBAL_DATE_FORMAT_DESC" />
 		
 		<field name="list_description_limit" type="text" size="15" default="180" label="COM_CJBLOG_FIELD_INTRO_CHARS_LIMIT_LABEL" description="COM_CJBLOG_FIELD_INTRO_CHARS_LIMIT_DESC" />
 		<field name="list_thumbnail_size" type="text" size="15" default="96" label="COM_CJBLOG_FIELD_THUMBNAIL_SIZE_LABEL" description="COM_CJBLOG_FIELD_THUMBNAIL_SIZE_DESC" />

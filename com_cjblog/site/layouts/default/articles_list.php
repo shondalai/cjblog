@@ -26,6 +26,7 @@ $avatarApp		= $params->get('avatar_component', 'cjblog');
 $profileApp		= $params->get('profile_component', 'cjblog');
 $avatarSize 	= $params->get('list_avatar_size', 48);
 $thumbSize		= $params->get('list_thumbnail_size', 96);
+$dateFormat     = $params->get('date_format', 'human');
 
 // echo '<pre>'.print_r($params, true).'</pre>';
 
@@ -48,7 +49,7 @@ if(!empty($items))
 		$articleUrl 	= JRoute::_(ContentHelperRoute::getArticleRoute($slug, $catslug));
 		$categoryLink 	= JHtml::link(JRoute::_(CjBlogHelperRoute::getCategoryRoute($item->catid, $item->language)), $this->escape($item->category_title));
 		$authorLink 	= $params->get('list_link_author') ? JHtml::link($profileUrl, $authorName) : $authorName;
-		$articleDate	= CjLibDateUtils::getHumanReadableDate($item->created);
+		$articleDate	= $dateFormat == 'modern' ? CjLibDateUtils::getHumanReadableDate($item->created) : CjLibDateUtils::getLocalizedDate($item->created, $dateFormat);
 		?>
 		<div class="article-block">
 			<div class="media">
