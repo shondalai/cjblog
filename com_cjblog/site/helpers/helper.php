@@ -160,56 +160,63 @@ class CjBlogSiteHelper
 			$intro 		= $params->get('image_intro');
 			$imageFound = false;
 			$filename	= 'DUMMY';
-			$tmp		= $app->get('tmp_path');
+			$tmp		= $app->get('tmp_path') . DIRECTORY_SEPARATOR;
 
 			if(!empty($intro)) 
 			{
 				return $intro;
 			} 
-			
-			preg_match_all('/<img .*src=["|\']([^"|\']+)/i', $article->introtext.$article->fulltext, $matches);
-			foreach ($matches[1] as $key=>$file_path) 
+
+			try
 			{
-				$imageFound = $file_path;
-				$filename = str_replace(' ', '-', strtolower(JFile::makeSafe(basename($imageFound))));
-				
-				if(preg_match('/(http|https)?:\/\/.*$/i', strtolower($imageFound))) 
-				{
-					CjBlogSiteHelper::fetch_image($imageFound, $filename, $tmp, 'absolute', true);
-				}
-				else 
-				{
-					JFile::copy($imageFound, $tmp.'/'.$filename);
-				}
-				
-				$imgSize = @getimagesize($tmp.'/'.$filename);
-				if(!is_array($imgSize) || $imgSize[0] < 32 || $imgSize[1] < 32)
-				{
-					$imageFound = false;
-					continue;
-				}
-				
-				break;
+    			preg_match_all('/<img .*src=["|\']([^"|\']+)/i', $article->introtext.$article->fulltext, $matches);
+    			foreach ($matches[1] as $file_path) 
+    			{
+    			    $imageFound = str_replace(JUri::root(false), '/', $file_path);
+    				$filename = str_replace(' ', '-', strtolower(JFile::makeSafe(basename($imageFound))));
+    				if(JFile::getExt($filename) == 'jpeg')
+    				{
+    				    $filename = JFile::stripExt($filename) . '.jpg';
+    				}
+    				
+    				if(preg_match('/(http|https)?:\/\/.*$/i', strtolower($imageFound))) 
+    				{
+    					CjBlogSiteHelper::fetch_image($imageFound, $filename, $tmp, 'absolute', true);
+    				}
+    				else 
+    				{
+    					JFile::copy($imageFound, $tmp.$filename);
+    				}
+
+    				$imgSize = @getimagesize($tmp.$filename);
+    				if(!is_array($imgSize) || $imgSize[0] < 32 || $imgSize[1] < 32)
+    				{
+    					$imageFound = false;
+    					continue;
+    				}
+    				
+    				break;
+    			}
+    
+    			if($imageFound)
+    			{
+    				if(JFile::exists($tmp.$filename))
+    				{
+    				    $image = new Zebra_Image();
+    				    $image->jpeg_quality = 100;
+    				    $image->preserve_aspect_ratio = true;
+    				    $image->enlarge_smaller_images = true;
+    				    $image->preserve_time = true;
+    				    $image->handle_exif_orientation_tag = true;
+    				    $image->source_path = $tmp.$filename;
+    				    $image->target_path = CJBLOG_MEDIA_DIR.'thumbnails/'.$article->id.'_thumb.jpg';
+    			        $image->resize($size, $size, ZEBRA_IMAGE_CROP_CENTER);
+    				}
+    			}
 			}
-			
-			if($imageFound)
+			catch (Exception $e)
 			{
-				if(JFile::exists($tmp.'/'.$filename))
-				{
-					require_once CJLIB_PATH.'/framework/class.upload.php';
-					
-					$handle = new thumnail_upload($tmp.'/'.$filename);
-					$handle->file_new_name_body = $article->id.'_thumb';
-					$handle->image_ratio_y = true;
-					$handle->image_x = $size;
-					$handle->image_resize = true;
-					$handle->file_overwrite = true;
-					$handle->file_auto_rename = false;
-					$handle->image_convert = 'jpg';
-					$handle->jpeg_quality = 80;
-					$handle->process(CJBLOG_MEDIA_URI.'thumbnails/'.$article->id.'_thumb.jpg');
-// 					JFactory::getApplication()->enqueueMessage($handle->log);
-				}
+// 			    $app->enqueueMessage($e->getMessage());
 			}
 		}
 
