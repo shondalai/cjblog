@@ -330,7 +330,7 @@ class CjBlogModelProfile extends JModelAdmin
 				return false;
 			}
 			
-			$file_name = JFile::makeSafe(CJFunctions::generate_random_key(25, 'abcdefghijklmnopqrstuvwxyz1234567890'));
+			$file_name = JFile::makeSafe(CjLibUtils::getRandomKey(25, 'abcdefghijklmnopqrstuvwxyz1234567890'));
 			$file_path = CJBLOG_AVATAR_BASE_DIR.'original/'.$file_name.'.'.$temp_image_ext;
 			
 			if(! JFile::upload($temp_image_path, $file_path))
