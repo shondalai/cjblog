@@ -294,7 +294,7 @@ class CjBlogModelUser extends JModelAdmin
 		$app = JFactory::getApplication();
 		$assoc = JLanguageAssociations::isEnabled();
 		
-		if ($app->isSite() && $assoc && $this->getState('user.id'))
+		if ($app->isClient('site') && $assoc && $this->getState('user.id'))
 		{
 			$form->setFieldAttribute('language', 'readonly', 'true');
 			$form->setFieldAttribute('catid', 'readonly', 'true');

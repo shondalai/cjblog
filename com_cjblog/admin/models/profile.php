@@ -184,7 +184,7 @@ class CjBlogModelProfile extends JModelAdmin
 		
 		$app = JFactory::getApplication();
 		
-		if ($app->isSite() && $this->getState('profile.id'))
+		if ($app->isClient('site') && $this->getState('profile.id'))
 		{
 			$form->setFieldAttribute('handle', 'readonly', 'true');
 		}
