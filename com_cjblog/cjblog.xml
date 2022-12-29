@@ -4,11 +4,11 @@
     <name>CjBlog</name>
     <author>Maverick</author>
     <creationDate>2022-Dec-29</creationDate>
-    <copyright>(C) 2009 - 2016 corejoomla.com. All rights reserved.</copyright>
+    <copyright>(C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>admin@joomla.org</authorEmail>
-    <authorUrl>www.corejoomla.com</authorUrl>
-    <version>5.0.0</version>
+    <authorUrl>shondalai.com</authorUrl>
+    <version>3.0.0</version>
     <description>COM_CJBLOG_XML_DESCRIPTION</description>
     <files folder="site">
         <filename>cjblog.php</filename>

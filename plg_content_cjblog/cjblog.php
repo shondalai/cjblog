@@ -4,10 +4,10 @@ use Joomla\CMS\Helper\ContentHelper;
 use Imagine\Exception\Exception;
 
 /**
- * @package     corejoomla.administrator
+ * @package     CjBlog
  * @subpackage  plg_content_cjblog
  *
- * @copyright   Copyright (C) 2009 - 2016 corejoomla.com. All rights reserved.
+ * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined( '_JEXEC' ) or die;

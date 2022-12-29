@@ -1,15 +1,17 @@
 <?php
 /**
- * @package     corejoomla.administrator
+ * @package     CjBlog
  * @subpackage  plg_cjblog
  *
- * @copyright   Copyright (C) 2009 - 2017 corejoomla.com. All rights reserved.
+ * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
 
 class pkg_cjblogInstallerScript
 {
+	private $_minCjLibVersion = '3.2.9';
+
 	public function preflight( $type, $parent )
 	{
 		if(version_compare(PHP_VERSION, '5.5', '<'))
@@ -49,8 +51,11 @@ class pkg_cjblogInstallerScript
 		
 		if($installCjLib)
 		{
-			$cjLibVer	= version_compare(PHP_VERSION, '5.6', '<') ? '2.6.6' : '2.7.1'; 
-			$url 		= 'https://www.corejoomla.com/media/autoupdates/files/pkg_cjlib_v'.$cjLibVer.'.zip';
+			if(version_compare(PHP_VERSION, '5.6', '<')) {
+				$url 		= 'https://www.corejoomla.com/media/autoupdates/files/pkg_cjlib_v2.6.6.zip';
+			} else {
+				$url 		= 'https://github.com/shondalai/cjlib/releases/download/'.$this->_minCjLibVersion.'/cjlib_v'.$this->_minCjLibVersion.'.zip';
+			}
 			$package 	= $this->downloadPackage($url);
 			$return		= $this->installPackage($package);
 		}

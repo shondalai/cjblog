@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     corejoomla.administrator
+ * @package     CjBlog
  * @subpackage  com_cjblog
  *
- * @copyright   Copyright (C) 2009 - 2016 corejoomla.com. All rights reserved.
+ * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
@@ -66,7 +66,7 @@ $span		= !empty( $this->sidebar) ? 'col-md-10' : 'col-md-12';
 						<tr>
 							<td colspan="2" style="text-align: center;">
 								<?php if($this->version['status'] == 1):?>
-								<a href="http://www.corejoomla.com/downloads.html" target="_blank" class="btn btn-danger">
+								<a href="https://shondalai.com/my-account/downloads/" target="_blank" class="btn btn-danger">
 									<i class="icon-download icon-white"></i> <span style="color: white">Please Update</span>
 								</a>
 								<?php else:?>

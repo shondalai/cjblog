@@ -8,9 +8,9 @@ CjBlog is a free Joomla! component for creating awesome community blogs
 
 Read the documentation here:
 
-http://wiki.corejoomla.com/CjBlog
+https://docs.shondalai.com/cjblog/
 
-Copyright 2017 corejoomla.com
+Copyright 2023 BulaSikku Technologies Pvt. Ltd.
 
 Licensed under the Gnu GPL, Version 2.0 or later (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

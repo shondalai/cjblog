@@ -1,11 +1,10 @@
 <?php
 /**
- * @version		$Id: mod_cjbloggers.php 01 2012-05-19 11:37:09Z maverick $
- * @package		CoreJoomla.CjBlog
+ * @package		CjBlog
  * @subpackage	Modules.site
- * @copyright	Copyright (C) 2009 - 2016 corejoomla.com, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2009 - 2016 BulaSikku Technologies Pvt. Ltd., Inc. All rights reserved.
  * @author		Maverick
- * @link		http://www.corejoomla.com/
+ * @link		https://shondalai.com/
  * @license		License GNU General Public License version 2 or later
  */
 

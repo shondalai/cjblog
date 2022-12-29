@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     corejoomla.administrator
+ * @package     CjBlog
  * @subpackage  com_cjblog
  *
- * @copyright   Copyright (C) 2009 - 2016 corejoomla.com. All rights reserved.
+ * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('JPATH_PLATFORM') or die();

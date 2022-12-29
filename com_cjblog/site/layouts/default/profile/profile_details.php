@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     corejoomla.administrator
+ * @package     CjBlog
  * @subpackage  com_cjblog
  *
- * @copyright   Copyright (C) 2009 - 2014 corejoomla.com. All rights reserved.
+ * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
@@ -112,7 +112,7 @@ $age 				= JFactory::getDate($item->birthday)->diff(JFactory::getDate())->y;
                     	<?php if($params->get('gdpr_delete_profile')):?>
                 	    <div id="confirm-delete-profile" class="modal hide fade">
                         	<div class="modal-header">
-                        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
                         		<h4 id="confirmDeleteProfileLabel"><?php echo JText::_('COM_CJBLOG_CONFIRM_DELETE');?></h4>
                         	</div>
                         	<div class="modal-body">
