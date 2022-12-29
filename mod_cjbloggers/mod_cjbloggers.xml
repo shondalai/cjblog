@@ -4,7 +4,7 @@
     <name>CjBlog Bloggers Module</name>
     <author>Maverick</author>
     <creationDate>2022-Dec-29</creationDate>
-    <version>5.0.0</version>
+    <version>3.0.0</version>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <description>Displays articles category tree.</description>
     <files>

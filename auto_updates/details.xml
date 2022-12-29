@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <updates>
     <update>
         <name>CjBlog</name>
         <description>CjBlog Package</description>
         <element>pkg_cjblog</element>
         <type>package</type>
-        <version>2.1.0</version>
+        <version>3.0.0</version>
         <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
         <downloads>
-            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.0/cjblog_v3.0.0.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>
@@ -16,7 +17,7 @@
         <maintainer>Maverick</maintainer>
         <maintainerurl>https://shondalai.com</maintainerurl>
         <section>components</section>
-        <targetplatform name="joomla" version="3"/>
+        <targetplatform name="joomla" version="3"></targetplatform>
         <php_minimum>5.6</php_minimum>
     </update>
     <update>
@@ -24,10 +25,10 @@
         <description>CjBlog Package</description>
         <element>pkg_cjblog</element>
         <type>package</type>
-        <version>2.1.0</version>
+        <version>3.0.0</version>
         <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
         <downloads>
-            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.0/cjblog_v3.0.0.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>
@@ -35,7 +36,7 @@
         <maintainer>Maverick</maintainer>
         <maintainerurl>https://shondalai.com</maintainerurl>
         <section>components</section>
-        <targetplatform name="joomla" version="4"/>
+        <targetplatform name="joomla" version="4"></targetplatform>
         <php_minimum>7.0</php_minimum>
     </update>
 </updates>

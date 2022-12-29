@@ -8,7 +8,7 @@
     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
     <authorEmail>support@shondalai.com</authorEmail>
     <authorUrl>https://shondalai.com</authorUrl>
-    <version>5.0.0</version>
+    <version>3.0.0</version>
     <description>CjBlog Archive Module</description>
     <files>
         <filename>mod_cjblogarchive.xml</filename>

@@ -5,12 +5,13 @@
     <author>Maverick</author>
     <creationDate>2022-Dec-29</creationDate>
     <packagename>cjblog</packagename>
-    <version>5.0.0</version>
+    <version>3.0.0</version>
     <url>https://shondalai.com/</url>
     <packager>Maverick</packager>
     <packagerurl>https://shondalai.com/</packagerurl>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>        <![CDATA[
+    <description>
+        <![CDATA[
 		<p>CjBlog Package:</p> 
 		<table class="table table-hover table-striped"> 
 		<tr><td>CjBlog Component</td><td>Successfully installed</td></tr>
@@ -23,8 +24,8 @@
 		</table>
 		<p><strong style="color: red;">Please install CjLib component if not yet installed. Please enable the plugins from plugin manager.</strong></p>
 		<p>Thank you for using shondalai.com&reg; software. Please add a rating and review at Joomla&reg; Extension Directory.</p>
-]]>
-</description>
+        ]]>
+    </description>
     <files folder="packages">
         <file id="cjblog" type="component">com_cjblog.zip</file>
         <file client="site" id="cjblog" type="module">mod_cjbloggers.zip</file>
