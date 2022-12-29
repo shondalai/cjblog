@@ -43,7 +43,7 @@ class CjBlogHelperQuery
 			case 'date':
 				$orderby = $queryDate;
 				break;
-			
+
 			case 'rdate':
 				$orderby = $queryDate . ' DESC ';
 				break;
@@ -91,18 +91,20 @@ class CjBlogHelperQuery
 	public static function getQueryDate ($orderDate)
 	{
 		$db = JFactory::getDbo();
-		
-		switch ($orderDate)
-		{
+
+		switch ($orderDate) {
 			case 'modified':
-				$queryDate = ' CASE WHEN a.modified = ' . $db->quote($db->getNullDate()) . ' THEN a.created ELSE a.modified END';
+				$queryDate = ' CASE WHEN a.modified IS NULL THEN a.created ELSE a.modified END';
 				break;
-			
-			// use created if publish_up is not set
+
+			// Use created if publish_up is not set
 			case 'published':
-				$queryDate = ' CASE WHEN a.publish_up = ' . $db->quote($db->getNullDate()) . ' THEN a.created ELSE a.publish_up END ';
+				$queryDate = ' CASE WHEN a.publish_up IS NULL THEN a.created ELSE a.publish_up END ';
 				break;
-			
+
+			case 'unpublished':
+				$queryDate = ' CASE WHEN a.publish_down IS NULL THEN a.created ELSE a.publish_down END ';
+				break;
 			case 'created':
 			default:
 				$queryDate = ' a.created ';

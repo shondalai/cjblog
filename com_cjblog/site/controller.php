@@ -77,24 +77,33 @@ class CjBlogController extends JControllerLegacy
 		if ($vName == 'form' && ! $this->checkEditId('com_cjblog.edit.article', $id))
 		{
 			// Somehow the person just went to the form - we don't allow that.
-			return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
+		    throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id), 403);
 		}
-		
-		if($vName == 'form')
-		{
-			JHtml::_('behavior.framework');
-		}
-		
+
 		$params = JComponentHelper::getParams('com_cjblog');
 		$loadBsCss = $params->get('load_bootstrap_css', false);
-		
-		if($loadBsCss)
-		{
-			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss, 'customtag'=>$custom_tag));
+
+		if(CJBLOG_MAJOR_VERSION < 4) {
+			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss));
+			CjScript::_('fontawesome', array('custom'=>$custom_tag));
+			JHtml::_('script', 'system/core.js', false, true);
+
+			if($params->get('ui_layout', 'default') == 'default')
+			{
+				CJLib::behavior('bscore', array('customtag'=>$custom_tag));
+			}
+			if($vName == 'form')
+			{
+				JHtml::_('behavior.framework');
+			}
+		} else {
+			$wa = $document->getWebAssetManager();
+			$wa
+				->useScript('jquery')
+				->useScript('bootstrap.tab')
+				->useScript('bootstrap.dropdown')
+				->useStyle('fontawesome');
 		}
-		
-		CJLib::behavior('bscore', array('customtag'=>$custom_tag));
-		CJFunctions::load_jquery(array('libs'=>array('fontawesome'), 'custom_tag'=>$custom_tag));
 		
 		if ($vName == 'profileform')
 		{

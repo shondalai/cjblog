@@ -38,16 +38,17 @@ class CjBlogViewUsers extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
-
-			return false;
+		    throw new Exception(implode("\n", $errors), 500);
 		}
 
 		// Include the component HTML helpers.
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 		$this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		if(CJBLOG_MAJOR_VERSION < 4) {
+		    $this->sidebar = JHtmlSidebar::render();
+		}
+		
 		parent::display($tpl);
 	}
 
@@ -79,19 +80,6 @@ class CjBlogViewUsers extends JViewLegacy
 			JToolbarHelper::unpublish('users.block', 'COM_CJBLOG_TOOLBAR_BLOCK', true);
 			JToolbarHelper::custom('users.unblock', 'unblock.png', 'unblock_f2.png', 'COM_CJBLOG_TOOLBAR_UNBLOCK', true);
 			JToolbarHelper::divider();
-		}
-
-		// Add a batch button
-		if ($user->authorise('core.create', 'com_cjblog') && $user->authorise('core.edit', 'com_cjblog') && $user->authorise('core.edit.state', 'com_cjblog'))
-		{
-			JHtml::_('bootstrap.modal', 'collapseModal');
-			$title = JText::_('JTOOLBAR_BATCH');
-
-			// Instantiate a new JLayoutFile instance and render the batch button
-			$layout = new JLayoutFile('joomla.toolbar.batch');
-
-			$dhtml = $layout->render(array('title' => $title));
-			$bar->appendButton('Custom', $dhtml, 'batch');
 		}
 		
 		if ($canDo->get('core.admin'))

@@ -9,6 +9,8 @@
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
+
 class JFormFieldPointsrule extends JFormField
 {
 	public $type = 'Pointsrule';
@@ -19,16 +21,13 @@ class JFormFieldPointsrule extends JFormField
 		$groups = $this->getGroups();
 		$excluded = $this->getExcluded();
 		$link = 'index.php?option=com_cjblog&amp;view=pointsrules&amp;layout=modal&amp;tmpl=component&amp;field=' . $this->id
-			. (isset($groups) ? ('&amp;groups=' . base64_encode(json_encode($groups))) : '')
-			. (isset($excluded) ? ('&amp;excluded=' . base64_encode(json_encode($excluded))) : '');
+		        . (isset($groups) ? ('&amp;groups=' . base64_encode(json_encode($groups))) : '')
+		        . (isset($excluded) ? ('&amp;excluded=' . base64_encode(json_encode($excluded))) : '');
 
 		// Initialize some field attributes.
 		$attr = !empty($this->class) ? ' class="' . $this->class . '"' : '';
 		$attr .= !empty($this->size) ? ' size="' . $this->size . '"' : '';
 		$attr .= $this->required ? ' required' : '';
-
-		// Load the modal behavior script.
-		JHtml::_('behavior.modal', 'a.modal_' . $this->id);
 
 		// Build the script.
 		$script = array();
@@ -40,7 +39,13 @@ class JFormFieldPointsrule extends JFormField
 		$script[] = '			document.getElementById("' . $this->id . '").className = document.getElementById("' . $this->id . '").className.replace(" invalid" , "");';
 		$script[] = '			' . $this->onchange;
 		$script[] = '		}';
-		$script[] = '		SqueezeBox.close();';
+
+		if(CF_MAJOR_VERSION < 4) {
+			$script[] = '		SqueezeBox.close();';
+		} else {
+			$script[] = 'var modal = bootstrap.Modal.getInstance(document.getElementById("rulesModal_jform_rule_id")); modal.hide();';
+		}
+
 		$script[] = '	}';
 
 		// Add the script to the document head.
@@ -67,15 +72,33 @@ class JFormFieldPointsrule extends JFormField
 		}
 
 		// Create a dummy text field with the user name.
-		$html[] = '<div class="input-append">';
-		$html[] = '	<input type="text" id="' . $this->id . '" value="' . htmlspecialchars($table->title, ENT_COMPAT, 'UTF-8') . '"' . ' readonly' . $attr . ' />';
+		$html[] = '<div class="input-append input-group">';
+		$html[] = '<input type="text" id="' . $this->id . '" value="' . htmlspecialchars($table->title, ENT_COMPAT, 'UTF-8') . '"' . ' class="form-control" readonly' . $attr . ' />';
 
 		// Create the user select button.
-		if ($this->readonly === false)
-		{
-			$html[] = '		<a class="btn btn-primary modal_' . $this->id . '" title="' . JText::_('JLIB_FORM_CHANGE_USER') . '" href="' . $link . '"'
-				. ' rel="{handler: \'iframe\', size: {x: 800, y: 500}}">';
-			$html[] = '<i class="icon-folder-open"></i></a>';
+		if ($this->readonly === false) {
+			if (CF_MAJOR_VERSION < 4) {
+				JHtml::_('behavior.modal', 'a.modal_' . $this->id);
+
+				$html[] = '<a class="btn btn-primary modal_' . $this->id . '" title="' . JText::_('COM_CJBLOG_SELECT_A_RULE') . '" href="' . $link . '"' . ' rel="{handler: \'iframe\', size: {x: 800, y: 500}}">';
+				$html[] = '<i class="icon-folder-open"></i></a>';
+			} else {
+				$html[] = HTMLHelper::_('bootstrap.renderModal', 'rulesModal_' . $this->id, array(
+					'url' => $link,
+					'title' => JText::_('COM_CJBLOG_SELECT_A_RULE'),
+					'closeButton' => true,
+					'height' => '100%',
+					'width' => '100%',
+					'modalWidth' => 80,
+					'bodyHeight' => 60,
+					'footer' => '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . JText::_('JCANCEL') . '</button>'
+				));
+
+				$html[] = '<button type="button" data-bs-toggle="modal" data-bs-target="#rulesModal_jform_rule_id" class="btn btn-primary button-select" title="'.JText::_('COM_CJBLOG_SELECT_A_RULE').'">
+                				<span class="icon-folder-open icon-white" aria-hidden="true"></span>
+                				<span class="visually-hidden">'.JText::_('COM_CJBLOG_SELECT_A_RULE').'</span>
+                			</button>';
+			}
 		}
 
 		$html[] = '</div>';

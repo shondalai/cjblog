@@ -17,8 +17,8 @@
 			</field>
 			<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" size="1" />
 		
-			<field name="asset_name" type="text" label="COM_CJBLOG_FIELD_ASSET_NAME_LABEL" description="COM_CJBLOG_FIELD_ASSET_NAME_DESC" />
-			<field name="rule_name" type="text" label="COM_CJBLOG_FIELD_RULE_NAME_LABEL" description="COM_CJBLOG_FIELD_RULE_NAME_DESC" />
+			<field name="asset_name" type="text" label="COM_CJBLOG_FIELD_ASSET_NAME_LABEL" description="COM_CJBLOG_FIELD_ASSET_NAME_DESC" class="inputbox" />
+			<field name="rule_name" type="text" label="COM_CJBLOG_FIELD_RULE_NAME_LABEL" description="COM_CJBLOG_FIELD_RULE_NAME_DESC" class="inputbox" />
 		</fieldset>
 
 		<field name="created" type="calendar" label="COM_CJBLOG_FIELD_CREATED_LABEL"  description="COM_CJBLOG_FIELD_CREATED_DESC" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />

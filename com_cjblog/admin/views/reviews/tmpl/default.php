@@ -8,12 +8,15 @@
  */
 defined('_JEXEC') or die();
 
+use Joomla\CMS\HTML\Helpers\StringHelper;
+
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
-
+if(CJBLOG_MAJOR_VERSION < 4) {
+    JHtml::_('bootstrap.tooltip');
+    JHtml::_('behavior.multiselect');
+    JHtml::_('formbehavior.chosen', 'select');
+}
 $app 		= JFactory::getApplication();
 $user 		= JFactory::getUser();
 $userId 	= $user->id;
@@ -30,45 +33,27 @@ if ($saveOrder)
 }
 
 $sortFields = $this->getSortFields();
+$rowClass   = CJBLOG_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';
+$span		= !empty( $this->sidebar) ? 'col-md-10' : 'col-md-12';
 ?>
-<script type="text/javascript">
-	Joomla.orderTable = function()
-	{
-		table 		= document.getElementById("sortTable");
-		direction 	= document.getElementById("directionTable");
-		order 		= table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>')
-		{
-			dirn = 'asc';
-		}
-		else
-		{
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
-
-<form
-	action="<?php echo JRoute::_('index.php?option=com_cjblog&view=badgerules'); ?>"
-	method="post" name="adminForm" id="adminForm">
-<?php if (!empty( $this->sidebar)) : ?>
-	<div id="j-sidebar-container" class="span2">
+<div id="cj-wrapper" class="<?php echo $rowClass;?>">
+	<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="col-md-2">
 		<?php echo $this->sidebar; ?>
 	</div>
-	<div id="j-main-container" class="span10">
-<?php else : ?>
+	<?php endif;?>
 	<div id="j-main-container">
-<?php endif;?>
-		<?php
-		// Search tools bar
-		echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
-		?>
-		<?php if (empty($this->items)) : ?>
+		<form action="<?php echo JRoute::_('index.php?option=com_cjblog&view=badgerules'); ?>" method="post" name="adminForm" id="adminForm">
+    		<?php
+    		// Search tools bar
+    		echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
+    		?>
+    		
+    		<?php if (empty($this->items)) : ?>
 			<div class="alert alert-no-items">
 				<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
-		<?php else : ?>
+			<?php else : ?>
 			<table class="table table-striped" id="badgeList">
 				<thead>
 					<tr>
@@ -170,7 +155,7 @@ $sortFields = $this->getSortFields();
 										<?php echo $item->title; ?>
 									</a>
 								<?php endif; ?>
-								<small class="muted text-muted"><?php echo JString::substr(strip_tags($item->description), 0, 120);?></small>
+								<small class="muted text-muted"><?php echo StringHelper::substr(strip_tags($item->description), 0, 120);?></small>
 							</div>
 						</td>
 						<td class="small hidden-phone">
@@ -193,12 +178,12 @@ $sortFields = $this->getSortFields();
 				?>
 				</tbody>
 			</table>
-		<?php endif; ?>
-		<?php echo $this->pagination->getListFooter(); ?>
+			<?php endif; ?>
+			<?php echo $this->pagination->getListFooter(); ?>
 
-		<input type="hidden" name="task" value="" /> 
-		<input type="hidden" name="boxchecked" value="0" />
-		<?php echo JHtml::_('form.token'); ?>
+    		<input type="hidden" name="task" value="" /> 
+    		<input type="hidden" name="boxchecked" value="0" />
+    		<?php echo JHtml::_('form.token'); ?>
+		</form>
 	</div>
-
-</form>
+</div>

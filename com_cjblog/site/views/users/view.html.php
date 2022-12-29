@@ -33,13 +33,12 @@ class CjBlogViewUsers extends JViewLegacy
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->canDo		 = JHelperContent::getActions('com_cjblog');
 		$this->params 		 = &$params;
-		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));
+		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx', ''));
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
-			return false;
+		    throw new Exception(implode("\n", $errors), 500);
 		}
 
 		parent::display($tpl);

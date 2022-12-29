@@ -9,7 +9,6 @@
 defined('_JEXEC') or die();
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
-JHtml::_('behavior.caption');
 
 $user    			= JFactory::getUser();
 $layout 			= $this->params->get('ui_layout', 'default');

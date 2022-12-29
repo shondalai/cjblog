@@ -71,6 +71,7 @@
 #cj-wrapper .cj-article-info {margin-right: 2px; display: inline-block;}
 #cj-wrapper .author-about {margin-top: 10px;}
 #cj-wrapper .article-info {margin-top: 20px; margin-bottom: 10px;}
+#cj-wrapper #cb-navbar-collapse ol, #cj-wrapper #cb-navbar-collapse ul {overflow: visible;}
 
 .no-space-left {margin-left: 0; padding-left: 0;}
 .no-space-right {margin-right: 0; padding-right: 0;}

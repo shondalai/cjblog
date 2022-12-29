@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="2.5.0" method="upgrade" client="site">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<extension client="site" method="upgrade" type="module" version="2.5.0">
     <name>CjBlog Bloggers Module</name>
     <author>Maverick</author>
-    <creationDate>2013-Oct-02</creationDate>
-    <version>2.0.0</version>
+    <creationDate>2022-Dec-29</creationDate>
+    <version>5.0.0</version>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <description>Displays articles category tree.</description>
     <files>
@@ -12,27 +13,28 @@
         <filename>helper.php</filename>
         <filename>index.html</filename>
     </files>
-	<config>
-		<fields name="params">
-			<fieldset name="basic">
-				<field name="list_type" type="list" default="2" label="List Type" description="Select which listing to be displayed, i.e. by join date, number of articles or number of profile views.">
-					<option value="1">Latest Bloggers</option>
-					<option value="2">Top Bloggers</option>
-					<option value="3">Popular Bloggers</option>
-				</field>
-				<field name="count" type="text" default="10" label="Count" description="Enter how many users to be displayed."/>
-				<field name="avatar_size" type="text" default="48" label="Avatar Size" description="Enter the size of the avatar."/>
-				<field name="exclude_user_groups" type="usergroup" multiple="multiple" size="10" label="Exclude User Groups" description="Exclude user groups from displaying in module"/>
-			</fieldset>
-			<fieldset name="advanced">
-				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC"> 
-					<option value="1">JGLOBAL_USE_GLOBAL</option>
-					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-				</field>
-				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
-			</fieldset>
-		</fields>
-	</config>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field default="2" description="Select which listing to be displayed, i.e. by join date, number of articles or number of profile views." label="List Type" name="list_type" type="list">
+                    <option value="1">Latest Bloggers</option>
+                    <option value="2">Top Bloggers</option>
+                    <option value="3">Popular Bloggers</option>
+                </field>
+                <field default="10" description="Enter how many users to be displayed." label="Count" name="count" type="text"></field>
+                <field default="48" description="Enter the size of the avatar." label="Avatar Size" name="avatar_size" type="text"></field>
+                <field description="Exclude user groups from displaying in module" label="Exclude User Groups" multiple="multiple" name="exclude_user_groups" size="10" type="usergroup"></field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field description="JFIELD_ALT_MODULE_LAYOUT_DESC" label="JFIELD_ALT_LAYOUT_LABEL" name="layout" type="modulelayout"></field>
+                <field description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" name="moduleclass_sfx" type="text"></field>
+                <field default="1" description="COM_MODULES_FIELD_CACHING_DESC" label="COM_MODULES_FIELD_CACHING_LABEL" name="cache" type="list">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field default="900" description="COM_MODULES_FIELD_CACHE_TIME_DESC" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" name="cache_time" type="text"></field>
+            </fieldset>
+        </fields>
+    </config>
 </extension>
+

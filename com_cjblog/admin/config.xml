@@ -344,6 +344,7 @@
 		<field name="profile_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_PROFILE_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_PROFILE_COMPONENT_DESC">
 			<option value="none">None</option>
 			<option value="cjblog">CjBlog</option>
+			<option value="sociable">Sociable</option>
 			<option value="cjforum">CjForum</option>
 			<option value="jomsocial">JomSocial</option>
 			<option value="easysocial">EasySocial</option>
@@ -356,6 +357,7 @@
 		<field name="avatar_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_AVATAR_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_AVATAR_COMPONENT_DESC">
 			<option value="none">None</option>
 			<option value="cjblog">CjBlog</option>
+			<option value="sociable">Sociable</option>
 			<option value="cjforum">CjForum</option>
 			<option value="jomsocial">JomSocial</option>
 			<option value="easysocial">EasySocial</option>
@@ -368,6 +370,7 @@
 		<field name="points_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_POINTS_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_POINTS_COMPONENT_DESC">
 			<option value="none">None</option>
 			<option value="cjblog">CjBlog</option>
+			<option value="sociable">Sociable</option>
 			<option value="cjforum">CjForum</option>
 			<option value="jomsocial">JomSocial</option>
 			<option value="easysocial">EasySocial</option>
@@ -375,12 +378,14 @@
 		</field>
 		<field name="stream_component" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_STREAM_COMPONENT_LABEL" description="COM_CJBLOG_FIELD_STREAM_COMPONENT_DESC">
 			<option value="none">None</option>
+			<option value="sociable">Sociable</option>
 			<option value="cjforum">CjForum</option>
 			<option value="jomsocial">JomSocial</option>
 			<option value="easysocial">EasySocial</option>
 		</field>
 		<field name="about_text_app" type="list" class="btn-group" default="cjblog" label="COM_CJBLOG_FIELD_ABOUT_APP_LABEL" description="COM_CJBLOG_FIELD_ABOUT_APP_DESC">
 			<option value="none">None</option>
+			<option value="sociable">Sociable</option>
 		    <option value="cjblog">CjBlog</option>
 		    <option value="cjforum">CjForum</option>
 			<option value="easyprofile">EasyProfile</option>

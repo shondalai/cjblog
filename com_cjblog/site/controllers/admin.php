@@ -36,7 +36,7 @@ class CjBlogControllerAdmin extends JControllerAdmin
 				'unfeatured' => 0
 		);
 		$task = $this->getTask();
-		$value = JArrayHelper::getValue($values, $task, 0, 'int');
+		$value = \Joomla\Utilities\ArrayHelper::getValue($values, $task, 0, 'int');
 		
 		// Access checks.
 		foreach ($ids as $i => $id)
@@ -45,13 +45,13 @@ class CjBlogControllerAdmin extends JControllerAdmin
 			{
 				// Prune items that you can't change.
 				unset($ids[$i]);
-				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				throw new Exception(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
 			}
 		}
 		
 		if (empty($ids))
 		{
-			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
+		    throw new Exception(JText::_('JERROR_NO_ITEMS_SELECTED'), 400);
 		}
 		else
 		{
@@ -61,7 +61,7 @@ class CjBlogControllerAdmin extends JControllerAdmin
 			// Publish the items.
 			if (! $model->featured($ids, $value))
 			{
-				JError::raiseWarning(500, $model->getError());
+			    throw new Exception($model->getError(), 500);
 			}
 		}
 		

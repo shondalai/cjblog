@@ -25,7 +25,6 @@ class CjBlogViewProfile extends JViewLegacy
 	{
 		$app = JFactory::getApplication();
 		$user = JFactory::getUser();
-		$dispatcher = JEventDispatcher::getInstance();
 		
 		$this->item  = $this->get('Item');
 		$this->print = $app->input->getBool('print');
@@ -113,23 +112,23 @@ class CjBlogViewProfile extends JViewLegacy
 		// Process the content plugins for article description
 		$item->text = $item->about;
 		JPluginHelper::importPlugin('content');
-		$dispatcher->trigger('onContentPrepare', array('com_cjblog.profile',	&$item,	&$this->params,	$offset));
+		$app->triggerEvent('onContentPrepare', array('com_cjblog.profile',	&$item,	&$this->params,	$offset));
 		
 		$item->event = new stdClass();
-		$results = $dispatcher->trigger('onContentAfterTitle', array('com_cjblog.profile', &$item, &$this->params, $offset));
+		$results = $app->triggerEvent('onContentAfterTitle', array('com_cjblog.profile', &$item, &$this->params, $offset));
 		$item->event->afterDisplayTitle = trim(implode("\n", $results));
 		
-		$results = $dispatcher->trigger('onContentBeforeIntro', array('com_cjblog.profile', &$item, &$this->params, $offset));
+		$results = $app->triggerEvent('onContentBeforeIntro', array('com_cjblog.profile', &$item, &$this->params, $offset));
 		$item->event->beforeDisplayContent = trim(implode("\n", $results));
 		
-		$results = $dispatcher->trigger('onContentAfterIntro', array('com_cjblog.profile', &$item, &$this->params, $offset));
+		$results = $app->triggerEvent('onContentAfterIntro', array('com_cjblog.profile', &$item, &$this->params, $offset));
 		$item->event->afterDisplayContent = trim(implode("\n", $results));
 		
 		JPluginHelper::importPlugin('cjblog');
-		$dispatcher->trigger('onProfilePrepareContent', array('com_cjblog.profile', &$item, &$this->params, $offset));
+		$app->triggerEvent('onProfilePrepareContent', array('com_cjblog.profile', &$item, &$this->params, $offset));
 		
 		// Escape strings for HTML output
-		$this->pageclass_sfx = htmlspecialchars($this->item->params->get('pageclass_sfx'));
+		$this->pageclass_sfx = htmlspecialchars($this->item->params->get('pageclass_sfx', ''));
 		
 		// Trigger CjBlog Apps
 		JPluginHelper::importPlugin('cjblogapps');
@@ -138,7 +137,7 @@ class CjBlogViewProfile extends JViewLegacy
 		$apps->tabs 	= array();
 		$apps->content 	= '';
 		
-		$dispatcher->trigger('onProfileDisplay', array('com_cjblog.profile', &$item, &$this->params, &$apps));
+		$app->triggerEvent('onProfileDisplay', array('com_cjblog.profile', &$item, &$this->params, &$apps));
 		$this->apps 	= $apps;
 		
 		$this->_prepareDocument();

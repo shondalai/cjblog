@@ -141,20 +141,22 @@ class CjBlogViewCategory extends JViewCategory
 		parent::prepareDocument();
 		$menu = $this->menu;
 		$id = (int) @$menu->query['id'];
-		
-		if ($menu && ($menu->query['option'] != 'com_cjblog' || $menu->query['view'] == 'article' || $id != $this->category->id))
+
+		if ($menu && (!isset($menu->query['option']) || $menu->query['option'] !== 'com_content' || $menu->query['view'] === 'article'
+		              || $id != $this->category->id))
 		{
 			$path = array(array('title' => $this->category->title, 'link' => ''));
 			$category = $this->category->getParent();
-			
-			while (($menu->query['option'] != 'com_cjblog' || $menu->query['view'] == 'article' || $id != $category->id) && $category->id > 1)
+
+			while ($category !== null && $category->id !== 'root'
+			       && (!isset($menu->query['option']) || $menu->query['option'] !== 'com_content' || $menu->query['view'] === 'article' || $id != $category->id))
 			{
 				$path[] = array('title' => $category->title, 'link' => CjBlogHelperRoute::getCategoryRoute($category->id));
 				$category = $category->getParent();
 			}
-			
+
 			$path = array_reverse($path);
-			
+
 			foreach ($path as $item)
 			{
 				$this->pathway->addItem($item['title'], $item['link']);

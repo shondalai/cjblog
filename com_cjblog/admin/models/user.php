@@ -181,12 +181,18 @@ class CjBlogModelUser extends JModelAdmin
 		{
 			// Convert the params field to an array.
 			$registry = new JRegistry();
-			$registry->loadString($item->attribs);
+			if(!empty($item->attribs))
+			{
+				$registry->loadString($item->attribs);
+			}
 			$item->attribs = $registry->toArray();
 			
 			// Convert the metadata field to an array.
 			$registry = new JRegistry();
-			$registry->loadString($item->metadata);
+			if(!empty($item->metadata))
+			{
+				$registry->loadString($item->metadata);
+			}
 			$item->metadata = $registry->toArray();
 			
 			// Convert the images field to an array.
@@ -395,7 +401,7 @@ class CjBlogModelUser extends JModelAdmin
 				
 				if ($all_language && ! empty($associations))
 				{
-					JError::raiseNotice(403, JText::_('COM_CONTENT_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+				    throw new Exception(JText::_('COM_CONTENT_ERROR_ALL_LANGUAGE_ASSOCIATED'), 403);
 				}
 				
 				$associations[$item->language] = $item->id;
@@ -447,7 +453,7 @@ class CjBlogModelUser extends JModelAdmin
 	{
 		// Sanitize the ids.
 		$pks = (array) $pks;
-		JArrayHelper::toInteger($pks);
+		$pks = \Joomla\Utilities\ArrayHelper::toInteger($pks);
 		
 		if (empty($pks))
 		{

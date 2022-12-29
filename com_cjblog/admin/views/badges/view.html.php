@@ -32,16 +32,17 @@ class CjBlogViewBadges extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
-			
-			return false;
+		    throw new Exception(implode("\n", $errors), 500);
 		}
 		
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal')
 		{
 			$this->addToolbar();
-			$this->sidebar = JHtmlSidebar::render();
+			
+			if(CJBLOG_MAJOR_VERSION < 4) {
+			    $this->sidebar = JHtmlSidebar::render();
+			}
 		}
 		
 		parent::display($tpl);

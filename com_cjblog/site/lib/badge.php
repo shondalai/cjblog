@@ -50,7 +50,7 @@ class CjBlogBadgeApi
 
 		if(is_array($userid))
 		{
-			JArrayHelper::toInteger($userid);
+			$userid = \Joomla\Utilities\ArrayHelper::toInteger($userid);
 			$query->where('m.user_id in ('.implode(',', $userid).')');
 		} 
 		else 
@@ -58,13 +58,16 @@ class CjBlogBadgeApi
 			$userid = intval($userid);
 			$query->where('m.user_id = '.$userid);
 		}
-	
-		$db->setQuery($query, $limitstart, $limit);
-		$badges = $db->loadAssocList();
-	
-		if($db->getErrorNum())
+
+		try
 		{
-			JLog::add('CjBlogBadgeApi.get_user_badges - DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+			$db->setQuery($query, $limitstart, $limit);
+			$badges = $db->loadAssocList();
+
+		}
+		catch (Exception $e)
+		{
+			JLog::add('CjBlogBadgeApi.get_user_badges - DB Error: '.$e->getMessage(), JLog::ERROR, CJBLOG);
 		}
 	
 		return $badges;
@@ -77,15 +80,17 @@ class CjBlogBadgeApi
 			->select('id, title, alias, description, icon, css_class, published')
 			->from('#__cjblog_badges')
 			->where('where id = '.$id);
-		
-		$db->setQuery($query);
-		$badge = $db->loadAssoc();
-	
-		if($db->getErrorNum())
+
+		try
 		{
-			JLog::add('CjBlogBadgeApi.get_badge_details - DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+			$db->setQuery($query);
+			$badge = $db->loadAssoc();
 		}
-	
+		catch (Exception $e)
+		{
+			JLog::add('CjBlogBadgeApi.get_badge_details - DB Error: '.$e->getMessage(), JLog::ERROR, CJBLOG);
+		}
+
 		return $badge;
 	}
 	
@@ -99,15 +104,17 @@ class CjBlogBadgeApi
 			->where('a.rule_name = '.$db->q($rule_name))
 			->where('a.published = 1')
 			->order('a.title');
-	
-		$db->setQuery($query);
-		$badges = $db->loadObjectList();
-	
-		if($db->getErrorNum())
+
+		try
 		{
-			JLog::add('CjBlogBadgeApi.get_badges_by_component_name - DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+			$db->setQuery($query);
+			$badges = $db->loadObjectList();
 		}
-	
+		catch (Exception $e)
+		{
+			JLog::add('CjBlogBadgeApi.get_badges_by_component_name - DB Error: '.$e->getMessage(), JLog::ERROR, CJBLOG);
+		}
+
 		return $badges;
 	}
 	
@@ -171,10 +178,8 @@ class CjBlogBadgeApi
 		}
 		catch (Exception $e)
 		{
-			JLog::add('Trigger Badge Rule - No Rules Loaded. DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+			JLog::add('Trigger Badge Rule - No Rules Loaded. DB Error: '.$e->getMessage(), JLog::ERROR, CJBLOG);
 		}
-			
-		JLog::add('Trigger Badge Rule - After processing, something went wrong. DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
 	}
 	
 	public function triggerBadgeRule($name, array $params, $userid = 0)
@@ -211,7 +216,7 @@ class CjBlogBadgeApi
 			} 
 			else 
 			{
-				JLog::add('Trigger Badge Rule - No Rules Loaded. DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+				JLog::add('Trigger Badge Rule - No Rules Loaded.', JLog::ERROR, CJBLOG);
 			}
 		}
 	
@@ -335,7 +340,7 @@ class CjBlogBadgeApi
 						continue;
 					}
 						
-					JLog::add('Trigger Badge Rule - After processing, something went wrong. DB Error: '.$db->getErrorMsg(), JLog::ERROR, CJBLOG);
+					JLog::add('Trigger Badge Rule - After processing, something went wrong.', JLog::ERROR, CJBLOG);
 				}
 			}
 				

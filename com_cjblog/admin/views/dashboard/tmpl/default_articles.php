@@ -71,11 +71,11 @@ $userId		= $user->id;
 							<td class="small hidden-phone">
 								<?php if ($item->created_by_alias) : ?>
 									<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-									<?php echo $this->escape($item->author_name); ?></a>
+									<?php echo $this->escape($item->author); ?></a>
 									<p class="smallsub"> <?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></p>
 								<?php else : ?>
 									<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-									<?php echo $this->escape($item->author_name); ?></a>
+									<?php echo $this->escape($item->author); ?></a>
 								<?php endif; ?>
 							</td>
 							<td class="small hidden-phone">

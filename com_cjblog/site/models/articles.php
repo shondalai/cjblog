@@ -7,15 +7,24 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
-require_once JPATH_ROOT . '/components/com_content/models/articles.php';
 
-class CjBlogModelArticles extends ContentModelArticles
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Factory;
+
+class CjBlogModelArticles extends ListModel
 {
 	protected $_item = null;
+
+	private $_model = null;
 	
 	public function __construct ($config = array())
 	{
 		parent::__construct($config);
+		$this->populateState();
+		
+		if(CJBLOG_MAJOR_VERSION < 4) {
+		    require_once JPATH_ROOT . '/components/com_content/models/articles.php';
+		}
 	}
 	
 	protected function populateState($ordering = 'ordering', $direction = 'ASC')
@@ -37,9 +46,18 @@ class CjBlogModelArticles extends ContentModelArticles
 		{
 			$listOrder = 'DESC';
 		}
-		
+
+		$featured = $app->input->get('filter_featured', null);
+		if($featured) {
+			$this->setState('filter_featured', $featured);
+		}
+
 		$search = $app->input->get('list_filter', '', 'string');
 		$this->setState('list.filter', $search);
+
+		$searchField = $app->input->get('list_filter_field', 'title', 'string');
+		$params->set('filter_field', $searchField);
+		$this->setState('params', $params);
 		
 		$authorId = $app->input->get('filter_author_id', 0, 'unint');
 		if($authorId)
@@ -47,7 +65,14 @@ class CjBlogModelArticles extends ContentModelArticles
 			$this->setState('filter.author_id', $authorId);
 			$this->setState('filter.author_id.include', true);
 		}
-		
+
+		$categories = $app->input->get('catid', [], 'unint');
+		if(!empty($categories))
+		{
+			$this->setState('filter.category_id', $categories);
+			$this->setState('filter.category_id.include', true);
+		}
+
 		$excludedCategories = $params->get('exclude_categories');
 		if(!empty($excludedCategories))
 		{
@@ -55,43 +80,52 @@ class CjBlogModelArticles extends ContentModelArticles
 			$this->setState('filter.category_id.include', false);
 		}
 		
-		$year = $app->input->getInt('year');
-		if($year)
-		{
-			$this->setState('filter.year', $year);
-		}
-		
 		$month = $app->input->getInt('month');
 		if($month)
 		{
-			$this->setState('filter.month', $month);
+		    $date = Factory::getDate();
+		    $this->setState('filter_field', 'month');
+			$this->setState('list.filter', $date->year . '-' . $month . '-1');
 		}
 		
 		$this->setState('list.direction', $listOrder);
 		
 		$limit = $app->get('list_limit', 20);
 		$this->setState('list.limit', $limit);
+		
+		$limitStart = $app->get('start', 0);
+		$this->setState('list.start', $limitStart);
 	}
 
-	protected function getListQuery()
+	public function getItems()
 	{
-		$query = parent::getListQuery();
-		$year = $this->getState('filter.year');
-		
-		if($year)
-		{
-			$query->where('year(a.created) = '.$year);
-			$month = $this->getState('filter.month');
-			
-			if($month)
-			{
-				$query->where('month(a.created) = '.$month);
-			}
-		}
-		
-// 		echo $query->dump();
-		
-		return $query;
+	    if(CJBLOG_MAJOR_VERSION < 4) {
+	        JLoader::import('articles', JPATH_ROOT . '/components/com_content/models/');
+	        $this->_model = JModelLegacy::getInstance( 'articles', 'ContentModel' );
+	    } else {
+		    $this->_model = Factory::getApplication()->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Site');
+	    }
+
+		$this->_model->setState('list.ordering', $this->getState('list.ordering'));
+		$this->_model->setState('list.filter', $this->getState('list.filter'));
+		$this->_model->setState('filter.author_id', $this->getState('filter.author_id'));
+		$this->_model->setState('filter.author_id.include', $this->getState('filter.author_id.include'));
+		$this->_model->setState('filter.category_id', $this->getState('filter.category_id'));
+		$this->_model->setState('filter.category_id.include', $this->getState('filter.category_id.include'));
+		$this->_model->setState('filter.field', $this->getState('filter_field'));
+		$this->_model->setState('filter.featured', $this->getState('filter_featured'));
+		$this->_model->setState('list.filter', $this->getState('list.filter'));
+		$this->_model->setState('list.direction', $this->getState('list.direction'));
+		$this->_model->setState('list.limit', $this->getState('list.limit'));
+		$this->_model->setState('list.start', $this->getState('list.start'));
+		$this->_model->setState('params', $this->getState('params'));
+
+	    return $this->_model->getItems();
+	}
+	
+	public function getPagination()
+	{
+	    return $this->_model ? $this->_model->getPagination() : null;
 	}
 	
 	public function getCategory ()
@@ -124,7 +158,6 @@ class CjBlogModelArticles extends ContentModelArticles
 					$this->_item->getParams()->set('access-create', true);
 				}
 	
-				// TODO: Why aren't we lazy loading the children and siblings?
 				$this->_children = $this->_item->getChildren();
 				$this->_parent = false;
 	

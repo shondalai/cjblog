@@ -1,25 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <updates>
-	<update>
-		<name>CjBlog</name>
-		<description>CjBlog Package</description>
-		<element>pkg_cjblog</element>
-		<type>package</type>
-		<version>2.1.0</version>
-
-		<infourl title="CjBlog">https://www.corejoomla.com/products/cjblog.html</infourl>
-		<downloads>
-			<downloadurl format="zip" type="full">https://github.com/corejoomla/cjblog/releases/download/2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
-		</downloads>
-		<tags>
-			<tag>stable</tag>
-		</tags>
-
-		<maintainer>corejoomla.com</maintainer>
-		<maintainerurl>http://www.corejoomla.com</maintainerurl>
-		<section>components</section>
-		
-		<targetplatform name="joomla" version="3.[5678]"/>
-		<php_minimum>5.5</php_minimum>
-	</update>
+    <update>
+        <name>CjBlog</name>
+        <description>CjBlog Package</description>
+        <element>pkg_cjblog</element>
+        <type>package</type>
+        <version>2.1.0</version>
+        <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
+        <downloads>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Maverick</maintainer>
+        <maintainerurl>https://shondalai.com</maintainerurl>
+        <section>components</section>
+        <targetplatform name="joomla" version="3"/>
+        <php_minimum>5.6</php_minimum>
+    </update>
+    <update>
+        <name>CjBlog</name>
+        <description>CjBlog Package</description>
+        <element>pkg_cjblog</element>
+        <type>package</type>
+        <version>2.1.0</version>
+        <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
+        <downloads>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v2.1.0/pkg_cjblog_v2.1.0.zip</downloadurl>
+        </downloads>
+        <tags>
+            <tag>stable</tag>
+        </tags>
+        <maintainer>Maverick</maintainer>
+        <maintainerurl>https://shondalai.com</maintainerurl>
+        <section>components</section>
+        <targetplatform name="joomla" version="4"/>
+        <php_minimum>7.0</php_minimum>
+    </update>
 </updates>
+

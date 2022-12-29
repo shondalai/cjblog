@@ -37,7 +37,11 @@ class CjBlogViewDashboard extends JViewLegacy
 
 		CjBlogHelper::addSubmenu('dashboard');
 		$this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		
+		if(CJBLOG_MAJOR_VERSION == 3)
+		{
+		    $this->sidebar = JHtmlSidebar::render();
+		}
 		
 		$version = CJFunctions::get_component_update_check('com_cjblog', CJBLOG_CURR_VERSION);
 		$v = array();

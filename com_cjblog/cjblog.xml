@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<extension method="upgrade" type="component" version="3.2">
-	<name>CjBlog</name>
-	<author>Maverick</author>
-	<creationDate>2018-Jun-03</creationDate>
-	<copyright>(C) 2009 - 2016 corejoomla.com. All rights reserved.	</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>admin@joomla.org</authorEmail>
-	<authorUrl>www.corejoomla.com</authorUrl>
-	<version>2.1.0</version>
-	<description>COM_CJBLOG_XML_DESCRIPTION</description>
 
-	<files folder="site">
-		<filename>cjblog.php</filename>
-		<filename>controller.php</filename>
-		<filename>index.html</filename>
-		<filename>router.php</filename>
-		<folder>controllers</folder>
-		<folder>helpers</folder>
-		<folder>layouts</folder>
-		<folder>lib</folder>
-		<folder>models</folder>
-		<folder>views</folder>
-	</files>
-	<media destination="com_cjblog" folder="site/media">
-		<filename>index.html</filename>
-		<folder>css</folder>
-		<folder>images</folder>
-		<folder>js</folder>
-	</media>
-	<languages folder="site">
-		<language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
-	</languages>
-	<administration>
-	    <menu img="../components/com_cjblog/assets/images/cjblog.png" view="dashboard">COM_CJBLOG_MENU</menu>
-		<submenu>
-			<menu link="option=com_cjblog&amp;view=dashboard" view="dashboard">COM_CJBLOG_MENU_DASHBOARD</menu>
-			<menu link="option=com_content&amp;view=articles" view="articles">COM_CJBLOG_MENU_ARTICLES</menu>
-			<menu link="option=com_cjblog&amp;view=reviews" view="articles">COM_CJBLOG_MENU_REVIEWS</menu>
-			<menu link="option=com_categories&amp;extension=com_content" view="categories">COM_CJBLOG_MENU_CATEGORIES</menu>
-			<menu link="option=com_cjblog&amp;view=users" view="users">COM_CJBLOG_MENU_USERS</menu>
-			<menu link="option=com_cjblog&amp;view=points" view="points">COM_CJBLOG_MENU_POINTS</menu>
-			<menu link="option=com_cjblog&amp;view=pointsrules" view="pointsrules">COM_CJBLOG_MENU_POINTS_RULES</menu>
-			<menu link="option=com_cjblog&amp;view=badges" view="badges">COM_CJBLOG_MENU_BADGES</menu>
-			<menu link="option=com_cjblog&amp;view=badgerules" view="badgerules">COM_CJBLOG_MENU_BADGE_RULES</menu>
-			<menu link="option=com_cjblog&amp;view=badgestreams" view="badgestreams">COM_CJBLOG_MENU_BADGE_STREAM</menu>
-			<menu link="option=com_cjblog&amp;view=emails" view="emails">COM_CJBLOG_MENU_EMAIL_TEMPLATES</menu>
-		</submenu>
-		<files folder="admin">
-			<filename>access.xml</filename>
-			<filename>config.xml</filename>
-			<filename>cjblog.php</filename>
-			<filename>controller.php</filename>
-			<filename>index.html</filename>
-			<filename>cjblog_rules.xml</filename>
-			<folder>controllers</folder>
-			<folder>helpers</folder>
-			<folder>models</folder>
-			<folder>tables</folder>
-			<folder>views</folder>
-			<folder>sql</folder>
-		</files>
-		<languages folder="admin">
-			<language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.com_cjblog.sys.ini</language>
-		</languages>
-	</administration>
-	<update> 
-		<schemas> 
-			<schemapath type="mysql">sql/updates/mysql</schemapath> 
-		</schemas> 
-	</update>
-	<scriptfile>script.php</scriptfile>
+<extension method="upgrade" type="component" version="3.2">
+    <name>CjBlog</name>
+    <author>Maverick</author>
+    <creationDate>2022-Dec-29</creationDate>
+    <copyright>(C) 2009 - 2016 corejoomla.com. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>admin@joomla.org</authorEmail>
+    <authorUrl>www.corejoomla.com</authorUrl>
+    <version>5.0.0</version>
+    <description>COM_CJBLOG_XML_DESCRIPTION</description>
+    <files folder="site">
+        <filename>cjblog.php</filename>
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>router.php</filename>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>layouts</folder>
+        <folder>lib</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+    </files>
+    <media destination="com_cjblog" folder="site/media">
+        <filename>index.html</filename>
+        <folder>css</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+    </media>
+    <languages folder="site">
+        <language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
+    </languages>
+    <administration>
+        <menu img="../components/com_cjblog/assets/images/cjblog.png" view="dashboard">COM_CJBLOG_MENU</menu>
+        <submenu>
+            <menu link="option=com_cjblog&amp;view=dashboard" view="dashboard">COM_CJBLOG_MENU_DASHBOARD</menu>
+            <menu link="option=com_content&amp;view=articles" view="articles">COM_CJBLOG_MENU_ARTICLES</menu>
+            <menu link="option=com_cjblog&amp;view=reviews" view="articles">COM_CJBLOG_MENU_REVIEWS</menu>
+            <menu link="option=com_categories&amp;extension=com_content" view="categories">COM_CJBLOG_MENU_CATEGORIES</menu>
+            <menu link="option=com_cjblog&amp;view=users" view="users">COM_CJBLOG_MENU_USERS</menu>
+            <menu link="option=com_cjblog&amp;view=points" view="points">COM_CJBLOG_MENU_POINTS</menu>
+            <menu link="option=com_cjblog&amp;view=pointsrules" view="pointsrules">COM_CJBLOG_MENU_POINTS_RULES</menu>
+            <menu link="option=com_cjblog&amp;view=badges" view="badges">COM_CJBLOG_MENU_BADGES</menu>
+            <menu link="option=com_cjblog&amp;view=badgerules" view="badgerules">COM_CJBLOG_MENU_BADGE_RULES</menu>
+            <menu link="option=com_cjblog&amp;view=badgestreams" view="badgestreams">COM_CJBLOG_MENU_BADGE_STREAM</menu>
+        </submenu>
+        <files folder="admin">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>cjblog.php</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>cjblog_rules.xml</filename>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <folder>sql</folder>
+        </files>
+        <languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_cjblog.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_cjblog.sys.ini</language>
+        </languages>
+    </administration>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <scriptfile>script.php</scriptfile>
 </extension>
+

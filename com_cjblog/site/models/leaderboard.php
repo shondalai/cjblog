@@ -7,8 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
-jimport( 'joomla.application.component.modellist' );
-require_once JPATH_COMPONENT.'/models/users.php';
+
+require_once JPATH_ROOT.'/components/com_cjblog/models/users.php';
 
 class CjBlogModelLeaderboard extends CjBlogModelUsers
 {

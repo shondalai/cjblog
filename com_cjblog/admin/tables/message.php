@@ -8,6 +8,8 @@
  */
 defined('JPATH_PLATFORM') or die();
 
+use Joomla\CMS\Application\ApplicationHelper;
+
 class CjBlogTableMessage extends JTable
 {
 
@@ -35,7 +37,7 @@ class CjBlogTableMessage extends JTable
 			$this->alias = $this->title;
 		}
 	
-		$this->alias = JApplication::stringURLSafe($this->alias);
+		$this->alias = ApplicationHelper::stringURLSafe($this->alias);
 	
 		if (trim(str_replace('-', '', $this->alias)) == '')
 		{
@@ -95,7 +97,7 @@ class CjBlogTableMessage extends JTable
 		$k = $this->_tbl_key;
 		
 		// Sanitize input.
-		JArrayHelper::toInteger($pks);
+		$pks = \Joomla\Utilities\ArrayHelper::toInteger($pks);
 		$userId = (int) $userId;
 		$state = (int) $state;
 		

@@ -7,10 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
-jimport( 'joomla.application.component.modellist' );
-require_once JPATH_ADMINISTRATOR.'/components/com_content/models/articles.php';
 
-class CjBlogModelDashboard extends ContentModelArticles
+class CjBlogModelDashboard extends JModelList
 {
 	public function __construct ($config = array())
 	{
@@ -21,6 +19,35 @@ class CjBlogModelDashboard extends ContentModelArticles
 	{
 		parent::populateState('a.created', 'desc');
 		$this->setState('list.limit', 5);
+	}
+	
+	public function getItems()
+	{
+		$app = JFactory::getApplication();
+
+		$model = null;
+
+		if(CJBLOG_MAJOR_VERSION < 4)
+		{
+			require_once JPATH_ROOT.'/components/com_content/router.php';
+			require_once JPATH_ROOT.'/components/com_content/helpers/route.php';
+			JLoader::import('articles', JPATH_ROOT.'/components/com_content/models');
+			$model = JModelList::getInstance('Articles', 'ContentModel');
+		}
+		else
+		{
+			$model = $app->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Site', ['ignore_request' => true]);
+			$contentParams = JComponentHelper::getParams('com_content');
+			$model->setState('params', $contentParams);
+		}
+
+		$model->getState();
+		$model->setState('list.limit', 5);
+		$model->setState('list.start', 0);
+
+		$items = $model->getItems();
+
+		return $items;
 	}
 	
 	public function getArticleCountByDay()

@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<extension method="upgrade" type="package" version="3.6">
-	<name>CjBlog Package</name>
-	<author>Maverick</author>
-	<creationDate>2018-Jun-03</creationDate>
-	<packagename>cjblog</packagename>
-	<version>2.1.0</version>
-	<url>http://www.corejoomla.com/</url>
-	<packager>Maverick</packager>
-	<packagerurl>http://www.corejoomla.com/</packagerurl>
-	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<description><![CDATA[
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<extension method="upgrade" type="package" version="3.9">
+    <name>CjBlog Package</name>
+    <author>Maverick</author>
+    <creationDate>2022-Dec-29</creationDate>
+    <packagename>cjblog</packagename>
+    <version>5.0.0</version>
+    <url>https://shondalai.com/</url>
+    <packager>Maverick</packager>
+    <packagerurl>https://shondalai.com/</packagerurl>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>        <![CDATA[
 		<p>CjBlog Package:</p> 
 		<table class="table table-hover table-striped"> 
 		<tr><td>CjBlog Component</td><td>Successfully installed</td></tr>
@@ -22,19 +23,19 @@
 		</table>
 		<p><strong style="color: red;">Please install CjLib component if not yet installed. Please enable the plugins from plugin manager.</strong></p>
 		<p>Thank you for using corejoomla&reg; software. Please add a rating and review at Joomla&reg; Extension Directory.</p>
-		]]></description>
-	
-	<files folder="packages">
-		<file id="cjblog" type="component">com_cjblog.zip</file>
-		<file client="site" id="cjblog" type="module">mod_cjbloggers.zip</file>
-		<file client="site" id="cjblog" type="module">mod_cjblogarchive.zip</file>
-		<file client="site" id="cjblog" type="module">mod_cjblogcategories.zip</file>
-		<file group="cjblogapps" id="cjblog" type="plugin">plg_cjblogapps_cjblog.zip</file>
-		<file group="content" id="cjblog" type="plugin">plg_content_cjblog.zip</file>
-		<file group="user" id="cjblog" type="plugin">plg_user_cjblog.zip</file>
-	</files>
-	
-	<updateservers>
-		<server name="CjBlog Update Site" priority="1" type="collection">https://www.corejoomla.com/media/autoupdates/cjblog/package.xml</server>
-	</updateservers>
+]]>
+</description>
+    <files folder="packages">
+        <file id="cjblog" type="component">com_cjblog.zip</file>
+        <file client="site" id="cjblog" type="module">mod_cjbloggers.zip</file>
+        <file client="site" id="cjblog" type="module">mod_cjblogarchive.zip</file>
+        <file client="site" id="cjblog" type="module">mod_cjblogcategories.zip</file>
+        <file group="cjblogapps" id="cjblog" type="plugin">plg_cjblogapps_cjblog.zip</file>
+        <file group="content" id="cjblog" type="plugin">plg_content_cjblog.zip</file>
+        <file group="user" id="cjblog" type="plugin">plg_user_cjblog.zip</file>
+    </files>
+    <updateservers>
+        <server name="CjBlog Update Site" priority="1" type="collection">https://shondalai.com/wp-content/uploads/autoupdates/cjblog/package.xml</server>
+    </updateservers>
 </extension>
+

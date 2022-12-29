@@ -80,7 +80,7 @@ class CjBlogModelUsers extends JModelList
 
 		if (isset($groups))
 		{
-			JArrayHelper::toInteger($groups);
+			$groups = \Joomla\Utilities\ArrayHelper::toInteger($groups);
 		}
 
 		$this->setState('filter.groups', $groups);
@@ -89,7 +89,7 @@ class CjBlogModelUsers extends JModelList
 
 		if (isset($excluded))
 		{
-			JArrayHelper::toInteger($excluded);
+			$excluded = \Joomla\Utilities\ArrayHelper::toInteger($excluded);
 		}
 
 		$this->setState('filter.excluded', $excluded);
@@ -444,7 +444,7 @@ class CjBlogModelUsers extends JModelList
 					#__cjblog_users (id, handle, points) 
 					(
 						select 
-							u.id, replace(u.username, \'-\', \'_\'), sum(p.points) as points 
+							u.id, replace(u.username, \'-\', \'_\'), ifnull(sum(p.points), 0) as points 
 						from 
 							#__users AS u 
 						left join 
@@ -461,7 +461,7 @@ class CjBlogModelUsers extends JModelList
 		}
 		catch (Exception $e)
 		{
-// 			throw new Exception($e); 
+ 			throw new Exception($e);
 		}
 		
 		// now update

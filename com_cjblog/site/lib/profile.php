@@ -7,6 +7,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+
+use Joomla\Utilities\ArrayHelper;
+
 require_once JPATH_ROOT.'/components/com_cjblog/helpers/route.php';
 
 class CjBlogProfileApi 
@@ -217,7 +220,7 @@ class CjBlogProfileApi
 			$attribs['class'] = empty($attribs['class']) ? 'tooltip-hover' : $attribs['class'].' tooltip-hover';
 			$attribs['title'] = empty($attribs['title']) ? $profile[$username] : $attribs['title'];
 	
-			$avatar_image = '<img src="'.$avatarLocation.'" alt="'.$attribs['title'].'" '.JArrayHelper::toString($image_attribs).'/>';
+			$avatar_image = '<img src="'.$avatarLocation.'" alt="'.$attribs['title'].'" '.\Joomla\Utilities\ArrayHelper::toString($image_attribs).'/>';
 			$profileUrl = $this->getUserProfileLink($userids, $username, true);
 	
 			return JHtml::link($profileUrl, $avatar_image, $attribs);
@@ -237,7 +240,7 @@ class CjBlogProfileApi
 					$attribs['title'] = htmlspecialchars($profiles[$userid][$username], ENT_COMPAT, 'UTF-8');
 	
 					$avatarLocation = $this->getUserAvatarImage($userids, $size);
-					$avatar_image = '<img src="'.$avatarLocation[$userid].'" alt="'.$attribs['title'].'" '.JArrayHelper::toString($image_attribs).'/>';
+					$avatar_image = '<img src="'.$avatarLocation[$userid].'" alt="'.$attribs['title'].'" '.\Joomla\Utilities\ArrayHelper::toString($image_attribs).'/>';
 	
 					$return[$userid] = JHtml::link($profileUrls[$userid], $avatar_image, $attribs);
 				}
@@ -258,7 +261,7 @@ class CjBlogProfileApi
 	public function load(array $identifiers = array(), $force_reload = false)
 	{
 		$notfound = array();
-		JArrayHelper::toInteger($identifiers);
+		$identifiers = ArrayHelper::toInteger($identifiers);
 	
 		foreach ($identifiers as $userid)
 		{

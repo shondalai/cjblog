@@ -29,8 +29,7 @@ class CjBlogViewEmail extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
-			return false;
+		    throw new Exception(implode("\n", $errors), 500);
 		}
 
 		if ($this->getLayout() == 'modal')

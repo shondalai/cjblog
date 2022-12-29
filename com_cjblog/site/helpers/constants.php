@@ -8,6 +8,7 @@
  */
 defined('_JEXEC') or die();
 
+defined('CJBLOG') or define('CJBLOG',                                       'com_cjblog');
 defined('CJBLOG_CURR_VERSION') or define('CJBLOG_CURR_VERSION',				'@version@');
 defined('CJBLOG_CJLIB_VER') or define('CJBLOG_CJLIB_VER',					'2.6.0');
 defined('CJBLOG_MEDIA_DIR') or define('CJBLOG_MEDIA_DIR',					JPATH_ROOT.'/media/com_cjblog/');
@@ -24,4 +25,13 @@ defined('CJBLOG_ASSET_ID') or define('CJBLOG_ASSET_ID', 					1);
 
 defined('BLOG_SESSION_CONFIG') or define('BLOG_SESSION_CONFIG',				'blog_session_config');
 defined('BLOG_DEFAULT_AVATAR') or define('BLOG_DEFAULT_AVATAR',				'blog_default_avatar');
-?>
+
+$version = new JVersion();
+if (version_compare($version->getShortVersion(), '4.0', 'ge'))
+{
+    define('CJBLOG_MAJOR_VERSION', 4);
+}
+else
+{
+    define('CJBLOG_MAJOR_VERSION', 3);
+}

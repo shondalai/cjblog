@@ -146,13 +146,13 @@ class CjBlogModelArticle extends JModelItem
 				
 				if (empty($data))
 				{
-					return JError::raiseError(404, JText::_('COM_CJBLOG_ERROR_ARTICLE_NOT_FOUND'));
+				    throw new Exception(JText::_('COM_CJBLOG_ERROR_ARTICLE_NOT_FOUND'), 404);
 				}
 				
 				// Check for published state if filter set.
 				if (((is_numeric($published)) || (is_numeric($archived))) && (($data->state != $published) && ($data->state != $archived)))
 				{
-					return JError::raiseError(404, JText::_('COM_CJBLOG_ERROR_ARTICLE_NOT_FOUND'));
+				    throw new Exception(JText::_('COM_CJBLOG_ERROR_ARTICLE_NOT_FOUND'), 404);
 				}
 				
 				// Convert parameter fields to objects.
@@ -163,7 +163,10 @@ class CjBlogModelArticle extends JModelItem
 				$data->params->merge($registry);
 				
 				$registry = new JRegistry();
-				$registry->loadString($data->metadata);
+				if(!empty($data->metadata))
+				{
+					$registry->loadString($data->metadata);
+				}
 				$data->metadata = $registry;
 				
 				// Technically guest could edit an article, but lets not check
@@ -269,9 +272,8 @@ class CjBlogModelArticle extends JModelItem
 			{
 				if ($e->getCode() == 404)
 				{
-					// Need to go thru the error handler to allow Redirect to
-					// work.
-					JError::raiseError(404, $e->getMessage());
+					// Need to go thru the error handler to allow Redirect to work.
+				    throw new Exception($e->getMessage(), 404);
 				}
 				else
 				{
@@ -320,14 +322,6 @@ class CjBlogModelArticle extends JModelItem
 			$db->setQuery($query);
 			$rating = $db->loadObject();
 			
-			// Check for a database error.
-			if ($db->getErrorNum())
-			{
-				JError::raiseWarning(500, $db->getErrorMsg());
-				
-				return false;
-			}
-			
 			// There are no ratings yet, so lets insert our rating
 			if (! $rating)
 			{
@@ -353,9 +347,7 @@ class CjBlogModelArticle extends JModelItem
 				}
 				catch (RuntimeException $e)
 				{
-					JError::raiseWarning(500, $e->getMessage());
-					
-					return false;
+				    throw new Exception($e->getMessage(), 500);
 				}
 			}
 			else
@@ -380,9 +372,7 @@ class CjBlogModelArticle extends JModelItem
 					}
 					catch (RuntimeException $e)
 					{
-						JError::raiseWarning(500, $e->getMessage());
-						
-						return false;
+					    throw new Exception($e->getMessage(), 500);
 					}
 				}
 				else
@@ -394,9 +384,7 @@ class CjBlogModelArticle extends JModelItem
 			return true;
 		}
 		
-		JError::raiseWarning('SOME_ERROR_CODE', JText::sprintf('COM_CJBLOG_INVALID_RATING', $rate), "JModelArticle::storeVote($rate)");
-		
-		return false;
+		throw new Exception(JText::sprintf('COM_CJBLOG_INVALID_RATING', $rate), 400);
 	}
 	
 	public function like($pk, $state = 0)
@@ -406,88 +394,78 @@ class CjBlogModelArticle extends JModelItem
 		$field = $state ? 'likes' : 'dislikes';
 		$actionValue = $state ? '1' : '2';
 	
-		try
+		$rating = new stdClass();
+		$rating->item_id = $pk;
+		$rating->user_id = $user->id;
+		$rating->item_type = ITEM_TYPE_ARTICLE;
+		$rating->action_value = $state ? 1 : 2;
+		
+		$query = $db->getQuery(true)
+			->select('count(*)')
+			->from('#__cjblog_user_ratings')
+			->where('item_id = '.$pk.' and user_id = '.$user->id.' and item_type = '.ITEM_TYPE_ARTICLE);
+			
+		$db->setQuery($query);
+		$count = (int) $db->loadResult();
+			
+		if($count > 0)
 		{
-			$rating = new stdClass();
-			$rating->item_id = $pk;
-			$rating->user_id = $user->id;
-			$rating->item_type = ITEM_TYPE_ARTICLE;
-			$rating->action_value = $state ? 1 : 2;
-			
-			$query = $db->getQuery(true)
-				->select('count(*)')
-				->from('#__cjblog_user_ratings')
-				->where('item_id = '.$pk.' and user_id = '.$user->id.' and item_type = '.ITEM_TYPE_ARTICLE);
-				
-			$db->setQuery($query);
-			$count = (int) $db->loadResult();
-				
-			if($count > 0)
-			{
-				$rating->modified = JFactory::getDate()->toSql();
-				if(!$db->updateObject('#__cjblog_user_ratings', $rating, array('item_id', 'user_id', 'item_type')))
-				{
-					return false;
-				}
-			}
-			else 
-			{
-				$rating->created = JFactory::getDate()->toSql();
-				if(!$db->insertObject('#__cjblog_user_ratings', $rating))
-				{
-					return false;
-				}
-			}
-			
-			$query = '
-					update 
-						#__cjblog_articles
-					set 
-						likes = 
-							(
-								select 
-									count(*) 
-								from 
-									#__cjblog_user_ratings 
-								where 
-									item_id = '.$pk.' and 
-									item_type = '.ITEM_TYPE_ARTICLE.' and 
-									action_value = 1
-							),
-						dislikes = 
-							(
-								select 
-									count(*) 
-								from 
-									#__cjblog_user_ratings 
-								where 
-									item_id = '.$pk.' and 
-									item_type = '.ITEM_TYPE_ARTICLE.' and 
-									action_value = 2
-							)
-					where
-						id = '.$pk;
-			
-			$db->setQuery($query);
-			
-			if(!$db->execute())
+			$rating->modified = JFactory::getDate()->toSql();
+			if(!$db->updateObject('#__cjblog_user_ratings', $rating, array('item_id', 'user_id', 'item_type')))
 			{
 				return false;
 			}
-			
-			JPluginHelper::importPlugin('cjblog');
-			$dispatcher = JEventDispatcher::getInstance();
-			$dispatcher->trigger('onArticleAfterLike', array($this->option . '.' . $this->name, $rating));
-			
-			return true;
 		}
-		catch (Exception $e)
+		else 
 		{
-			JError::raiseWarning(500, $e->getMessage());
+			$rating->created = JFactory::getDate()->toSql();
+			if(!$db->insertObject('#__cjblog_user_ratings', $rating))
+			{
+				return false;
+			}
+		}
+		
+		$query = '
+				update 
+					#__cjblog_articles
+				set 
+					likes = 
+						(
+							select 
+								count(*) 
+							from 
+								#__cjblog_user_ratings 
+							where 
+								item_id = '.$pk.' and 
+								item_type = '.ITEM_TYPE_ARTICLE.' and 
+								action_value = 1
+						),
+					dislikes = 
+						(
+							select 
+								count(*) 
+							from 
+								#__cjblog_user_ratings 
+							where 
+								item_id = '.$pk.' and 
+								item_type = '.ITEM_TYPE_ARTICLE.' and 
+								action_value = 2
+						)
+				where
+					id = '.$pk;
+		
+		$db->setQuery($query);
+		
+		if(!$db->execute())
+		{
 			return false;
 		}
-	
-		return false;
+		
+		JPluginHelper::importPlugin('cjblog');
+		$app = JFactory::getApplication();
+		$app->triggerEvent('onArticleAfterLike', array($this->option . '.' . $this->name, $rating));
+		
+		return true;
 	}
 	
 	public function getLikes($items = null, $userId = 0)
@@ -495,38 +473,27 @@ class CjBlogModelArticle extends JModelItem
 		$db = JFactory::getDbo();
 		$userId = $userId ? $userId : JFactory::getUser()->id;
 		
-		try 
+		$query = $db->getQuery(true)
+			->select('item_id, item_type, action_value, created')
+			->from('#__cjblog_user_ratings')
+			->where('user_id = '.$userId);
+		
+		if(!empty($items) && is_array($items))
 		{
-			$query = $db->getQuery(true)
-				->select('item_id, item_type, action_value, created')
-				->from('#__cjblog_user_ratings')
-				->where('user_id = '.$userId);
+			$wheres = array();
 			
-			if(!empty($items) && is_array($items))
+			foreach ($items as $item)
 			{
-				$wheres = array();
-				
-				foreach ($items as $item)
-				{
-					$wheres[] = '(item_id = '.$item['id'].' and item_type = '.$item['type'].')';
-				}
-				
-				$query->where('('.implode(' OR ', $wheres).')');
+				$wheres[] = '(item_id = '.$item['id'].' and item_type = '.$item['type'].')';
 			}
-// 			echo $query->dump();
 			
-			$db->setQuery($query);
-			$likes = $db->loadObjectList();
-			
-			return !empty($likes) ? $likes : array();
-		}
-		catch (Exception $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-			return false;
+			$query->where('('.implode(' OR ', $wheres).')');
 		}
 		
-		return false;
+		$db->setQuery($query);
+		$likes = $db->loadObjectList();
+		
+		return !empty($likes) ? $likes : array();
 	}
 	
 	public function approve($status = 0, $key)
@@ -538,18 +505,9 @@ class CjBlogModelArticle extends JModelItem
 			->where('published = 3')
 			->where('secret_key = ' . $db->q($key));
 		$db->setQuery($query);
+		$db->execute();
+		$count = $db->getAffectedRows();
 		
-		try
-		{
-			$db->execute();
-			$count = $db->getAffectedRows();
-			
-			return $count;
-		}
-		catch (Exception $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-			return false;
-		}
+		return $count;
 	}
 }

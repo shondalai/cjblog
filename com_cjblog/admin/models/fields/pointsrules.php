@@ -31,7 +31,7 @@ class JFormFieldPointsRules extends JFormFieldList
 		}
 		catch (RuntimeException $e)
 		{
-			JError::raiseWarning(500, $e->getMessage());
+		    throw new Exception($e->getMessage(), 500);
 		}
 		
 		$options = array_merge(parent::getOptions(), $options);

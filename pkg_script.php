@@ -8,7 +8,7 @@
  */
 defined('_JEXEC') or die;
 
-class pkg_cjblogInstallerScript 
+class pkg_cjblogInstallerScript
 {
 	public function preflight( $type, $parent )
 	{
@@ -126,9 +126,7 @@ class pkg_cjblogInstallerScript
 		// Was the package downloaded?
 		if (!$p_file)
 		{
-			JError::raiseWarning('', JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL'));
-			
-			return false;
+		    throw new Exception(JText::_('COM_INSTALLER_MSG_INSTALL_INVALID_URL'), 403);
 		}
 		
 		$config   = JFactory::getConfig();

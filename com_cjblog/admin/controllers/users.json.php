@@ -34,7 +34,7 @@ class CjBlogControllerUsers extends JControllerAdmin
 		
 		try 
 		{
-			if($startId == 0 && $endId == 0)
+			if($startId == 0 && $endId <= 0)
 			{
 				$result = $model->getFirstAndLastUserId();
 				

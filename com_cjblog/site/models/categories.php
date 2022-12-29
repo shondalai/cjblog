@@ -7,10 +7,24 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-defined('_JEXEC') or die;
-require_once JPATH_ROOT . '/components/com_content/models/categories.php';
+use Joomla\CMS\Categories\Categories;
 
-class CjBlogModelCategories extends ContentModelCategories
+defined( '_JEXEC' ) or die;
+
+if ( CJBLOG_MAJOR_VERSION < 4 )
 {
-	public $_context = 'com_cjblog.categories';
+	require_once JPATH_ROOT . '/components/com_content/models/categories.php';
+
+	class CjBlogModelCategories extends ContentModelCategories {
+
+		public $_context = 'com_cjblog.categories';
+
+	}
+}
+else
+{
+	class CjBlogModelCategories extends \Joomla\Component\Content\Site\Model\CategoriesModel {
+
+		public $_context = 'com_cjblog.categories';
+	}
 }

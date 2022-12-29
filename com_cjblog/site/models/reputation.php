@@ -8,6 +8,8 @@
  */
 defined('_JEXEC') or die();
 
+use Joomla\String\StringHelper;
+
 class CjBlogModelReputation extends JModelList
 {
 	public function __construct ($config = array())
@@ -120,7 +122,7 @@ class CjBlogModelReputation extends JModelList
 		}
 		elseif (is_array($published))
 		{
-			JArrayHelper::toInteger($published);
+			$published = \Joomla\Utilities\ArrayHelper::toInteger($published);
 			$published = implode(',', $published);
 			
 			// Use article state if badcats.id is null, otherwise, force 0 for
@@ -138,7 +140,7 @@ class CjBlogModelReputation extends JModelList
 		}
 		elseif (is_array($ruleId) && (count($ruleId) > 0))
 		{
-			JArrayHelper::toInteger($ruleId);
+			$ruleId = \Joomla\Utilities\ArrayHelper::toInteger($ruleId);
 			$ruleId = implode(',', $ruleId);
 			
 			if (! empty($ruleId))
@@ -159,7 +161,7 @@ class CjBlogModelReputation extends JModelList
 		}
 		elseif (is_array($authorId))
 		{
-			JArrayHelper::toInteger($authorId);
+			$authorId = \Joomla\Utilities\ArrayHelper::toInteger($authorId);
 			$authorId = implode(',', $authorId);
 			
 			if ($authorId)
@@ -202,7 +204,7 @@ class CjBlogModelReputation extends JModelList
 		if ((is_object($params)) && ($params->get('filter_field') != 'hide') && ($filter = $this->getState('list.filter')))
 		{
 			// Clean filter variable
-			$filter = JString::strtolower($filter);
+			$filter = StringHelper::strtolower($filter);
 			$hitsFilter = (int) $filter;
 			$filter = $db->quote('%' . $db->escape($filter, true) . '%', false);
 			

@@ -85,14 +85,14 @@ class CjBlogModelBadgeTemplates extends JModelLegacy
 			foreach ($rules->badge_rule as $rule)
 			{
 				$type 				= new stdClass();
-				$type->asset_name 	= $input->clean($rule->rule_name, 'string');
-				$type->appname 		= $input->clean($rule->appname, 'string');
-				$type->description 	= $input->clean($rule->rule_description, 'string');
-				
-				if(!isset($types[$type->appname]))
+				$type->asset_name 	= $input->clean((string) $rule->rule_name, 'string');
+				$type->appname 		= $input->clean((string) $rule->appname, 'string');
+				$type->description 	= $input->clean((string) $rule->rule_description, 'string');
+
+				if(!$type->appname || !isset($types[$type->appname]))
 				{
 					$types[$type->appname] = array();
-					$types[$type->appname]['title'] = $input->clean($rule->apptitle, 'string');
+					$types[$type->appname]['title'] = $input->clean((string) $rule->apptitle, 'string');
 					$types[$type->appname]['templates'] = array();
 				}
 	

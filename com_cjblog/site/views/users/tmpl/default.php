@@ -9,7 +9,6 @@
 defined('_JEXEC') or die();
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
-JHtml::_('behavior.caption');
 
 $theme 				= $this->params->get('theme', 'default');
 $avatarComponent	= $this->params->get('avatar_component', 'cjblog');

@@ -89,7 +89,7 @@ class CjBlogPointsApi
 	
 		$db->setQuery($query);
 	
-		if(!$db->query())
+		if(!$db->execute())
 		{
 			$this->_errors[] = 'Error: '.$db->getErrorMsg();
 	
@@ -110,7 +110,7 @@ class CjBlogPointsApi
 		
 			$db->setQuery($query);
 		
-			if(!$db->query())
+			if(!$db->execute())
 			{
 				$this->_errors[] = 'Error: '.$db->getErrorMsg();
 			}

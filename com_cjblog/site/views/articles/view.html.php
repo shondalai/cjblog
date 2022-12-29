@@ -40,9 +40,7 @@ class CjBlogViewArticles extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode("\n", $errors));
-
-			return false;
+		    throw new Exception(implode("\n", $errors), 500);
 		}
 
 		if ($category)
@@ -52,7 +50,7 @@ class CjBlogViewArticles extends JViewLegacy
 			
 			if (!in_array($category->access, $groups))
 			{
-				return JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			    throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 			}
 			
 			// Setup the category parameters.
@@ -64,7 +62,7 @@ class CjBlogViewArticles extends JViewLegacy
 		}
 
 		// Escape strings for HTML output
-		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));
+		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx', ''));
 
 		$maxLevel         = $params->get('maxLevel', -1);
 		$this->maxLevel   = &$maxLevel;

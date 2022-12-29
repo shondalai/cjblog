@@ -139,7 +139,7 @@ class PlgCjBlogAppsCjBlog extends JPlugin
 		// load current tab content
 		JLoader::import('profile', JPATH_ROOT.'/components/com_cjblog/models');
 		$model 				= JModelLegacy::getInstance( 'profile', 'CjBlogModel' );
-		$layout 			= $params->get('layout', 'default');
+		$layout 			= $params->get('ui_layout', 'default');
 	
 		$state 				= $model->getState(); // access the state first so that it can be modified
 		$return				= $model->getArticles();

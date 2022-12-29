@@ -85,7 +85,7 @@ class JFormFieldModal_Article extends JFormField
 		}
 		catch (RuntimeException $e)
 		{
-			JError::raiseWarning(500, $e->getMessage());
+		    throw new Exception($e->getMessage(), 500);
 		}
 		
 		if (empty($title))

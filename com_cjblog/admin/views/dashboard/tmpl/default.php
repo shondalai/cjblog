@@ -16,19 +16,20 @@ CJLib::behavior('fontawesome');
 $app		= JFactory::getApplication();
 $user		= JFactory::getUser();
 $userId		= $user->id;
-$span		= !empty( $this->sidebar) ? 'span10' : '';
+$rowClass   = CJBLOG_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';
+$span		= !empty( $this->sidebar) ? 'col-md-10' : 'col-md-12';
 ?>
-<div id="cj-wrapper">
+<div id="cj-wrapper" class="<?php echo $rowClass;?>">
 	<?php if (!empty( $this->sidebar)) : ?>
-	<div id="j-sidebar-container" class="span2">
+	<div id="j-sidebar-container" class="col-md-2">
 		<?php echo $this->sidebar; ?>
 	</div>
 	<?php endif;?>
-	<div id="j-main-container" class="<?php echo $span;?>">
-		<div class="span8">
+	<div id="j-main-container" class="<?php echo $rowClass;?>">
+		<div class="span8 col-md-8">
 			<?php echo $this->loadTemplate('articles');?>
 		</div>
-		<div class="span4">
+		<div class="span4 col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<strong><i class="fa fa-bullhorn"></i> <?php echo JText::_('COM_CJBLOG_TITLE_VERSION');?></strong>
@@ -111,8 +112,7 @@ $span		= !empty( $this->sidebar) ? 'span10' : '';
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Credits: </strong></div>
 				<div class="panel-body">
-					<div>CjBlog is a free software released under Gnu/GPL license. Copyright© 2009-17 corejoomla.com</div>
-					<div>Core Components: Bootstrap, jQuery, FontAwesome and ofcourse Joomla<sup>&reg;</sup>.</div>
+					<div>CjBlog is a free software released under Gnu/GPL license. Copyright© 2009-21 BulaSikku Technologies Private Limited.</div>
 				</div>
 			</div>
 		</div>

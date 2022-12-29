@@ -46,12 +46,11 @@ class com_cjblogInstallerScript
 				foreach ($queries as $query)
 				{
 					$query = trim($query);
-					if ($query != '' && $query{0} != '#')
+					if ($query != '' && $query[0] != '#')
 					{
 						$db->setQuery($query);
 						if (! $db->execute())
 						{
-// 							JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', $db->stderr(true)));
 // 							return false;
 						}
 					}
@@ -145,6 +144,8 @@ class com_cjblogInstallerScript
 		$update_queries[] = 'ALTER TABLE `#__cjblog_user_badge_map`	ADD COLUMN `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT FIRST,	ADD PRIMARY KEY (`id`)';
 		$update_queries[] = 'ALTER TABLE `#__cjblog_user_badge_map` ADD COLUMN `published` TINYINT(3) NOT NULL DEFAULT \'1\'';
 		
+		$update_queries[] = 'ALTER TABLE `#__cjblog_badges` CHANGE COLUMN `icon` `icon` VARCHAR(256) NULL DEFAULT NULL COLLATE \'utf8mb4_unicode_ci\'';
+		
 		// Perform all queries - we don't care if it fails
 		foreach ($update_queries as $query)
 		{
@@ -154,7 +155,7 @@ class com_cjblogInstallerScript
 			try
 			{
 				
-				$db->query();
+			    $db->execute();
 			}
 			catch (Exception $e)
 			{

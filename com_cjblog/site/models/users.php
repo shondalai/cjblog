@@ -67,7 +67,7 @@ class CjBlogModelUsers extends JModelList
 
 		if (isset($groups))
 		{
-			JArrayHelper::toInteger($groups);
+			$groups = \Joomla\Utilities\ArrayHelper::toInteger($groups);
 		}
 
 		$this->setState('filter.groups', $groups);
@@ -76,7 +76,7 @@ class CjBlogModelUsers extends JModelList
 
 		if (isset($excluded))
 		{
-			JArrayHelper::toInteger($excluded);
+			$excluded = \Joomla\Utilities\ArrayHelper::toInteger($excluded);
 		}
 
 		$this->setState('filter.excluded', $excluded);

@@ -13,7 +13,10 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.keepalive');
-JHtml::_('formbehavior.chosen', 'select');
+
+if(CJBLOG_MAJOR_VERSION < 4) {
+    JHtml::_('formbehavior.chosen', 'select');
+}
 
 $this->hiddenFieldsets = array();
 $this->hiddenFieldsets[0] = 'basic-limited';
@@ -47,18 +50,6 @@ if (isset($this->item->attribs['show_publishing_options']) && $this->item->attri
 	$params->show_publishing_options = $this->item->attribs['show_publishing_options'];
 }
 ?>
-
-<script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == 'pointsrule.cancel' || document.formvalidator.isValid(document.getElementById('item-form')))
-		{
-			<?php echo $this->form->getField('description')->save(); ?>
-			Joomla.submitform(task, document.getElementById('item-form'));
-		}
-	}
-</script>
-
 <form action="<?php echo JRoute::_('index.php?option=com_cjblog&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
 	<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
@@ -67,13 +58,13 @@ if (isset($this->item->attribs['show_publishing_options']) && $this->item->attri
 		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_CJBLOG_FIELD_DESCRIPTION_LABEL', true)); ?>
-		<div class="row-fluid">
-			<div class="span9">
+		<div class="<?php echo CJBLOG_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';?>">
+			<div class="span9 col-md-9">
 				<fieldset class="adminform">
 					<?php echo $this->form->getInput('description'); ?>
 				</fieldset>
 			</div>
-			<div class="span3">
+			<div class="span3 col-md-3">
 				<fieldset class="form-vertical">
 				<?php foreach ($this->form->getFieldset('options') as $field) : ?>
 					<div class="control-group">
@@ -93,11 +84,11 @@ if (isset($this->item->attribs['show_publishing_options']) && $this->item->attri
 		<?php // Do not show the publishing options if the edit form is configured not to. ?>
 		<?php if ($params->show_publishing_options == 1) : ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('COM_CJBLOG_FIELDSET_PUBLISHING', true)); ?>
-			<div class="row-fluid form-horizontal-desktop">
-			<div class="span6">
+			<div class="<?php echo CJBLOG_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';?> form-horizontal-desktop">
+			<div class="span6 col-md-6">
 				<?php echo JLayoutHelper::render('joomla.edit.publishingdata', $this); ?>
 			</div>
-			<div class="span6">
+			<div class="span6 col-md-6">
 				<?php echo JLayoutHelper::render('joomla.edit.metadata', $this); ?>
 			</div>
 		</div>

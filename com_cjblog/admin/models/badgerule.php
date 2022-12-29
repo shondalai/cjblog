@@ -117,10 +117,10 @@ class CjBlogModelBadgerule extends JModelAdmin
 			
 			foreach ($badgeRules->badge_rule as $badgeRule)
 			{
-				$item->rule_name 			= $input->clean($badgeRule->rule_name, 'string');
-				$item->asset_name			= $input->clean($badgeRule->appname, 'string');
-				$item->asset_title			= $input->clean($badgeRule->apptitle, 'string');
-				$item->description 			= $input->clean($badgeRule->rule_description, 'string');
+			    $item->rule_name 			= $input->clean((string) $badgeRule->rule_name, 'string');
+			    $item->asset_name			= $input->clean((string) $badgeRule->appname, 'string');
+			    $item->asset_title			= $input->clean((string) $badgeRule->apptitle, 'string');
+			    $item->description 			= $input->clean((string) $badgeRule->rule_description, 'string');
 				
 				if($item->asset_name != $appName || $item->rule_name != $ruleName)
 				{
@@ -128,10 +128,10 @@ class CjBlogModelBadgerule extends JModelAdmin
 				}
 				
 				$item->badgeRule			= new stdClass();
-				$item->badgeRule->join		= $input->clean($badgeRule->rules['join'], 'string');
-				$item->badgeRule->method	= $input->clean($badgeRule->rules['method'], 'string');
-				$item->badgeRule->ref_id	= $input->clean($badgeRule->rules['ref_id'], 'string');
-				$item->badgeRule->multiple	= $input->clean($badgeRule->rules['multiple'], 'boolean');
+				$item->badgeRule->join		= $input->clean((string) $badgeRule->rules['join'], 'string');
+				$item->badgeRule->method	= $input->clean((string) $badgeRule->rules['method'], 'string');
+				$item->badgeRule->ref_id	= $input->clean((string) $badgeRule->rules['ref_id'], 'string');
+				$item->badgeRule->multiple	= $input->clean((string) $badgeRule->rules['multiple'], 'boolean');
 				$item->badgeRule->rules 	= array();
 					
 				$rawRules = $badgeRule->rules->children();
@@ -143,11 +143,11 @@ class CjBlogModelBadgerule extends JModelAdmin
 				foreach($rawRules as $rawRule)
 				{
 					$rule 					= new stdClass();
-					$rule->name				= $input->clean($rawRule['name'], 'string');
-					$rule->dataType			= $input->clean($rawRule['dataType'], 'string');
-					$rule->compare			= $input->clean($rawRule['compare'], 'string');
-					$rule->label			= $input->clean($rawRule['label'], 'string');
-					$rule->type				= $input->clean($rawRule['type'], 'string');
+					$rule->name				= $input->clean((string) $rawRule['name'], 'string');
+					$rule->dataType			= $input->clean((string) $rawRule['dataType'], 'string');
+					$rule->compare			= $input->clean((string) $rawRule['compare'], 'string');
+					$rule->label			= $input->clean((string) $rawRule['label'], 'string');
+					$rule->type				= $input->clean((string) $rawRule['type'], 'string');
 					$rule->value 			= 1;
 				
 					if($rule->type == 'list' || $rule->type == 'checkbox')
@@ -230,8 +230,8 @@ class CjBlogModelBadgerule extends JModelAdmin
 		
 		foreach ($badgeRules->badge_rule as $badgeRule)
 		{
-			$rule_name 				= $input->clean($badgeRule->rule_name, 'string');
-			$asset_name				= $input->clean($badgeRule->appname, 'string');
+		    $rule_name 				= $input->clean((string) $badgeRule->rule_name, 'string');
+		    $asset_name				= $input->clean((string) $badgeRule->appname, 'string');
 			
 			if($asset_name != $data['asset_name'] || $rule_name != $data['rule_name'])
 			{
@@ -245,27 +245,27 @@ class CjBlogModelBadgerule extends JModelAdmin
 			}
 			
 			$ruleContent			= new stdClass();
-			$ruleContent->join		= $input->clean($badgeRule->rules['join'], 'string');
-			$ruleContent->method	= $input->clean($badgeRule->rules['method'], 'string');
-			$ruleContent->ref_id	= $input->clean($badgeRule->rules['ref_id'], 'string');
-			$ruleContent->multiple	= $input->clean($badgeRule->rules['multiple'], 'boolean');
+			$ruleContent->join		= $input->clean((string) $badgeRule->rules['join'], 'string');
+			$ruleContent->method	= $input->clean((string) $badgeRule->rules['method'], 'string');
+			$ruleContent->ref_id	= $input->clean((string) $badgeRule->rules['ref_id'], 'string');
+			$ruleContent->multiple	= $input->clean((string) $badgeRule->rules['multiple'], 'boolean');
 			$ruleContent->rules 	= array();
 			
 			foreach($rawRules as $rawRule)
 			{
 				$rule 				= new stdClass();
-				$rule->name			= $input->clean($rawRule['name'], 'string');
-				$rule->dataType		= $input->clean($rawRule['dataType'], 'string');
-				$rule->compare		= $input->clean($rawRule['compare'], 'string');
-				$rule->label		= $input->clean($rawRule['label'], 'string');
-				$rule->type			= $input->clean($rawRule['type'], 'string');
+				$rule->name			= $input->clean((string) $rawRule['name'], 'string');
+				$rule->dataType		= $input->clean((string) $rawRule['dataType'], 'string');
+				$rule->compare		= $input->clean((string) $rawRule['compare'], 'string');
+				$rule->label		= $input->clean((string) $rawRule['label'], 'string');
+				$rule->type			= $input->clean((string) $rawRule['type'], 'string');
 				
 				if($rule->type == 'checkbox')
 				{
 					$rule->value = $app->input->post->get($rule->name, null, 'array');
 					if($rule_node['dataType'] == 'int')
 					{
-						JArrayHelper::toInteger($rule->value);
+						$rule->value = \Joomla\Utilities\ArrayHelper::toInteger($rule->value);
 					}
 				} 
 				else 
@@ -287,7 +287,7 @@ class CjBlogModelBadgerule extends JModelAdmin
 				throw new Exception(JText::_('JERROR_ALERTNOAUTHOR').'| RC=5');
 			}
 			
-			$data['asset_title']	= $input->clean($badgeRule->apptitle, 'string');
+			$data['asset_title']	= $input->clean((string) $badgeRule->apptitle, 'string');
 			$data['rule_content'] 	= json_encode($ruleContent);
 		}
 		

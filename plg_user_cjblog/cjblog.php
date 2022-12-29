@@ -13,7 +13,7 @@ class plgUserCjBlog extends JPlugin
 	public function onUserLogin($user, $options)
 	{
 		$app = JFactory::getApplication();
-		if ($app->isAdmin()) return true;
+		if ($app->isClient('administrator')) return true;
 		
 		if( ! file_exists(JPATH_ROOT.'/components/com_cjblog/lib/api.php') )
 		{

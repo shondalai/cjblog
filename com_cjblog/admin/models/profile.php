@@ -131,12 +131,18 @@ class CjBlogModelProfile extends JModelAdmin
 		{
 			// Convert the params field to an array.
 			$registry = new JRegistry();
-			$registry->loadString($item->attribs);
+			if(!empty($item->attribs))
+			{
+				$registry->loadString($item->attribs);
+			}
 			$item->attribs = $registry->toArray();
 			
 			// Convert the metadata field to an array.
 			$registry = new JRegistry();
-			$registry->loadString($item->metadata);
+			if(!empty($item->metadata))
+			{
+				$registry->loadString($item->metadata);
+			}
 			$item->metadata = $registry->toArray();
 		}
 
@@ -212,24 +218,10 @@ class CjBlogModelProfile extends JModelAdmin
 	{
 		// Import the appropriate plugin group.
 		JPluginHelper::importPlugin($group);
-
-		// Get the dispatcher.
-		$dispatcher = JEventDispatcher::getInstance();
+		$app = JFactory::getApplication();
 
 		// Trigger the form preparation event.
-		$results = $dispatcher->trigger('onProfilePrepareForm', array($form, $data));
-
-		// Check for errors encountered while preparing the form.
-		if (count($results) && in_array(false, $results, true))
-		{
-			// Get the last error.
-			$error = $dispatcher->getError();
-
-			if (!($error instanceof Exception))
-			{
-				throw new Exception($error);
-			}
-		}
+		$app->triggerEvent('onProfilePrepareForm', array($form, $data));
 	}
 
 	public function save ($data)

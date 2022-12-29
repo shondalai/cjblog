@@ -7,11 +7,10 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die();
-JHtml::_('behavior.tabstate');
 
 if (! JFactory::getUser()->authorise('core.manage', 'com_cjblog'))
 {
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
@@ -19,8 +18,8 @@ require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
 require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
 CJLib::import('corejoomla.framework.core');
 
-require_once JPATH_COMPONENT_SITE.'/lib/api.php';
-require_once JPATH_COMPONENT_SITE.'/helpers/constants.php';
+require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
+require_once JPATH_ROOT.'/components/com_cjblog/helpers/constants.php';
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
 
 
