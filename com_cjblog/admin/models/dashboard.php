@@ -31,12 +31,12 @@ class CjBlogModelDashboard extends JModelList
 		{
 			require_once JPATH_ROOT.'/components/com_content/router.php';
 			require_once JPATH_ROOT.'/components/com_content/helpers/route.php';
-			JLoader::import('articles', JPATH_ROOT.'/components/com_content/models');
+			JLoader::import('articles', JPATH_ROOT.'/administrator/components/com_content/models');
 			$model = JModelList::getInstance('Articles', 'ContentModel');
 		}
 		else
 		{
-			$model = $app->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Site', ['ignore_request' => true]);
+			$model = $app->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Administrator', ['ignore_request' => true]);
 			$contentParams = JComponentHelper::getParams('com_content');
 			$model->setState('params', $contentParams);
 		}
