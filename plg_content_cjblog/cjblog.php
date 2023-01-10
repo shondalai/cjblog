@@ -29,7 +29,8 @@ class PlgContentCjBlog extends JPlugin {
 	}
 
 	public function onContentPrepare( $context, &$article, &$params, $page = 0 ) {
-		if ( $context != 'com_content.article' || JFactory::getApplication()->isClient( 'administrator' ) || ! $this->params->get( 'use_cjblog_content', 1 ) )
+		$app = JFactory::getApplication();
+		if ( $context != 'com_content.article' || $app->isClient( 'administrator' ) || $app->isClient( 'api' ) || ! $this->params->get( 'use_cjblog_content', 1 ) )
 		{
 			return true;
 		}
@@ -60,28 +61,34 @@ class PlgContentCjBlog extends JPlugin {
 				CjLib::behavior( 'bootstrap', [ 'loadcss' => $loadBsCss, 'customtag' => $custom_tag ] );
 			}
 			CJLib::behavior( 'bscore', [ 'customtag' => $custom_tag ] );
-		} else {
+		}
+		else
+		{
 			$wa = $document->getWebAssetManager();
 			$wa
-				->useScript('jquery')
-				->useScript('bootstrap.tab')
-				->useScript('bootstrap.dropdown')
-				->useStyle('fontawesome');
+				->useScript( 'jquery' )
+				->useScript( 'bootstrap.tab' )
+				->useScript( 'bootstrap.dropdown' )
+				->useStyle( 'fontawesome' );
 		}
 
 		CJFunctions::add_css_to_document( $document, JUri::root( true ) . '/media/com_cjblog/css/cj.blog.min.css', $custom_tag );
 		CJFunctions::add_script( JUri::root( true ) . '/media/com_cjblog/js/cj.blog.min.js', $custom_tag );
 
 		// reset article params
-		$article->params->set( 'show_title', false );
-		$article->params->set( 'show_author', false );
-		$article->params->set( 'show_print_icon', false );
-		$article->params->set( 'show_email_icon', false );
-		$article->params->set( 'access-edit', false );
+		if ( $article->params )
+		{
+			$article->params->set( 'show_title', false );
+			$article->params->set( 'show_author', false );
+			$article->params->set( 'show_print_icon', false );
+			$article->params->set( 'show_email_icon', false );
+			$article->params->set( 'access-edit', false );
+		}
 
 		$layout           = $appParams->get( 'ui_layout', 'default' );
 		$user             = JFactory::getUser();
-		$article->catslug = $article->category_alias ? ( $article->id . ':' . $article->category_alias ) : $article->id;
+		$article->slug    = ! empty( $article->alias ) ? $article->id . ':' . $article->alias : $article->id;
+		$article->catslug = ! empty( $article->category_alias ) ? ( $article->id . ':' . $article->category_alias ) : $article->id;
 		$return           = ContentHelperRoute::getArticleRoute( $article->slug, $article->catslug, $article->language );
 		$return           = base64_encode( $return );
 
@@ -119,7 +126,6 @@ class PlgContentCjBlog extends JPlugin {
 		if ( $params->get( 'social_sharing', 1 ) == 1 )
 		{
 			JPluginHelper::importPlugin( 'corejoomla' );
-			$app     = JFactory::getApplication();
 			$results = $app->triggerEvent( 'onSocialsDisplay', [ 'com_communityanswers.question', $params ] );
 
 			if ( ! empty( $results ) )
