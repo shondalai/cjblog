@@ -1,6 +1,5 @@
 <?php
 
-use Joomla\CMS\Helper\ContentHelper;
 use Imagine\Exception\Exception;
 
 /**
@@ -115,7 +114,7 @@ class PlgContentCjBlog extends JPlugin {
 			}
 			$titleHtml .= '</h2></div>';
 		}
-		else
+		elseif ( $user->authorise( 'core.edit', 'com_content.article.' . $article->id ) )
 		{
 			$titleHtml .= '<div>&nbsp;<a href="' . JRoute::_( ContentHelperRoute::getFormRoute( $article->id ) . '&return=' . $return ) . '">' . JText::_( 'JGLOBAL_EDIT' )
 			              . '</a></div>';
