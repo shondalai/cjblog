@@ -60,8 +60,6 @@ class CjBlogViewBadgeStreams extends JViewLegacy
 		
 		if ($canDo->get('core.manage'))
 		{
-			JToolbarHelper::addNew('badgestream.add');
-			JToolbarHelper::editList('badgestream.edit');
 			JToolbarHelper::publish('badgestreams.publish', 'JTOOLBAR_PUBLISH', true);
 			JToolbarHelper::unpublish('badgestreams.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 			JToolbarHelper::archiveList('badgestreams.archive');
