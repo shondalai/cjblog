@@ -11,7 +11,7 @@ defined('_JEXEC') or die();
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-if(CF_MAJOR_VERSION < 4) {
+if(CJBLOG_MAJOR_VERSION < 4) {
 	JHtml::_('behavior.formvalidator');
 	JHtml::_('behavior.keepalive');
 	JHtml::_('formbehavior.chosen', 'select');
@@ -62,7 +62,7 @@ if (isset($this->item->attribs['show_publishing_options']) && $this->item->attri
 		<?php echo JHtml::_($helper . '.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 		<?php echo JHtml::_($helper . '.addTab', 'myTab', 'general', JText::_('COM_CJBLOG_FIELD_DESCRIPTION_LABEL', true)); ?>
-        <div class="<?php echo CF_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';?>">
+        <div class="<?php echo CJBLOG_MAJOR_VERSION < 4 ? 'row-fluid' : 'row';?>">
             <div class="span9 col-md-9">
                 <fieldset class="adminform">
 					<?php echo $this->form->getInput('description'); ?>

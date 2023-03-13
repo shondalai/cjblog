@@ -40,7 +40,7 @@ class JFormFieldPointsrule extends JFormField
 		$script[] = '			' . $this->onchange;
 		$script[] = '		}';
 
-		if(CF_MAJOR_VERSION < 4) {
+		if(CJBLOG_MAJOR_VERSION < 4) {
 			$script[] = '		SqueezeBox.close();';
 		} else {
 			$script[] = 'var modal = bootstrap.Modal.getInstance(document.getElementById("rulesModal_jform_rule_id")); modal.hide();';
@@ -77,7 +77,7 @@ class JFormFieldPointsrule extends JFormField
 
 		// Create the user select button.
 		if ($this->readonly === false) {
-			if (CF_MAJOR_VERSION < 4) {
+			if (CJBLOG_MAJOR_VERSION < 4) {
 				JHtml::_('behavior.modal', 'a.modal_' . $this->id);
 
 				$html[] = '<a class="btn btn-primary modal_' . $this->id . '" title="' . JText::_('COM_CJBLOG_SELECT_A_RULE') . '" href="' . $link . '"' . ' rel="{handler: \'iframe\', size: {x: 800, y: 500}}">';

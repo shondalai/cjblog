@@ -26,7 +26,6 @@ $assoc = JLanguageAssociations::isEnabled();
 // will fall back to the original settings.
 $document = JFactory::getDocument();
 
-CJFunctions::load_jquery(array('libs'=>array('fontawesome')));
 CJFunctions::add_css_to_document($document, JUri::root(true).'/media/com_cjblog/css/cj.blog.min.css', true);
 CJFunctions::add_script(JUri::root(true).'/media/com_cjblog/js/jquery.guillotine.min.js', true);
 CJFunctions::add_script(JUri::root(true).'/media/com_cjblog/js/cj.blog.min.js', true);

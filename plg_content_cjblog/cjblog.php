@@ -54,7 +54,7 @@ class PlgContentCjBlog extends JPlugin {
 
 		if ( CJBLOG_MAJOR_VERSION < 4 )
 		{
-			CJFunctions::load_jquery( [ 'libs' => [ 'fontawesome' ], 'custom_tag' => $custom_tag ] );
+			CjScript::_( 'fontawesome', [ 'custom' => $custom_tag ] );
 			if ( $loadBsCss )
 			{
 				CjLib::behavior( 'bootstrap', [ 'loadcss' => $loadBsCss, 'customtag' => $custom_tag ] );

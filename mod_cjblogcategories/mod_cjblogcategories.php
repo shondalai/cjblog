@@ -13,8 +13,7 @@ require_once JPATH_SITE . '/components/com_cjblog/helpers/route.php';
 require_once JPATH_ROOT . '/modules/mod_cjblogcategories/helper.php';
 
 CJLib::import('corejoomla.framework.core');
-jimport('joomla.application.categories');
-CJFunctions::load_jquery(array('libs' => array('treeview')));
+CjScript::_( 'treeview', [ 'custom' => false ] );
 
 $app = JFactory::getApplication();
 $categories = JCategories::getInstance('Content', array('countItems' => true, 'assetid' => 'cjblogcategories'));

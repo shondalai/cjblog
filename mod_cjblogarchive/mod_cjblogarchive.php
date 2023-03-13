@@ -66,7 +66,7 @@ $script = 'jQuery(".cjblog-archive-list").find("li[rel=\''.$selected.'\']").find
 		jQuery(".cjblog-archive-list").find("li[rel=\''.$selected.'\']").parents("li.expandable").find(".expandable-hitarea:first").click();
 		jQuery(".cjblog-archive-list").find("li[rel=\''.$selected.'\']").find("a:first").css("font-weight", "bold");';
 
-CJFunctions::load_jquery(array('libs'=>array('treeview')));
+CjScript::_( 'treeview', [ 'custom' => false ] );
 $document->addScriptDeclaration('jQuery(document).ready(function($){jQuery(".cjblog-archive-list").find(".cat-list:first").treeview({"collapsed": true});'.$script.'});');
 
 require JModuleHelper::getLayoutPath('mod_cjblogarchive', $params->get('layout', 'default'));
