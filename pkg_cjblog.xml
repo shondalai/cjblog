@@ -3,9 +3,9 @@
 <extension method="upgrade" type="package" version="3.9">
     <name>CjBlog Package</name>
     <author>Maverick</author>
-    <creationDate>2023-Jan-10</creationDate>
+    <creationDate>2023-Mar-13</creationDate>
     <packagename>cjblog</packagename>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <url>https://shondalai.com/</url>
     <packager>Maverick</packager>
     <packagerurl>https://shondalai.com/</packagerurl>
@@ -24,7 +24,8 @@
 		<p><strong style="color: red;">Please install CjLib component if not yet installed. Please enable the plugins from plugin manager.</strong></p>
 		<p>Thank you for using shondalai.com&reg; software. Please add a rating and review at Joomla&reg; Extension Directory.</p>
         
-    ]]>
+    
+]]>
 </description>
     <files folder="packages">
         <file id="cjblog" type="component">com_cjblog.zip</file>
