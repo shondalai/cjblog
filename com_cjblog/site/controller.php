@@ -83,29 +83,32 @@ class CjBlogController extends JControllerLegacy
 		$params = JComponentHelper::getParams('com_cjblog');
 		$loadBsCss = $params->get('load_bootstrap_css', false);
 
-		if(CJBLOG_MAJOR_VERSION < 4) {
-			CjLib::behavior('bootstrap', array('loadcss' => $loadBsCss));
-			CjScript::_('fontawesome', array('custom'=>$custom_tag));
-			JHtml::_('script', 'system/core.js', false, true);
+		if ( CJBLOG_MAJOR_VERSION < 4 )
+		{
+			CjLib::behavior( 'bootstrap', [ 'loadcss' => $loadBsCss ] );
+			CjScript::_( 'fontawesome', [ 'custom' => $custom_tag ] );
+			JHtml::_( 'script', 'system/core.js', false, true );
 
-			if($params->get('ui_layout', 'default') == 'default')
+			if ( $params->get( 'ui_layout', 'default' ) == 'default' )
 			{
-				CJLib::behavior('bscore', array('customtag'=>$custom_tag));
+				CJLib::behavior( 'bscore', [ 'customtag' => $custom_tag ] );
 			}
-			if($vName == 'form')
+			if ( $vName == 'form' )
 			{
-				JHtml::_('behavior.framework');
+				JHtml::_( 'behavior.framework' );
 			}
-		} else {
+		}
+		else
+		{
 			$wa = $document->getWebAssetManager();
 			$wa
-				->useScript('jquery')
-				->useScript('bootstrap.tab')
-				->useScript('bootstrap.dropdown')
-				->useStyle('fontawesome');
+				->useScript( 'jquery' )
+				->useScript( 'bootstrap.tab' )
+				->useScript( 'bootstrap.dropdown' )
+				->useStyle( 'fontawesome' );
 		}
-		
-		if ($vName == 'profileform')
+
+		if ( $vName == 'profileform')
 		{
 		    CJFunctions::add_script(JUri::root(true).'/media/system/js/tabs-state.js', $custom_tag);
 		    CJFunctions::add_script(JUri::root(true).'/media/system/js/validate.js', $custom_tag);

@@ -16,7 +16,6 @@ require_once JPATH_COMPONENT . '/helpers/helper.php';
 
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
 require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
-require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
 CJLib::import('corejoomla.framework.core');
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
 
