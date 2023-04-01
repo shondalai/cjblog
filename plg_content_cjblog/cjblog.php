@@ -25,11 +25,24 @@ class PlgContentCjBlog extends JPlugin {
 		{
 			require_once JPATH_ROOT . '/components/com_content/helpers/route.php';
 		}
+
+		if ( file( JPATH_ROOT . '/components/com_cjlib/framework.php' ) )
+		{
+			require_once JPATH_ROOT . '/components/com_cjlib/framework.php';
+			CJLib::import( 'corejoomla.framework.core' );
+			$this->loadLanguage( 'com_cjblog', JPATH_ROOT );
+		}
 	}
 
 	public function onContentPrepare( $context, &$article, &$params, $page = 0 ) {
 		$app = JFactory::getApplication();
-		if ( $context != 'com_content.article' || $app->isClient( 'administrator' ) || $app->isClient( 'api' ) || ! $this->params->get( 'use_cjblog_content', 1 ) )
+		if (
+			$context != 'com_content.article'
+			|| $app->isClient( 'administrator' )
+			|| $app->isClient( 'api' )
+			|| ! $this->params->get( 'use_cjblog_content', 1 )
+			|| ! file_exists( JPATH_ROOT . '/components/com_cjlib/framework.php' )
+		)
 		{
 			return true;
 		}
@@ -46,12 +59,7 @@ class PlgContentCjBlog extends JPlugin {
 			return true;
 		}
 
-		require_once JPATH_ROOT . '/components/com_cjlib/framework.php';
-		require_once JPATH_ROOT . '/components/com_cjlib/framework/api.php';
-		CJLib::import( 'corejoomla.framework.core' );
-		$this->loadLanguage( 'com_cjblog', JPATH_ROOT );
 		$document = JFactory::getDocument();
-
 		if ( CJBLOG_MAJOR_VERSION < 4 )
 		{
 			CjScript::_( 'fontawesome', [ 'custom' => $custom_tag ] );
@@ -240,27 +248,8 @@ class PlgContentCjBlog extends JPlugin {
 		                 '</div>';
 	}
 
-	public function onContentBeforeSave( $context, $article, $isNew ) {
-		if ( $context != 'com_content.form' )
-		{
-			return true;
-		}
-
-		$user = JFactory::getUser();
-		if ( ! $user->authorise( 'core.autoapprove', 'com_cjblog' ) )
-		{
-			$article->state = 0;
-		}
-		else
-		{
-			$article->state = 1;
-		}
-
-		return true;
-	}
-
 	public function onContentAfterSave( $context, $article, $isNew ) {
-		if ( $context != 'com_content.form' )
+		if ( $context != 'com_content.form' || ! file_exists( JPATH_ROOT . '/components/com_cjlib/framework.php' ) )
 		{
 			return true;
 		}
@@ -268,25 +257,13 @@ class PlgContentCjBlog extends JPlugin {
 		$user = JFactory::getUser();
 		$db   = JFactory::getDbo();
 
-		if ( ! $isNew || $user->authorise( 'core.autoapprove', 'com_cjblog' ) )
+		if ( ! $isNew || $article->state != 1 )
 		{
 			return true;
 		}
 
 		try
 		{
-			require_once JPATH_ROOT . '/components/com_cjlib/framework.php';
-			require_once JPATH_ROOT . '/components/com_cjlib/framework/api.php';
-			CJLib::import( 'corejoomla.framework.core' );
-			$this->loadLanguage( 'com_cjblog', JPATH_ROOT );
-
-			$record             = new stdClass();
-			$record->id         = $article->id;
-			$record->published  = $user->authorise( 'core.autoapprove', 'com_cjblog' ) ? $article->state : 3;
-			$record->secret_key = CjLibUtils::getRandomKey( 32 );
-
-			$db->insertObject( '#__cjblog_reviews', $record );
-
 			// Award points
 			$params    = JComponentHelper::getParams( 'com_cjblog' );
 			$pointsApp = $params->get( 'points_component', 'none' );
@@ -303,67 +280,8 @@ class PlgContentCjBlog extends JPlugin {
 				];
 				$api->awardPoints( $pointsApp, $article->created_by, $options );
 			}
-
-			// Send emails
-			$template = null;
-			$tag      = JFactory::getLanguage()->getTag();
-
-			$query = $db->getQuery( true )
-			            ->select( 'title, description, language' )
-			            ->from( '#__cjblog_email_templates' )
-			            ->where( 'email_type = ' . $db->q( 'com_cjblog.approval' ) )
-			            ->where( 'language in (' . $db->q( $tag ) . ',' . $db->q( '*' ) . ')' )
-			            ->where( 'published = 1' );
-
-			$db->setQuery( $query );
-			$templates = $db->loadObjectList( 'language' );
-
-			if ( isset( $templates[$tag] ) )
-			{
-				$template = $templates[$tag];
-			}
-			elseif ( isset( $templates['*'] ) )
-			{
-				$template = $templates['*'];
-			}
-
-			if ( ! empty( $template ) )
-			{
-				JLoader::import( 'mail', JPATH_ROOT . '/components/com_cjblog/models' );
-
-				$user      = JFactory::getUser();
-				$config    = JFactory::getConfig();
-				$sitename  = $config->get( 'sitename' );
-				$message   = new stdClass();
-				$mailModel = JModelLegacy::getInstance( 'mail', 'CjBlogModel' );
-
-				$article->slug    = $article->alias ? ( $article->id . ':' . $article->alias ) : $article->id;
-				$article->catslug = ! empty( $article->category_alias ) ? ( $article->catid . ':' . $article->category_alias ) : $article->catid;
-				$approvalUrl      = CjBlogHelperRoute::getApprovalRoute( $article->id, true, $key );
-				$disapprovalUrl   = CjBlogHelperRoute::getApprovalRoute( $article->id, false, $key );
-				$articleUrl       = JRoute::_( ContentHelperRoute::getArticleRoute( $article->slug, $article->catslug ), false, - 1 );
-
-				$recipients  = [];
-				$subject     = str_ireplace( '{ARTICLE_TITLE}', $article->title, $template->title );
-				$description = str_ireplace( '{SITENAME}', $sitename, $template->description );
-				$description = str_ireplace( '{ARTICLE_TITLE}', $article->title, $description );
-				$description = str_ireplace( '{ARTICLE_URL}', $articleUrl, $description );
-				$description = str_ireplace( '{CATEGORY}', $article->category_title, $description );
-				$description = str_ireplace( '{AUTHOR_NAME}', $user->$displayName, $description );
-				$description = str_ireplace( '{APPROVAL_URL}', $approvalUrl, $description );
-				$description = str_ireplace( '{DISAPPROVAL_URL}', $disapprovalUrl, $description );
-
-				if ( ! empty( $recipients ) && ! empty( $message ) )
-				{
-					$message->asset_name  = $emailType;
-					$message->subject     = $subject;
-					$message->description = $description;
-
-					$mailModel->enqueueMail( $message, $recipients, 'none' );
-				}
-			}
 		}
-		catch ( Exception $e )
+		catch ( RuntimeException $e )
 		{
 			return false;
 		}
@@ -372,54 +290,51 @@ class PlgContentCjBlog extends JPlugin {
 	}
 
 	public function onContentChangeState( $context, $pks, $value ) {
-		if ( $context != 'com_content.article' )
+		if ( $context != 'com_content.article' || ! file_exists( JPATH_ROOT . '/components/com_cjlib/framework.php' ) )
 		{
-			return;
+			return true;
 		}
 
 		// sync users
-		$db      = JFactory::getDbo();
-		$userIds = [];
-		$pks     = Joomla\Utilities\ArrayHelper::toInteger( $pks );
+		$db       = JFactory::getDbo();
+		$articles = [];
+		$pks      = Joomla\Utilities\ArrayHelper::toInteger( $pks );
 
 		try
 		{
 			$query = $db->getQuery( true )
-			            ->select( 'a.created_by' )
+			            ->select( 'a.id, a.created_by, a.title' )
 			            ->from( '#__content AS a' )
 			            ->where( 'a.id IN (' . implode( ',', $pks ) . ')' );
 			$db->setQuery( $query );
-			$userIds = $db->loadColumn();
+			$articles = $db->loadObjectList();
 		}
-		catch ( Exception $e )
+		catch ( RuntimeException $e )
 		{
-			return;
+			return false;
+		}
+
+		if ( empty( $articles ) )
+		{
+			return true;
 		}
 
 		try
 		{
-			$query = 'insert into
-					#__cjblog_users (id, handle, points)
-					(
-						select
-							u.id, replace(u.username, \'-\', \'_\'), sum(p.points) as points
-						from
-							#__users AS u
-						left join
-							#__cjblog_points AS p on p.user_id = u.id
-						where
-							u.id IN (' . implode( ',', $userIds ) . ')
-						group by u.id
-					)
-				 on duplicate key
-    				update id = values(id)';
-
+			$userIds  = array_column( $articles, 'created_by' );
+			$subQuery = $db->getQuery( true )
+			               ->select( "u.id, replace(u.username, '-', '_'), IFNULL(sum(p.points), 0) as points" )
+			               ->from( "#__users AS u" )
+			               ->join( "left", "#__cjblog_points AS p", "p.user_id = u.id" )
+			               ->where( "u.id IN (" . implode( ',', $userIds ) . ")" )
+			               ->group( "u.id" );
+			$query    = 'insert into #__cjblog_users (id, handle, points) ' . $subQuery->__toString() . ' on duplicate key update id = values(id)';
 			$db->setQuery( $query );
 			$db->execute();
 		}
-		catch ( Exception $e )
+		catch ( RuntimeException $e )
 		{
-			// 			throw new Exception($e);
+			return false;
 		}
 
 		// now update
@@ -427,19 +342,39 @@ class PlgContentCjBlog extends JPlugin {
 		{
 			$query = $db->getQuery( true )
 			            ->update( '#__cjblog_users AS u' )
-			            ->set( 'points = (select sum(p.points) from #__cjblog_points AS p where p.user_id = u.id group by p.user_id)' )
-			            ->set( 'num_articles = (select count(*) from #__content AS t where t.created_by = u.id and t.state = 1 group by t.created_by)' )
+			            ->set( 'u.points = IFNULL((select sum(p.points) from #__cjblog_points AS p where p.user_id = u.id group by p.user_id), 0)' )
+			            ->set( 'u.num_articles = IFNULL((select count(*) from #__content AS t where t.created_by = u.id and t.state = 1 group by t.created_by), 0)' )
 			            ->where( 'u.id IN (' . implode( ',', $userIds ) . ')' );
 
 			$db->setQuery( $query );
 			$db->execute();
 		}
-		catch ( Exception $e )
+		catch ( RuntimeException $e )
 		{
-			// 			throw new Exception($e);
+			return false;
 		}
 
-		return false;
+		// Award points
+		$params    = JComponentHelper::getParams( 'com_cjblog' );
+		$pointsApp = $params->get( 'points_component', 'none' );
+
+		if ( $pointsApp == 'cjblog' )
+		{
+			$api = new CjLibApi();
+			foreach ( $articles as $article )
+			{
+				$options = [
+					'function'  => $value == 1 ? 'com_content.create' : 'com_content.delete',
+					'reference' => $article->id,
+					'info'      => CjLibUtils::substrws( $article->text, 256 ),
+					'component' => 'com_content',
+					'title'     => JText::sprintf( $value == 1 ? 'COM_CJBLOG_POINTS_NEW_ARTICLE' : 'COM_CJBLOG_POINTS_DELETED_ARTICLE', $article->title ),
+				];
+				$api->awardPoints( $pointsApp, $article->created_by, $options );
+			}
+		}
+
+		return true;
 	}
 
 }

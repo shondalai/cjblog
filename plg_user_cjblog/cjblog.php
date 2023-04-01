@@ -6,55 +6,57 @@
  * @copyright   Copyright (C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-defined('_JEXEC') or die;
+defined( '_JEXEC' ) or die;
 
-class plgUserCjBlog extends JPlugin
-{
-	public function onUserLogin($user, $options)
-	{
+class plgUserCjBlog extends JPlugin {
+
+	public function onUserLogin( $user, $options ) {
 		$app = JFactory::getApplication();
-		if ($app->isClient('administrator')) return true;
-		
-		if( ! file_exists(JPATH_ROOT.'/components/com_cjblog/lib/api.php') )
+		if ( $app->isClient( 'administrator' ) )
 		{
 			return true;
 		}
-		
-		require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
-		$userid = intval(JUserHelper::getUserId($user['username']));
-		$api = CjBlogApi::getPointsApi();
-		$api->awardPoints('com_users.login', $userid, 0, date('Ymd'), date('F j, Y, g:i a'));
-		
+
+		if ( ! file_exists( JPATH_ROOT . '/components/com_cjblog/lib/api.php' ) )
+		{
+			return true;
+		}
+
+		require_once JPATH_ROOT . '/components/com_cjblog/lib/api.php';
+		$userid = intval( JUserHelper::getUserId( $user['username'] ) );
+		$api    = CjBlogApi::getPointsApi();
+		$api->awardPoints( 'com_users.login', $userid, 0, date( 'Ymd' ), date( 'F j, Y, g:i a' ) );
+
 		return true;
 	}
-	
-	public function onUserAfterSave($user, $isnew, $success, $error)
-	{
-		if($isnew && $success)
+
+	public function onUserAfterSave( $user, $isnew, $success, $error ) {
+		if ( $isnew && $success )
 		{
-			if( ! file_exists(JPATH_ROOT.'/components/com_cjblog/lib/api.php') )
+			if ( ! file_exists( JPATH_ROOT . '/components/com_cjblog/lib/api.php' ) )
 			{
 				return true;
 			}
-			
-			$userid = intval(JUserHelper::getUserId($user['username']));
-			if($userid > 0)
+
+			$userid = intval( JUserHelper::getUserId( $user['username'] ) );
+			if ( $userid > 0 )
 			{
-				$db = JFactory::getDbo();
-				$query = $db->getQuery(true)
-					->insert('#__cjblog_users')
-					->columns('id, num_articles, handle')
-					->values($userid.',0,'.$db->q($user['username']));
-				
-				$db->setQuery($query);
+				$db    = JFactory::getDbo();
+				$query = $db->getQuery( true )
+				            ->insert( '#__cjblog_users' )
+				            ->columns( 'id, num_articles, handle' )
+				            ->values( $userid . ',0,' . $db->q( $user['username'] ) );
+
+				$db->setQuery( $query );
 				$db->execute();
 
-				require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
+				require_once JPATH_ROOT . '/components/com_cjblog/lib/api.php';
 				$api = CjBlogApi::getPointsApi();
-				$api->awardPoints('com_users.signup', $userid, 0, $userid, date('F j, Y, g:i a'));
+				$api->awardPoints( 'com_users.signup', $userid, 0, $userid, date( 'F j, Y, g:i a' ) );
 			}
 		}
-				
+
 		return true;
 	}
+
 }
