@@ -75,7 +75,7 @@ $userId		= $user->id;
 									<p class="smallsub"> <?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></p>
 								<?php else : ?>
 									<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-									<?php echo $this->escape($item->author_name); ?></a>
+									<?php echo !empty($item->author_name) ? $this->escape($item->author_name) : ''; ?></a>
 								<?php endif; ?>
 							</td>
 							<td class="small hidden-phone">

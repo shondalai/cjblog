@@ -22,7 +22,7 @@ class CjBlogHelper extends JHelperContent
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_BADGE_RULES'), 'index.php?option=com_cjblog&view=badgerules', $vName == 'badgerules');
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_BADGE_STREAM'), 'index.php?option=com_cjblog&view=badgestreams', $vName == 'badgestreams');
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_EMAIL_TEMPLATES'), 'index.php?option=com_cjblog&view=emails', $vName == 'emails');
-		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_ARTICLES'), 'index.php?option=com_content&view=articles');
+		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_ARTICLES'), 'index.php?option=com_content&view=articles', $vName == 'cjblog');
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_REVIEWS'), 'index.php?option=com_cjblog&view=reviews', $vName == 'reviews');
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_CATEGORIES'), 'index.php?option=com_categories&extension=com_content', $vName == 'categories');
 		JHtmlSidebar::addEntry(JText::_('COM_CJBLOG_MENU_USERS'), 'index.php?option=com_cjblog&view=users', $vName == 'users');

@@ -15,7 +15,6 @@ if (! JFactory::getUser()->authorise('core.manage', 'com_cjblog'))
 
 ////////////////////////////////////////// CjLib Includes ///////////////////////////////////////////////
 require_once JPATH_ROOT.'/components/com_cjlib/framework.php';
-require_once JPATH_ROOT.'/components/com_cjlib/framework/api.php';
 CJLib::import('corejoomla.framework.core');
 
 require_once JPATH_ROOT.'/components/com_cjblog/lib/api.php';
