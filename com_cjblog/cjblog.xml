@@ -3,12 +3,12 @@
 <extension method="upgrade" type="component" version="3.2">
     <name>CjBlog</name>
     <author>Maverick</author>
-    <creationDate>2023-Mar-13</creationDate>
+    <creationDate>2023-Apr-01</creationDate>
     <copyright>(C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>admin@joomla.org</authorEmail>
     <authorUrl>shondalai.com</authorUrl>
-    <version>3.0.2</version>
+    <version>3.0.3</version>
     <description>COM_CJBLOG_XML_DESCRIPTION</description>
     <files folder="site">
         <filename>cjblog.php</filename>

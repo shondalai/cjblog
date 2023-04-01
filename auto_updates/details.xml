@@ -6,10 +6,10 @@
         <description>CjBlog Package</description>
         <element>pkg_cjblog</element>
         <type>package</type>
-        <version>3.0.2</version>
+        <version>3.0.3</version>
         <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
         <downloads>
-            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.2/cjblog_v3.0.2.zip</downloadurl>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.3/cjblog_v3.0.3.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>
@@ -25,10 +25,10 @@
         <description>CjBlog Package</description>
         <element>pkg_cjblog</element>
         <type>package</type>
-        <version>3.0.2</version>
+        <version>3.0.3</version>
         <infourl title="CjBlog">https://github.com/shondalai/cjblog</infourl>
         <downloads>
-            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.2/cjblog_v3.0.2.zip</downloadurl>
+            <downloadurl format="zip" type="full">https://github.com/shondalai/cjblog/releases/download/v3.0.3/cjblog_v3.0.3.zip</downloadurl>
         </downloads>
         <tags>
             <tag>stable</tag>

@@ -3,9 +3,9 @@
 <extension method="upgrade" type="package" version="3.9">
     <name>CjBlog Package</name>
     <author>Maverick</author>
-    <creationDate>2023-Mar-13</creationDate>
+    <creationDate>2023-Apr-01</creationDate>
     <packagename>cjblog</packagename>
-    <version>3.0.2</version>
+    <version>3.0.3</version>
     <url>https://shondalai.com/</url>
     <packager>Maverick</packager>
     <packagerurl>https://shondalai.com/</packagerurl>
@@ -25,6 +25,7 @@
 		<p>Thank you for using shondalai.com&reg; software. Please add a rating and review at Joomla&reg; Extension Directory.</p>
         
     
+
 ]]>
 </description>
     <files folder="packages">
