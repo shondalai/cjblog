@@ -10,6 +10,12 @@
     <authorUrl>shondalai.com</authorUrl>
     <version>3.0.3</version>
     <description>COM_CJBLOG_XML_DESCRIPTION</description>
+
+    <install>
+        <sql>
+            <file charset="utf8" driver="mysql">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
     <files folder="site">
         <filename>cjblog.php</filename>
         <filename>controller.php</filename>
