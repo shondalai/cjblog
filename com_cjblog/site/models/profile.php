@@ -462,14 +462,14 @@ class CjBlogModelProfile extends JModelItem {
 		$data->points = $db->loadObjectList();
 
 		$targetDir = CJBLOG_MEDIA_DIR . 'downloads/' . $user->id . '/';
-		JFolder::create( $targetDir );
+		\Joomla\CMS\Filesystem\Folder::create( $targetDir );
 		$filename = $targetDir . 'export.zip';
 		$zip      = new ZipArchive();
 		$zip->open( $filename, ZipArchive::CREATE );
 
 		// add html download
 		$html = JLayoutHelper::render( 'export.profile', [ 'data' => $data ] );
-		JFile::write( $targetDir . 'index.html', $html );
+		\Joomla\CMS\Filesystem\File::write( $targetDir . 'index.html', $html );
 		$zip->addFile( $targetDir . 'index.html', 'index.html' );
 
 		if ( file_exists( CJBLOG_AVATAR_BASE_DIR . 'size-256/' . $data->profile->avatar ) && is_file( CJBLOG_AVATAR_BASE_DIR . 'size-256/' . $data->profile->avatar ) )
@@ -490,7 +490,7 @@ class CjBlogModelProfile extends JModelItem {
 		$error = $zip->close();
 
 		// cleanup
-		JFile::delete( $targetDir . 'index.html' );
+		\Joomla\CMS\Filesystem\File::delete( $targetDir . 'index.html' );
 
 		return $filename;
 	}

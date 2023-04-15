@@ -296,7 +296,7 @@ class CjBlogModelProfile extends JModelAdmin
 				$profile = $api->getUserProfile($userId);
 				$file_name = $profile['avatar'];
 				
-				if(!empty($profile['avatar']) && JFile::exists(CJBLOG_AVATAR_BASE_DIR.'/size-256/'.$profile['avatar']))
+				if(!empty($profile['avatar']) && \Joomla\CMS\Filesystem\File::exists(CJBLOG_AVATAR_BASE_DIR.'/size-256/'.$profile['avatar']))
 				{
 					$file_path = CJBLOG_AVATAR_BASE_DIR.'/size-256/'.$profile['avatar'];
 					list($temp_image_width, $temp_image_height, $temp_image_type) = getimagesize($file_path);
@@ -309,7 +309,7 @@ class CjBlogModelProfile extends JModelAdmin
 			$temp_image_path = $tmp_file['tmp_name'];
 			$temp_image_name = $tmp_file['name'];
 			
-			$temp_image_ext = JFile::getExt($temp_image_name);
+			$temp_image_ext = \Joomla\CMS\Filesystem\File::getExt($temp_image_name);
 			list($temp_image_width, $temp_image_height, $temp_image_type) = getimagesize($temp_image_path);
 			
 			if ($temp_image_type === NULL
@@ -322,10 +322,10 @@ class CjBlogModelProfile extends JModelAdmin
 				return false;
 			}
 			
-			$file_name = JFile::makeSafe(CjLibUtils::getRandomKey(25, 'abcdefghijklmnopqrstuvwxyz1234567890'));
+			$file_name = \Joomla\CMS\Filesystem\File::makeSafe(CjLibUtils::getRandomKey(25, 'abcdefghijklmnopqrstuvwxyz1234567890'));
 			$file_path = CJBLOG_AVATAR_BASE_DIR.'original/'.$file_name.'.'.$temp_image_ext;
 			
-			if(! JFile::upload($temp_image_path, $file_path))
+			if(! \Joomla\CMS\Filesystem\File::upload($temp_image_path, $file_path))
 			{
 				echo json_encode(array('error'=>JText::_('MSG_ERROR_PROCESSING').'| Error Code 3.'));
 				return false;

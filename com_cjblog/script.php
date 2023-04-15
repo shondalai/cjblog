@@ -23,7 +23,7 @@ class com_cjblogInstallerScript {
 
 	function update( $parent ) {
 		require_once JPATH_ROOT . '/components/com_cjblog/helpers/constants.php';
-		JFolder::create( CJBLOG_MEDIA_DIR . 'thumbnails' );
+		\Joomla\CMS\Filesystem\Folder::create( CJBLOG_MEDIA_DIR . 'thumbnails' );
 
 		// $parent is the class calling this method
 		echo '<p>' . JText::_( 'COM_CJBLOG_UPDATE_TEXT' ) . '</p>';

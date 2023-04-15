@@ -47,11 +47,11 @@ class CjBlogHelper extends JHelperContent
 					continue;
 				}
 					
-				$filename = $postId.'_'.$postType.'_'.JFile::makeSafe($file['name']);
+				$filename = $postId.'_'.$postType.'_'.\Joomla\CMS\Filesystem\File::makeSafe($file['name']);
 				$src = $file['tmp_name'];
 				$dest = CJBLOG_ATTACHMENTS_DIR.$filename;
 					
-				if(JFile::upload($src, $dest))
+				if(\Joomla\CMS\Filesystem\File::upload($src, $dest))
 				{
 					$upload = new stdClass();
 					$upload->name = $filename;

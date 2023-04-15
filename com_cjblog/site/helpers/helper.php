@@ -33,11 +33,11 @@ class CjBlogSiteHelper
 				continue;
 			}
 				
-			$filename = $postId.'_'.$postType.'_'.JFile::makeSafe($file['name']);
+			$filename = $postId.'_'.$postType.'_'.\Joomla\CMS\Filesystem\File::makeSafe($file['name']);
 			$src = $file['tmp_name'];
 			$dest = CJBLOG_ATTACHMENTS_DIR.$filename;
 				
-			if(JFile::upload($src, $dest))
+			if(\Joomla\CMS\Filesystem\File::upload($src, $dest))
 			{
 				$upload = new stdClass();
 				$upload->name = $filename;
@@ -81,9 +81,9 @@ class CjBlogSiteHelper
 					foreach ($absolateAttachments as $absolate)
 					{
 						$removedIds[] = $absolate->id;
-						if(JFile::exists(CJBLOG_ATTACHMENTS_DIR.$absolate->filename))
+						if(\Joomla\CMS\Filesystem\File::exists(CJBLOG_ATTACHMENTS_DIR.$absolate->filename))
 						{
-							JFile::delete(CJBLOG_ATTACHMENTS_DIR.$absolate->filename);
+							\Joomla\CMS\Filesystem\File::delete(CJBLOG_ATTACHMENTS_DIR.$absolate->filename);
 						}
 					}
 					
@@ -173,10 +173,10 @@ class CjBlogSiteHelper
     			foreach ($matches[1] as $file_path) 
     			{
     			    $imageFound = str_replace(JUri::root(false), '/', $file_path);
-    				$filename = str_replace(' ', '-', strtolower(JFile::makeSafe(basename($imageFound))));
-    				if(JFile::getExt($filename) == 'jpeg')
+    				$filename = str_replace(' ', '-', strtolower(\Joomla\CMS\Filesystem\File::makeSafe(basename($imageFound))));
+    				if(\Joomla\CMS\Filesystem\File::getExt($filename) == 'jpeg')
     				{
-    				    $filename = JFile::stripExt($filename) . '.jpg';
+    				    $filename = \Joomla\CMS\Filesystem\File::stripExt($filename) . '.jpg';
     				}
     				
     				if(preg_match('/(http|https)?:\/\/.*$/i', strtolower($imageFound))) 
@@ -185,7 +185,7 @@ class CjBlogSiteHelper
     				}
     				else 
     				{
-    					JFile::copy($imageFound, $tmp.$filename);
+    					\Joomla\CMS\Filesystem\File::copy($imageFound, $tmp.$filename);
     				}
 
     				$imgSize = @getimagesize($tmp.$filename);
@@ -200,7 +200,7 @@ class CjBlogSiteHelper
     
     			if($imageFound)
     			{
-    				if(JFile::exists($tmp.$filename))
+    				if(\Joomla\CMS\Filesystem\File::exists($tmp.$filename))
     				{
     				    $image = new Zebra_Image();
     				    $image->jpeg_quality = 100;
