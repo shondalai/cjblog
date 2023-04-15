@@ -131,14 +131,14 @@ if (isset($this->item->attribs['show_urls_images_backend']) && $this->item->attr
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::_('COM_CONTENT_FIELDSET_URLS_AND_IMAGES', true)); ?>
 			<div class="row-fluid form-horizontal-desktop">
 				<div class="span6">
-					<?php echo $this->form->getControlGroup('images'); ?>
-					<?php foreach ($this->form->getGroup('images') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
+					<?php echo $this->form->renderField('images'); ?>
+					<?php foreach ($this->form->getFieldset('images') as $field) : ?>
+						<?php echo $field->renderField(); ?>
 					<?php endforeach; ?>
 				</div>
 				<div class="span6">
-					<?php foreach ($this->form->getGroup('urls') as $field) : ?>
-						<?php echo $field->getControlGroup(); ?>
+					<?php foreach ($this->form->getFieldset('urls') as $field) : ?>
+						<?php echo $field->renderField(); ?>
 					<?php endforeach; ?>
 				</div>
 			</div>
