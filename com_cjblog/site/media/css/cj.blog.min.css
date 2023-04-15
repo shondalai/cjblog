@@ -85,8 +85,9 @@ body.guillotine-dragging, body.guillotine-dragging * {cursor: move !important; c
 .guillotine-sample {position: absolute !important; top: -100000px !important; left: -100000px !important; width: auto !important; height: auto !important;}
 
 #cj-wrapper #avatar-image {cursor: move;}
-#avatar-controls {padding: 10px; text-align: center; display: block;}
+#avatar-controls {padding: 10px 0; text-align: center; display: block;}
 #avatar-controls a {margin-right: 20px; font-size: large; color: #888;}
+#avatar-controls a:last-child {margin-right: 0;}
 #avatar-controls a:hover {color: #fff;}
 
 .dropdown-menu {min-width: 200px;}
