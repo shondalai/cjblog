@@ -96,8 +96,8 @@ class PlgContentCjBlog extends JPlugin {
 		$user             = JFactory::getUser();
 		$article->slug    = ! empty( $article->alias ) ? $article->id . ':' . $article->alias : $article->id;
 		$article->catslug = ! empty( $article->category_alias ) ? ( $article->id . ':' . $article->category_alias ) : $article->id;
-		$return           = ContentHelperRoute::getArticleRoute( $article->slug, $article->catslug, $article->language );
-		$return           = base64_encode( $return );
+		$articleUri       = ContentHelperRoute::getArticleRoute( $article->slug, $article->catslug, $article->language );
+		$return           = base64_encode( $articleUri );
 
 		// initiate blocks
 		$toolbarHtml       = '';
@@ -246,6 +246,17 @@ class PlgContentCjBlog extends JPlugin {
 		                 $infoHtmlBottom .
 		                 $socialSharingHtml .
 		                 '</div>';
+
+		$pointsApp = $appParams->get( 'points_component', 'cjblog' );
+		if ( $pointsApp == 'cjblog' )
+		{
+			$api         = new CjLibApi();
+			$articleUrl  = JRoute::_( $articleUri );
+			$articleLink = JHtml::link( $articleUrl, CjLibUtils::escape( $article->title ) );
+			$title       = $description = JText::sprintf( 'COM_CJBLOG_POINTS_READ_ARTICLE', $articleLink, [ 'jsSafe' => true ] );
+			$options     = [ 'function' => 'com_content.read', 'reference' => $article->id, 'info' => $description, 'component' => 'com_content', 'title' => $title ];
+			$api->awardPoints( $pointsApp, $user->id, $options );
+		}
 	}
 
 	public function onContentAfterSave( $context, $article, $isNew ) {
