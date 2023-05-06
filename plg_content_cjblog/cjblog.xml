@@ -2,13 +2,13 @@
 
 <extension group="content" method="upgrade" type="plugin" version="3.0">
     <name>Content - CjBlog</name>
-    <creationDate>2023-Apr-01</creationDate>
+    <creationDate>2023-May-06</creationDate>
     <author>Maverick</author>
     <authorEmail>support@shondalai.com</authorEmail>
     <authorUrl>https://shondalai.com</authorUrl>
     <copyright>All rights reserved by BulaSikku Technologies Pvt. Ltd.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>3.0.3</version>
+    <version>3.0.4</version>
     <description>CjBlog content plugin - adds support for adding cjblog styling to articles.</description>
     <files>
         <filename>cjblog.xml</filename>

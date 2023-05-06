@@ -3,8 +3,8 @@
 <extension client="site" method="upgrade" type="module" version="2.5.0">
     <name>CjBlog Bloggers Module</name>
     <author>Maverick</author>
-    <creationDate>2023-Apr-01</creationDate>
-    <version>3.0.3</version>
+    <creationDate>2023-May-06</creationDate>
+    <version>3.0.4</version>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <description>Displays articles category tree.</description>
     <files>

@@ -3,12 +3,12 @@
 <extension group="user" method="upgrade" type="plugin" version="2.5">
     <name>User - CjBlog</name>
     <author>CjBlog User Plugin</author>
-    <creationDate>2023-Apr-01</creationDate>
+    <creationDate>2023-May-06</creationDate>
     <copyright>(C) 2009 - 2023 BulaSikku Technologies Pvt. Ltd. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <authorEmail>support@corejoomla.com</authorEmail>
     <authorUrl>www.corejoomla.com</authorUrl>
-    <version>3.0.3</version>
+    <version>3.0.4</version>
     <description>User plugin for CjBlog</description>
     <files>
         <filename plugin="cjblog">cjblog.php</filename>
